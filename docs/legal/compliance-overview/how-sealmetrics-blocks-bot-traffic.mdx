@@ -1,0 +1,143 @@
+---
+title: "How SealMetrics Blocks Bot Traffic Without Handling IPs"
+description: "Learn how SealMetrics filters bot traffic while maintaining full GDPR and ePrivacy compliance—without processing IP addresses."
+category: "Legal"
+subcategory: "Compliance Overview"
+updated: "2025-02-01"
+---
+
+# How SealMetrics Blocks Bot Traffic Without Handling IPs
+
+SealMetrics is designed from the ground up to protect user privacy while delivering accurate analytics. A frequent question is: **How does SealMetrics block bot traffic without using IP addresses?**  
+Here’s how we do it—fully compliant, fully anonymous.
+
+---
+
+## Why SealMetrics Does Not Use IP Addresses
+
+IP addresses are legally considered **personal data** under GDPR, ePrivacy, and rulings from authorities such as:
+
+- CNIL (France)  
+- AEPD (Spain)  
+- EDPS (EU)  
+
+Even if an IP address is:
+
+- truncated,  
+- hashed,  
+- used briefly for filtering,  
+- or never stored,  
+
+processing it **still counts as handling personal data**.
+
+Because SealMetrics is a **consentless analytics platform**, we cannot process IPs without breaking that model.
+
+### Using IPs would require:
+- A lawful basis for processing  
+- Explicit user consent  
+- Additional legal and security obligations  
+
+That’s why **SealMetrics does not process, store, or use IP addresses at all — not even for bot filtering**.
+
+This is intentional and central to our privacy-by-design architecture.
+
+---
+
+## How SealMetrics Filters Bot Traffic Without IPs
+
+Instead of relying on IP filtering, we use a **privacy-safe, fully anonymous system based on User Agents**.
+
+### What is a User Agent?
+A *user agent* is a text string that browsers (and bots) send automatically, describing:
+
+- browser type  
+- device  
+- OS  
+- automation flags (in many cases)  
+
+Bots typically identify themselves clearly through their user agents.
+
+---
+
+## Method 1 — Automatic Bot Detection via User Agent Lists
+
+SealMetrics maintains an updated list of known bot user agents, such as:
+
+- search engine crawlers  
+- uptime monitors  
+- headless browsers  
+- known automation tools  
+
+When a hit arrives:
+
+✔ We check the user agent  
+✔ If it matches a bot signature  
+→ We discard it immediately  
+❌ No IP needed  
+❌ No personal data processed
+
+This keeps analytics clean without compromising compliance.
+
+---
+
+## Method 2 — Behavioral Bot Filtering (No IP Required)
+
+SealMetrics also detects suspicious automated behavior patterns, such as:
+
+- too many hits in a short time,  
+- non-human navigation patterns,  
+- abnormal request timing.
+
+This allows us to block automated traffic without relying on IP addresses.
+
+> **All filtering occurs without identifying or tracking individuals.**
+
+---
+
+## Why This Approach Is Fully Privacy-Compliant
+
+Using user agents for bot filtering is permitted because:
+
+- User agents are **not personal data** (when not stored raw).
+- SealMetrics does **not store** user agent strings.
+- No tracking identifiers are used.
+- No correlation between hits is possible.
+- No user or device profiling is performed.
+
+This means we can filter bot traffic **without consent** and without violating GDPR or ePrivacy rules.
+
+---
+
+## Benefits of This Approach
+
+### ✔ 100% GDPR, ePrivacy, CCPA, and PECR compliant  
+No IPs → No personal data → No consent required.
+
+### ✔ Accurate analytics  
+Bot traffic is filtered out automatically while keeping user data anonymous.
+
+### ✔ No risk of re-identification  
+The system cannot reconstruct sessions, journeys, or identities.
+
+### ✔ Privacy-by-design  
+Filtering is done in a way that respects the strictest privacy standards.
+
+---
+
+## Summary
+
+SealMetrics filters bot traffic **without ever touching IP addresses**, thanks to:
+
+- Updated bot user agent lists  
+- Behavioral pattern detection  
+- Fully anonymous processing  
+- No personal data collection  
+
+This ensures:
+
+- Clean analytics  
+- Full privacy compliance  
+- Zero consent requirements  
+- Zero exposure to personal data risk  
+
+SealMetrics remains a truly **privacy-first, consentless analytics platform**—without sacrificing accuracy.

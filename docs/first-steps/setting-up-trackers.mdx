@@ -1,0 +1,115 @@
+---
+sidebar_position: 5
+title: Setting Up Trackers in SealMetrics
+description: Learn how to configure and set up global and conversion trackers in SealMetrics to start collecting privacy-first analytics data.
+tags: [tracker setup, sealmetrics, analytics, conversions, pixel]
+keywords:
+  - sealmetrics tracker setup
+  - global tracker
+  - conversion pixel
+  - cookieless analytics
+  - first steps
+---
+
+# Setting Up Trackers in SealMetrics
+
+To ensure accurate data collection with SealMetrics, you can easily set up different trackers for your site.  
+This guide walks you through configuring your **global** and **conversion** trackers step by step.
+
+---
+
+![SealMetrics tracker configuration overview]//img/trackers-dashboard.png)
+
+---
+
+## Step 1: Accessing the Tracker Configuration
+
+1. Log in to your [SealMetrics Dashboard](https://app.sealmetrics.com).  
+2. Navigate to **Tags & API Info → Common Tracker**.  
+3. Here you can manage your tracking setup, including installations, pages, events, conversions, and micro-conversions.
+
+---
+
+## Step 2: Accessing Tags & Connectors
+
+1. Open **Settings → Tags & Connectors**.  
+2. Under **Integration Options**, you can assign IDs.  
+3. If you manage multiple domains, each one will have its own **Tracking ID**.
+
+![Accessing Tags & Connectors in SealMetrics]//img/tags-and-connectors.png)
+
+---
+
+## Step 3: Choosing Your Tracker Type
+
+Under **Tags & Connectors → New Tag & Connectors**, you’ll find a list of available tracker types:
+
+- **Global Tracker (Main Tag):**  
+  The standard tracking method suitable for overall traffic monitoring.
+
+- **Conversion Tracker (Sales Tag):**  
+  Used to track conversions, revenue, and micro-conversions.
+
+- **Event Tracker (Micro-Event Tag):**  
+  Measures user interactions such as button clicks or scrolls.
+
+Each tracker type serves a specific purpose and should be implemented based on your measurement goals.  
+For instance, use the **Conversion Tracker** to count purchases or sign-ups, and the **Event Tracker** for smaller actions like clicks or interactions.
+
+---
+
+## Step 4: Go to Global Tracker
+
+1. Click **Global Tracker** in your SealMetrics dashboard.  
+2. Copy the tracker code displayed on the screen.  
+3. Paste the code inside the `<head>` tag of every page on your website.
+
+![Global tracker setup example]//img/global-tracker-setup.png)
+
+---
+
+## Step 5: Set Up Conversion Pixel
+
+1. Go to **Conversion Pixel** in the SealMetrics dashboard.  
+2. Select **Conversion**.  
+3. Introduce a name for your conversion or micro-conversion.  
+4. If the conversion has a value, add it to the **Value** field.  
+5. Use the **ignore page view?** option when a pageview should not be counted for that event.  
+6. Save your changes.
+
+![Setting up conversion pixel in SealMetrics]//img/conversion-pixel-setup.png)
+
+---
+
+### Understanding the “Ignore Page View” Option
+
+The **ignore page view** setting allows you to skip counting an additional pageview when a conversion is triggered on an already tracked page.
+
+**Example:**  
+If a user clicks “Buy Now” on a product page that has already been logged as a pageview, enabling `ignore_pageview = 1` avoids double counting.
+
+![Global tracker ignore pageview example]//img/ignore-pageview-example.png)
+
+---
+
+## Step 6: Triggering the Pixel in Tag Manager
+
+If you use **Google Tag Manager**, place the conversion pixel in the “All Pages” tag or create a custom trigger when the conversion action occurs.
+
+Example trigger:  
+When a user reaches `/thank-you` after completing a purchase, the conversion pixel fires automatically.
+
+---
+
+## Step 7: Set Up the Sales Funnel (Optional)
+
+1. Go to **Sales Funnel** under the SealMetrics dashboard.  
+2. Add your funnel steps manually.  
+3. Configure events such as “Add to Cart”, “Checkout”, and “Purchase”.  
+4. Save and test your funnel configuration.
+
+![Sales funnel setup example in SealMetrics]//img/sales-funnel-setup.png)
+
+---
+
+If you have questions or need help, contact [hello@sealmetrics.com](mailto:hello@sealmetrics.com).

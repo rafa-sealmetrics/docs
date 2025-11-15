@@ -1,0 +1,126 @@
+---
+sidebar_position: 4
+title: How to Measure Conversions and Micro-Conversions
+description: Learn how to configure the SealMetrics pixel to track conversions and micro-conversions accurately while avoiding duplicate pageviews.
+tags: [conversions, micro-conversions, pixel, analytics, setup]
+keywords:
+  - sealmetrics conversions
+  - micro conversions
+  - conversion tracking
+  - pixel setup
+  - cookieless analytics
+---
+
+# How to Measure Conversions and Micro-Conversions
+
+With SealMetrics, you have full control over measuring conversions and micro-conversions — ensuring accurate data collection while avoiding unnecessary duplication of pageviews.
+
+Each conversion or micro-conversion event must be linked to a pageview, but you can define whether that pageview is triggered automatically or managed manually.
+
+This guide explains how to configure your pixel for multiple use cases.
+
+---
+
+## Key Configuration Options
+
+1. **Automatic Pageview Triggering:**  
+   By default, the new pixel includes a pageview alongside any conversion or micro-conversion.
+
+2. **Exclude Pageviews from the Conversion Pixel:**  
+   You can avoid triggering an additional pageview by adding a `ignore_pageview: 1` parameter.
+
+3. **Flexible Event Tracking:**  
+   Customize your tracking setup to fit your needs while maintaining data accuracy.
+
+---
+
+## Use Cases
+
+### 1. Tracking a Button Click (Avoiding Duplicate Pageviews)
+
+If you’re measuring an event like a button click on a page where the pageview has already been logged, you should **disable the pageview** on the conversion pixel.  
+This prevents double counting in the same session.
+
+```html
+<script>
+  /* SealMetrics Tracker Code */
+  var oSm = window.oSm || {};
+  oSm.account = "YOUR_ACCOUNT_ID";
+  oSm.event = "conversion";
+  oSm.ignore_pageview = 1;
+
+  !(function (e) {
+    var t = "//app.sealmetrics.com/tag/tracker";
+    window.oSm = oSm;
+    if (window.smTrackerLoaded) sm.tracker.track(e.event);
+    else
+      Promise.all([
+        new Promise(function (e) {
+          var n = document.createElement("script");
+          n.src = t;
+          n.async = !0;
+          n.onload = function () {
+            e(t);
+          };
+          document.getElementsByTagName("head")[0].appendChild(n);
+        }),
+      ]).then(function () {
+        sm.tracker.track(e.event);
+      });
+  })(oSm);
+</script>
+
+### 2. Tracking a Conversion (Including Pageview)
+
+If you need to include a pageview when tracking a conversion (e.g., a purchase confirmation page), simply omit the ignore_pageview parameter.
+This ensures both the pageview and conversion are tracked accurately.
+
+<script>
+  /* SealMetrics Tracker Code */
+  var oSm = window.oSm || {};
+  oSm.account = "YOUR_ACCOUNT_ID";
+  oSm.event = "conversion";
+
+  !(function (e) {
+    var t = "//app.sealmetrics.com/tag/tracker";
+    window.oSm = oSm;
+    if (window.smTrackerLoaded) sm.tracker.track(e.event);
+    else
+      Promise.all([
+        new Promise(function (e) {
+          var n = document.createElement("script");
+          n.src = t;
+          n.async = !0;
+          n.onload = function () {
+            e(t);
+          };
+          document.getElementsByTagName("head")[0].appendChild(n);
+        }),
+      ]).then(function () {
+        sm.tracker.track(e.event);
+      });
+  })(oSm);
+</script>
+
+How It Works
+
+Default Behavior:
+The new pixel automatically tracks a pageview alongside any conversion or micro-conversion.
+
+Customizable Behavior:
+You can prevent the pageview from being triggered by adding ignore_pageview: 1 in the configuration.
+
+⸻
+
+Best Practices
+	1.	Avoid Duplicate Pageviews:
+When tracking events (like a button click) on a page where the pageview has already been logged, use the ignore_pageview parameter.
+	2.	Ensure Every Conversion Has a Pageview:
+Every conversion or micro-conversion needs to be associated with a pageview.
+If you exclude the pageview from the conversion pixel, ensure it has already been triggered elsewhere in your setup.
+
+⸻
+
+Where to Find Event Pixels
+
+You can view and manage your event pixels directly in your SealMetrics account under Settings → Tags & API Info → Event Pixels.

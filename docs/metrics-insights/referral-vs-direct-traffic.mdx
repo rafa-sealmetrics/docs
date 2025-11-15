@@ -1,0 +1,263 @@
+---
+title: Referral vs Direct Traffic
+sidebar_label: Referral vs Direct Traffic
+description: Learn how SealMetrics classifies referrer traffic vs direct traffic using privacy-first principles and advanced attribution logic.
+sidebar_position: 1
+---
+
+# Referral vs Direct Traffic
+
+Understanding the distinction between **Referrer** and **Direct** traffic in SealMetrics is essential for accurate traffic source analysis and attribution.
+
+---
+
+## 1. The Primary Distinction
+
+- **Referrer Traffic** → When a previous-page URL exists  
+- **Direct Traffic** → When the referrer field is empty or unavailable  
+
+This binary classification forms the foundation of SealMetrics’ traffic attribution model.
+
+**If referrer exists → Referrer Traffic**  
+**If referrer is empty → Direct Traffic**
+
+---
+
+## 2. How Referrer Information Works
+
+### The Referrer Header
+
+When a user clicks from one webpage to another, the browser sends an HTTP *referrer header* containing the previous page URL.
+
+**Technical flow:**
+
+1. User browses Website A (e.g., *google.com*)
+2. Clicks a link to your website
+3. Browser sends an HTTP request with the `referrer`
+4. SealMetrics reads and processes referrer data
+
+### Example HTTP Header
+
+```plaintext
+GET /your-page HTTP/1.1
+Host: yourwebsite.com
+Referrer: https://google.com/search?q=analytics+software
+User-Agent: Mozilla/5.0...
+
+## 3. Referrer Traffic Classification
+
+When referrer information is present, SealMetrics performs domain-based enrichment:
+
+### Classification Flow
+
+1. Detect referrer domain  
+2. Check domain category (search, social, news, etc.)  
+3. Reclassify traffic accordingly  
+
+### Examples
+
+#### Search Engine → SEO Traffic
+- Referrer: https://google.com/search?q=privacy+analytics  
+- Initial classification: Referrer  
+- Final classification: SEO  
+
+#### Social Platform → Social Traffic
+- Referrer: https://facebook.com/post/12345  
+- Final classification: Social (Facebook)  
+
+### Recognized Categories
+
+**Search engines**  
+Google, Bing, Yahoo, DuckDuckGo, Yandex, Baidu…
+
+**Social media**  
+Facebook, Instagram, LinkedIn, X/Twitter, TikTok, Pinterest, Reddit…
+
+**Professional networks / industry sites**  
+Directories, B2B listings, niche publications
+
+**Unknown domains**  
+Remain **Referrer** traffic.
+
+---
+
+## 4. Direct Traffic Identification
+
+Direct traffic is recorded when no referrer information exists.
+
+### Legitimate Direct Traffic
+
+Occurs when users:
+
+- Type your URL manually  
+- Use bookmarks  
+- Use browser shortcuts  
+- Navigate from offline sources  
+
+### Technical Direct Traffic (Referrer Loss)
+
+Referrer may be missing due to:
+
+- HTTPS → HTTP transitions  
+- Privacy browser settings  
+- Corporate firewall stripping  
+- Incognito mode  
+- Email clients and some messaging apps  
+- Social apps with privacy mode enabled  
+- URL shorteners breaking referrer headers  
+- Redirects that strip referrers  
+
+---
+
+## 5. Advanced Classification Logic
+
+### Same-Domain Navigation
+
+If the referrer domain matches your domain, it is internal navigation — not a new visit.
+
+- Referrer: https://yoursite.com/home  
+- Page: https://yoursite.com/product  
+- Classification: Internal Pageview  
+
+### Cross-Subdomain Navigation
+
+`blog.yoursite.com` → `shop.yoursite.com`  
+Still considered **internal navigation**.
+
+---
+
+## 6. Traffic Source Priority System
+
+SealMetrics follows a strict priority order:
+
+1. UTM Parameters (highest priority)  
+2. Known Platform Recognition (SEO / Social / Partner…)  
+3. Generic Referrer Traffic  
+4. Direct Traffic (fallback category)  
+
+### Example Priority Cases
+
+#### Case 1 — UTM Override
+- Referrer: facebook.com  
+- Landing URL: `?utm_source=newsletter`  
+**Result → Email Campaign Traffic**
+
+#### Case 2 — Platform Recognition
+- Referrer: google.com/search…  
+**Result → SEO Traffic**
+
+#### Case 3 — Unknown Referrer
+- Referrer: unknownsite.org/article  
+**Result → Referrer Traffic**
+
+---
+
+## 7. Practical Applications
+
+### Marketing Attribution
+
+- Compare channel performance  
+- Assess brand awareness with direct traffic  
+- Track partnership and PR impact  
+- Evaluate campaign ROI  
+
+### Content Strategy
+
+- Identify high-value referral sources  
+- Optimize content for platforms sending traffic  
+- Strengthen partner relationships  
+
+---
+
+## 8. Data Accuracy Considerations
+
+### ⚠️ High Direct Traffic ≠ Always Brand-Aware Users
+
+Referrer loss can artificially inflate direct numbers.
+
+### Common Indicators of Referrer Loss
+
+- Sudden unexplained spikes  
+- Low engagement from “direct”  
+- Specific device/browser anomalies  
+- Referrer loss after site redesign or redirects  
+
+### How to Reduce Referrer Loss
+
+- Use UTMs everywhere possible  
+- Avoid unnecessary redirects  
+- Keep full HTTPS consistency  
+- Test referrer flow with developer tools  
+
+---
+
+## 9. Best Practices for Traffic Attribution
+
+### UTM Strategy
+
+- Tag all campaigns (email, social, paid, partnerships)  
+- Use consistent naming conventions  
+- Document your UTM scheme  
+
+### Technical Optimization
+
+- Avoid redirect chains  
+- Ensure secure-to-secure navigation (HTTPS)  
+- Review referrer policies implementation  
+
+### Reporting Tips
+
+- Compare SEO vs Social vs Direct trends  
+- Analyze engagement differences across channels  
+- Use direct traffic as a long-term brand indicator  
+
+---
+
+## 10. Troubleshooting Common Issues
+
+### High Direct Traffic
+
+**Investigate:**
+
+- Historical trends  
+- Industry benchmarks  
+- Technical referrer blocking  
+- Recent marketing efforts  
+
+**Typical Direct Ranges:**
+
+- E-commerce: 15–30%  
+- B2B SaaS: 20–35%  
+- Media/Content: 10–25%  
+- Local business: 25–40%  
+
+### Low Referrer Traffic
+
+Usually caused by:
+
+- Weak content marketing  
+- Few industry mentions  
+- Lack of partnerships  
+- Poor social presence  
+
+**Improve by:**
+
+- Publishing link-worthy content  
+- Building industry relationships  
+- Expanding PR and media exposure  
+- Boosting social engagement  
+
+---
+
+## Summary
+
+SealMetrics’ classification of Referrer vs Direct traffic provides a clear, privacy-first view of how visitors reach your website.
+
+This distinction enables you to:
+
+- Measure brand awareness  
+- Understand platform contributions  
+- Optimize marketing investments  
+- Maintain full privacy compliance  
+
+By combining UTM parameters, domain analysis, and referrer intelligence, SealMetrics provides accurate, transparent attribution — **without personal tracking or cookies**.

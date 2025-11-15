@@ -1,0 +1,76 @@
+# How to Track React Sites
+
+## Overview
+This guide explains how to track React-based websites using SealMetrics.  
+React apps often use client-side navigation, so it's important to make sure tracking triggers properly after route changes and conversions.
+
+---
+
+## 1. Add SealMetrics tracking pixel to all website pages
+
+```html
+<script>
+/* SealMetrics Tracker Code */
+var oSm = window.oSm || {};
+oSm.account = 'XXXXXXXXXXXXX';
+oSm.event = 'pageview';
+
+!function(e){
+  var t="//app.sealmetrics.com/tag/tracker";
+  window.oSm=oSm,
+  window.smTrackerLoaded
+    ? sm.tracker.track(e.event)
+    : Promise.all([
+        new Promise(function(e){
+          var n=document.createElement("script");
+          n.src=t;
+          n.async=!0;
+          n.onload=function(){e(t)};
+          document.getElementsByTagName("head")[0].appendChild(n);
+        })
+      ]).then(function(){
+        sm.tracker.track(e.event);
+      })
+}(oSm);
+/* End SealMetrics Tracker Code */
+</script>
+```
+
+---
+
+## 2. Trigger conversion tracking after a user submits a form or completes a conversion
+
+```html
+<script>
+/* SealMetrics Tracker Code */
+var oSm = window.oSm || {};
+oSm.event = 'conversion';
+oSm.label = 'purchase';
+oSm.amount = '1.01';
+
+!function(e){
+  var t="//app/sealmetrics.com/tag/tracker";
+  window.oSm=oSm,
+  window.smTrackerLoaded
+    ? sm.tracker.track(e.event)
+    : Promise.all([
+        new Promise(function(e){
+          var n=document.createElement("script");
+          n.src=t;
+          n.async=!0;
+          n.onload=function(){e(t)};
+          document.getElementsByTagName("head")[0].appendChild(n);
+        })
+      ]).then(function(){
+        sm.tracker.track(e.event);
+      })
+}(oSm);
+/* End SealMetrics Tracker Code */
+</script>
+```
+
+---
+
+## Notes
+- You can trigger each pixel in any order you prefer.
+- For SPA/React apps, ensure that pageview events fire on route changes.

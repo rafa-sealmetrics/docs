@@ -1,0 +1,144 @@
+---
+title: "Pages Endpoint"
+description: "Documentation for the Pages endpoint in the SealMetrics API."
+category: "API Endpoints"
+subcategory: "Reports"
+updated: "2025-02-01"
+---
+
+# Pages Endpoint
+
+The Pages endpoint provides detailed analytics about page views and traffic to your website pages. This endpoint allows you to retrieve metrics such as views, entry pages, and other page-related statistics.
+
+## Endpoint Details
+
+- **URL:** `https://app.sealmetrics.com/api/report/pages`
+- **Method:** GET
+- **Authentication:** Bearer Token required
+
+## Request Parameters
+
+### Headers
+
+| Header            | Value                         | Required |
+|-------------------|-------------------------------|----------|
+| Authorization     | Bearer {your_access_token}    | Yes      |
+| Accept            | application/json              | Yes      |
+| Connection        | keep-alive                    | Recommended |
+| Accept-Encoding   | gzip, deflate, br             | Recommended |
+
+### Query Parameters
+
+| Parameter    | Type    | Required | Description |
+|-------------|---------|----------|-------------|
+| account_id  | string  | Yes      | Your account identifier |
+| date_range  | string  | Yes      | Date range (YYYYMMDD,YYYYMMDD or predefined values) |
+| skip        | integer | No       | Records to skip (default: 0) |
+| limit       | integer | No       | Max number of records (default: 100, max: 100) |
+| country     | string  | No       | ISO country code |
+| utm_medium  | string  | No       | Filter by medium |
+| utm_source  | string  | No       | Filter by source |
+| show_utms   | boolean | No       | Display UTM parameters (default: false) |
+
+## Example Request
+
+### cURL
+
+```bash
+curl --location 'https://app.sealmetrics.com/api/report/pages?account_id=000000000000000000001234&date_range=this_month&skip=0&limit=100' --header 'Authorization: Bearer YOUR_TOKEN' --header 'Accept: application/json' --header 'Connection: keep-alive' --header 'Accept-Encoding: gzip, deflate, br'
+```
+
+### Python
+
+```python
+import requests
+
+url = "https://app.sealmetrics.com/api/report/pages"
+
+querystring = {
+    "account_id": "000000000000000000001234",
+    "date_range": "this_month",
+    "skip": "0",
+    "limit": "100"
+}
+
+headers = {
+    "Authorization": "Bearer YOUR_TOKEN",
+    "Accept": "application/json",
+    "Connection": "keep-alive",
+    "Accept-Encoding": "gzip, deflate, br"
+}
+
+response = requests.request("GET", url, headers=headers, params=querystring)
+
+print(response.text)
+```
+
+### JavaScript
+
+```javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer YOUR_TOKEN");
+myHeaders.append("Accept", "application/json");
+myHeaders.append("Connection", "keep-alive");
+myHeaders.append("Accept-Encoding", "gzip, deflate, br");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch("https://app.sealmetrics.com/api/report/pages?account_id=000000000000000000001234&date_range=this_month&skip=0&limit=100", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+
+## Success Response (200 OK)
+
+```json
+{
+  "status": "ok",
+  "data": [
+    { "url": "/", "views": 21955, "entry_page": 7221 },
+    { "url": "/agencia-seo", "views": 8765, "entry_page": 3421 },
+    { "url": "/blog/marketing-digital", "views": 5432, "entry_page": 2198 }
+  ]
+}
+```
+
+## Response Parameters
+
+| Field       | Type   | Description |
+|-------------|--------|-------------|
+| url         | string | The page URL path |
+| views       | number | Total page views |
+| entry_page  | number | How many times this page was the first visited |
+
+## Error Responses
+
+### 401 Unauthorized
+
+```json
+{
+  "status": "error",
+  "message": "Unauthenticated"
+}
+```
+
+### 400 Bad Request
+
+```json
+{
+  "status": "error",
+  "message": "Missing required parameter: account_id"
+}
+```
+
+## Notes
+
+- Results are usually sorted by views (descending)
+- Use UTM filters for campaign-specific page insights
+- `show_utms=true` returns detailed UTM breakdown
+- Pagination (`skip`, `limit`) is recommended for large sites

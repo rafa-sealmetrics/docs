@@ -1,0 +1,9 @@
+{
+  "label": "Platform Internals",
+  "position": 1,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "description": "Technical insights into how Sealmetrics processes, consolidates, and safeguards data."
+  }
+}

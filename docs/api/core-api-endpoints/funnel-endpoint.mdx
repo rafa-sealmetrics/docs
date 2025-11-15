@@ -1,0 +1,174 @@
+--- 
+title: "Funnel Endpoint"
+description: "SealMetrics API — Funnel analytics endpoint documentation."
+category: "API Documentation"
+subcategory: "Endpoints"
+updated: "2025-02-01"
+---
+
+# Funnel Endpoint
+
+The Funnel endpoint provides detailed analytics about your sales or conversion funnel, showing how users progress through different customer journey stages. This helps identify bottlenecks and optimize performance.
+
+---
+
+## Endpoint Details
+
+- **URL:** `https://app.sealmetrics.com/api/report/funnel`  
+- **Method:** GET  
+- **Authentication:** Bearer Token required  
+
+---
+
+## Request Parameters
+
+### Headers
+
+| Header | Value | Required |
+|--------|--------|----------|
+| Authorization | Bearer {your_access_token} | Yes |
+| Accept | application/json | Yes |
+| Connection | keep-alive | Recommended |
+| Accept-Encoding | gzip, deflate, br | Recommended |
+
+---
+
+### Query Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|--------|-----------|--------------|
+| account_id | string | Yes | Your account identifier |
+| report_type | string | Yes | Type of report to generate (usually `"Source"`) |
+| date_range | string | Yes | Date range (YYYYMMDD,YYYYMMDD or predefined values like `this_month`) |
+| skip | integer | No | Records to skip; default: 0 |
+| limit | integer | No | Max number of results; default: 100 |
+| country | string | No | ISO 3166-1 alpha-2 code filter |
+
+---
+
+## Example Request
+
+### cURL
+
+```bash
+curl --location 'https://app.sealmetrics.com/api/report/funnel?account_id=000000000000000000001234&report_type=Source&date_range=20230601,20230630&skip=0&limit=100' --header 'Authorization: Bearer YOUR_TOKEN' --header 'Accept: application/json' --header 'Connection: keep-alive' --header 'Accept-Encoding: gzip, deflate, br'
+```
+
+### Python
+
+```python
+import requests
+
+url = "https://app.sealmetrics.com/api/report/funnel"
+
+querystring = {
+    "account_id": "000000000000000000001234",
+    "report_type": "Source",
+    "date_range": "20230601,20230630",
+    "skip": "0",
+    "limit": "100"
+}
+
+headers = {
+    "Authorization": "Bearer YOUR_TOKEN",
+    "Accept": "application/json",
+    "Connection": "keep-alive",
+    "Accept-Encoding": "gzip, deflate, br"
+}
+
+response = requests.get(url, headers=headers, params=querystring)
+
+print(response.text)
+```
+
+### JavaScript
+
+```javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer YOUR_TOKEN");
+myHeaders.append("Accept", "application/json");
+myHeaders.append("Connection", "keep-alive");
+myHeaders.append("Accept-Encoding", "gzip, deflate, br");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch("https://app.sealmetrics.com/api/report/funnel?account_id=000000000000000000001234&report_type=Source&date_range=20230601,20230630&skip=0&limit=100", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+
+---
+
+## Success Response (200 OK)
+
+```json
+{
+  "status": "ok",
+  "data": [
+    {
+      "Source": "Referrer",
+      "clicks": 9380,
+      "conversions": 675,
+      "microconversions": 2843,
+      "add-to-cart": 571,
+      "checkout": 587
+    },
+    {
+      "Source": "Google",
+      "clicks": 12450,
+      "conversions": 892,
+      "microconversions": 3256,
+      "add-to-cart": 743,
+      "checkout": 812
+    }
+  ]
+}
+```
+
+---
+
+## Response Parameters
+
+| Field | Type | Description |
+|--------|--------|--------------|
+| Source | string | Group name based on report_type |
+| clicks | number | Number of clicks |
+| conversions | number | Number of final conversions |
+| microconversions | number | Count of microconversions |
+| add-to-cart | number | Add-to-cart events |
+| checkout | number | Checkout initiations |
+| *(other stages)* | number | Additional funnel steps depending on configuration |
+
+---
+
+## Error Responses
+
+### 401 Unauthorized
+```json
+{
+  "status": "error",
+  "message": "Unauthenticated"
+}
+```
+
+### 400 Bad Request
+```json
+{
+  "status": "error",
+  "message": "Missing required parameter: account_id"
+}
+```
+
+---
+
+## Notes
+
+- Funnel stages vary depending on your configuration.
+- Use the `report_type` parameter to group funnels by Source, Medium, or Campaign.
+- This endpoint helps identify drop-offs and optimize conversion paths.
+

@@ -1,0 +1,129 @@
+---
+title: "Account Endpoints"
+description: "Retrieve account information associated with your SealMetrics API credentials."
+category: "API"
+subcategory: "Authentication & Accounts"
+updated: "2025-02-01"
+---
+
+# Account Endpoints
+
+The **Accounts endpoint** provides the list of accounts linked to your API credentials.  
+You’ll use these account IDs in other API requests such as Acquisition, Pages, Conversions, Funnels, and more.
+
+---
+
+## Endpoint Details
+
+- **URL:** `https://app.sealmetrics.com/api/auth/accounts`  
+- **Method:** `GET`  
+- **Authentication:** **Bearer Token required**
+
+---
+
+## Request Parameters
+
+### Headers
+
+| Header            | Value                         | Required |
+|------------------|--------------------------------|----------|
+| Authorization     | Bearer {your_access_token}     | Yes      |
+| Accept            | application/json               | Yes      |
+| Connection        | keep-alive                     | Recommended |
+| Accept-Encoding   | gzip, deflate, br              | Recommended |
+
+This endpoint **does not require query parameters**.
+
+---
+
+## Example Requests
+
+### cURL
+
+```bash
+curl --location 'https://app.sealmetrics.com/api/auth/accounts' --header 'Authorization: Bearer YOUR_ACCESS_TOKEN' --header 'Accept: application/json' --header 'Connection: keep-alive' --header 'Accept-Encoding: gzip, deflate, br'
+```
+
+---
+
+### Python
+
+```python
+import requests
+
+url = "https://app.sealmetrics.com/api/auth/accounts"
+
+headers = {
+    "Authorization": "Bearer YOUR_ACCESS_TOKEN",
+    "Accept": "application/json",
+    "Connection": "keep-alive",
+    "Accept-Encoding": "gzip, deflate, br"
+}
+
+response = requests.get(url, headers=headers)
+print(response.text)
+```
+
+---
+
+### JavaScript (fetch)
+
+```javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer YOUR_ACCESS_TOKEN");
+myHeaders.append("Accept", "application/json");
+myHeaders.append("Connection", "keep-alive");
+myHeaders.append("Accept-Encoding", "gzip, deflate, br");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch("https://app.sealmetrics.com/api/auth/accounts", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+
+---
+
+## Success Response (200 OK)
+
+```json
+{
+  "status": "ok",
+  "data": {
+    "000000000000000000001234": "Demo Account"
+  }
+}
+```
+
+### Response Parameters
+
+| Field | Type   | Description |
+|-------|--------|-------------|
+| key   | string | Account ID  |
+| value | string | Account Name |
+
+If your credentials have multiple accounts, all of them will appear here.
+
+---
+
+## Error Response (401 Unauthorized)
+
+```json
+{
+  "status": "error",
+  "message": "Unauthenticated"
+}
+```
+
+---
+
+## Notes
+
+- Use the returned **account_id** values for all other API endpoints.
+- This endpoint is essential for validating your credentials and available accounts.
+- No pagination or filters apply here.

@@ -1,0 +1,40 @@
+---
+title: GA4 vs SealMetrics
+sidebar_position: 3
+description: Understand why SealMetrics and GA4 report different values, including direct traffic inflation, hit counting, and consent impacts.
+keywords:
+  - ga4 comparison sealmetrics
+  - analytics differences
+  - direct traffic inflation
+---
+
+# GA4 vs SealMetrics FAQ
+
+## Why are GA4 and SealMetrics numbers different?
+
+Because GA4 relies on cookies, consent, and session-based tracking.  
+SealMetrics tracks isolated hits without consent and without cookies.
+
+GA4 loses 50 to 85 percent of data when people reject cookies.  
+SealMetrics measures 100 percent of traffic.
+
+---
+
+## Why is GA4's direct traffic inflated?
+
+If a user accepts cookies mid-journey, GA4 loses attribution and assigns the visit to "Direct".  
+SealMetrics attributes hits correctly because it does not depend on consent.
+
+---
+
+## Why does SealMetrics count more conversions than GA4?
+
+Because GA4 cannot track conversions from visitors who reject consent.  
+SealMetrics can.
+
+---
+
+## Why compare SealMetrics clicks to GA4 sessions?
+
+When a visitor returns after leaving, GA4 merges visits into one session.  
+SealMetrics counts hits independently, as required by privacy regulations.

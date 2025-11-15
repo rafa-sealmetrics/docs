@@ -1,0 +1,179 @@
+---
+title: "Conversions Endpoint"
+description: "Documentation for the Conversions endpoint in the SealMetrics API."
+category: "API"
+subcategory: "Data Endpoints"
+updated: "2025-02-01"
+---
+
+# Conversions Endpoint
+
+The Conversions endpoint provides detailed analytics about conversion events on your website. This endpoint allows you to track and analyze sales, sign-ups, or other conversion events across different marketing channels and campaigns.
+
+---
+
+## Endpoint Details
+
+- **URL:** `https://app.sealmetrics.com/api/report/conversions`
+- **Method:** GET  
+- **Authentication:** Bearer Token required
+
+---
+
+## Request Parameters
+
+### Headers
+
+| Header | Value | Required |
+|--------|--------|----------|
+| Authorization | Bearer {your_access_token} | Yes |
+| Accept | application/json | Yes |
+| Connection | keep-alive | Recommended |
+| Accept-Encoding | gzip, deflate, br | Recommended |
+
+---
+
+### Query Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|--------|-----------|-------------|
+| account_id | string | Yes | Your account identifier |
+| date_range | string | Yes | Date range (YYYYMMDD,YYYYMMDD or predefined values like `this_month`) |
+| skip | integer | No | Records to skip (pagination), default: 0 |
+| limit | integer | No | Max records to return (default: 100, max: 100) |
+| country | string | No | ISO country code (e.g., "es") |
+| utm_medium | string | No | Filter by medium |
+| utm_source | string | No | Filter by source |
+| utm_campaign | string | No | Filter by campaign |
+
+---
+
+## Example Request
+
+### cURL
+
+```bash
+curl --location 'https://app.sealmetrics.com/api/report/conversions?date_range=this_month&skip=0&limit=100&account_id=000000000000000000001234' --header 'Authorization: Bearer YOUR_TOKEN_HERE' --header 'Accept: application/json' --header 'Connection: keep-alive' --header 'Accept-Encoding: gzip, deflate, br'
+```
+
+### Python
+
+```python
+import requests
+
+url = "https://app.sealmetrics.com/api/report/conversions"
+
+querystring = {
+    "account_id": "000000000000000000001234",
+    "date_range": "this_month",
+    "skip": "0",
+    "limit": "100"
+}
+
+headers = {
+    "Authorization": "Bearer YOUR_TOKEN_HERE",
+    "Accept": "application/json",
+    "Connection": "keep-alive",
+    "Accept-Encoding": "gzip, deflate, br"
+}
+
+response = requests.request("GET", url, headers=headers, params=querystring)
+
+print(response.text)
+```
+
+### JavaScript
+
+```javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer YOUR_TOKEN_HERE");
+myHeaders.append("Accept", "application/json");
+myHeaders.append("Connection", "keep-alive");
+myHeaders.append("Accept-Encoding", "gzip, deflate, br");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch("https://app.sealmetrics.com/api/report/conversions?date_range=this_month&skip=0&limit=100&account_id=000000000000000000001234", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+
+---
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "status": "ok",
+  "data": [
+    {
+      "_id": "67eacf47086ba659fa2dd471",
+      "amount": 198.09,
+      "utm_medium": "email",
+      "utm_source": "newsletter",
+      "utm_campaign": "newsletter",
+      "utm_term": "http://www.rath.org/dolorem-dicta-provident-iusto-quis-ipsam",
+      "utm_matchtype": null,
+      "country": "es",
+      "country_name": "Spain",
+      "date": "2025-03-31",
+      "label": "sales"
+    }
+  ]
+}
+```
+
+---
+
+## Response Parameters
+
+| Field | Type | Description |
+|--------|--------|-------------|
+| _id | string | Unique identifier for the conversion |
+| amount | number | Monetary value of the conversion |
+| utm_medium | string | Medium that drove the conversion |
+| utm_source | string | Source that drove the conversion |
+| utm_campaign | string | Campaign name |
+| utm_term | string | Term or URL associated |
+| utm_matchtype | string | Search match type |
+| country | string | ISO country code |
+| country_name | string | Full country name |
+| date | string | Date (YYYY-MM-DD) |
+| label | string | Conversion label |
+
+---
+
+## Error Responses
+
+### 401 Unauthorized
+
+```json
+{
+  "status": "error",
+  "message": "Unauthenticated"
+}
+```
+
+### 400 Bad Request
+
+```json
+{
+  "status": "error",
+  "message": "Missing required parameter: account_id"
+}
+```
+
+---
+
+## Notes
+
+- Use filtering parameters for campaign-level analysis.
+- `amount` helps calculate ROI and revenue attribution.
+- Pagination recommended for large datasets.

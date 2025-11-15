@@ -1,0 +1,56 @@
+---
+title: "Appendix"
+description: "Glossary, status codes, rate limits, and changelog for the SealMetrics API."
+category: "API"
+subcategory: "Appendix"
+updated: "2025-02-01"
+---
+
+# Appendix
+
+## Glossary of Terms
+
+- **API**: Application Programming Interface  
+- **Bearer Token**: An authentication token used to access protected resources  
+- **Conversion**: A completed goal action on your website (e.g., a purchase)  
+- **Microconversion**: A smaller engagement action that precedes a conversion  
+- **ROAS**: Return on Advertising Spend  
+- **UTM Parameters**: Tracking parameters added to URLs (utm_source, utm_medium, etc.)  
+- **Pagination**: The process of dividing large datasets into smaller chunks or pages  
+- **Endpoint**: A specific URL that represents an API function or resource  
+
+---
+
+## Status Codes
+
+- **200 OK** – The request was successful  
+- **400 Bad Request** – The request was invalid or cannot be served  
+- **401 Unauthorized** – Authentication is required or has failed  
+- **403 Forbidden** – The server understood the request but refuses to authorize it  
+- **404 Not Found** – The requested resource could not be found  
+- **429 Too Many Requests** – Rate limit exceeded  
+- **500 Internal Server Error** – An error occurred on the server  
+
+---
+
+## Rate Limits
+
+SealMetrics API rate limits vary depending on your plan:
+
+- **Starter Plan**: 0 requests per minute  
+- **Growth Plan**: 1 request per day  
+- **Enterprise Plan**: 1 request per minute  
+
+If you exceed these limits, you'll receive a **429 Too Many Requests** response.  
+Implement retry logic using *exponential backoff* to avoid repeated failures.
+
+---
+
+## Changelog
+
+### Version 1.0 (Current)
+
+- Initial release of the SealMetrics API  
+- Support for all core analytics endpoints  
+- Authentication via Bearer token  
+- JSON response format for all endpoints  

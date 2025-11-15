@@ -1,0 +1,133 @@
+---
+title: Understanding the "(not set)" Value in SealMetrics Reports
+sidebar_label: "(not set) value explained"
+description: Learn why SealMetrics shows "(not set)" in your reports, what causes missing UTM parameters, and how to avoid attribution gaps.
+sidebar_position: 12
+---
+
+# Understanding the “(not set)” Value in SealMetrics Reports
+
+The value **“(not set)”** appears in SealMetrics whenever a UTM parameter expected for attribution is **missing** from the URL. This happens when **one or more UTM parameters are present**, but another required one is not.
+
+SealMetrics does **not infer or guess missing UTMs** — if a parameter doesn’t exist in the URL, its value is recorded as **(not set)**.
+
+---
+
+## Why “(not set)” Appears
+
+When SealMetrics processes UTM parameters, it reads exactly what is present.  
+If the URL contains some UTMs but not all, the missing ones become **(not set)**.
+
+### Example URL
+````
+domain.com?utm_source=google&utm_campaign=no-cookies&utm_term=kw1
+````
+Parameters found:
+
+- `utm_source = google`
+- `utm_campaign = sincookies`
+- `utm_term = kw1`
+
+Parameter **missing**:
+
+- `utm_medium = (not set)`
+
+Because `utm_medium` does not exist in the URL, SealMetrics assigns **(not set)**.
+
+---
+
+## Common Scenarios Where “(not set)” Appears
+
+### 1. Missing UTM Medium  
+If `utm_source` exists, but `utm_medium` is missing:
+````
+utm_source=facebook&utm_campaign=winter_sale
+````
+Result:
+
+- **Source:** facebook  
+- **Medium:** (not set)
+
+---
+
+### 2. Missing UTM Source  
+If `utm_medium` exists but `utm_source` is missing:
+````
+utm_medium=cpc&utm_campaign=promo
+`````
+Result:
+
+- **Medium:** cpc  
+- **Source:** (not set)
+
+---
+
+### 3. Incorrectly Formatted URLs  
+Examples of issues that cause missing values:
+
+- Incorrect separators (`;&` instead of `&`)
+- Using uppercase UTMs (`UTM_Source`…)
+- Missing `utm_` prefix (`source=google`)
+- Double `?` in the URL
+- Spaces or unencoded characters
+
+If a parameter is malformed, SealMetrics treats it as **not included**, resulting in **(not set)**.
+
+---
+
+## Why SealMetrics Never "Fills in the Blanks"
+
+Unlike some analytics tools:
+
+❌ No guessing missing UTMs  
+❌ No automatic inference  
+❌ No cross-hit reconstruction  
+
+SealMetrics maintains:
+
+✔ Privacy-first measurement  
+✔ Strict attribution rules  
+✔ Complete transparency  
+
+If a UTM is missing → its value is **(not set)**.  
+This ensures your data is always accurate and compliant.
+
+---
+
+## How to Avoid “(not set)” Values
+
+### 1. Always Use Full UTM Sets
+
+Minimum recommended:
+````
+utm_source=
+utm_medium=
+utm_campaign=
+````
+### 2. Use UTM Templates or Builders
+
+This reduces human errors and helps ensure consistency.
+
+### 3. Keep Naming Conventions Consistent
+
+- Use lowercase  
+- Replace spaces with `_` or `-`
+- Keep naming short but descriptive  
+- Document your team’s UTM rules  
+
+### 4. Check Final URLs After Redirects
+
+Some redirect chains strip UTMs → leading to missing values.
+
+---
+
+## Summary
+
+“**(not set)**” in SealMetrics means a required UTM parameter is **missing from the URL**.  
+Because SealMetrics follows a privacy-first, no-assumptions approach:
+
+- It only uses explicitly provided data  
+- It never reconstructs or guesses missing parameters  
+- It ensures full transparency and compliance  
+
+If you see many “(not set)” values, review your UTM structure and ensure campaign URLs contain all parameters needed for accurate attribution.

@@ -1,0 +1,104 @@
+---
+title: Using the SealMetrics API — Basics, Reports, and KPIs
+sidebar_label: API basics, reports and KPIs
+sidebar_position: 2
+description: Learn how to use the SealMetrics API to access analytics reports and KPIs programmatically.
+---
+# How to Obtain Your API Token from the Sealmetrics Platform
+
+API tokens are essential for integrating Sealmetrics with your custom applications, allowing secure and authenticated access to your analytics data. This guide will walk you through the process of obtaining your API token from your Sealmetrics dashboard.
+
+## Step-by-Step Instructions
+
+Follow these simple steps to locate and copy your API token:
+
+### 1. Access Your Account Settings
+
+Click on your **profile icon** in the top-right corner of the Sealmetrics dashboard (marked as "1" in the interface).
+
+### 2. Navigate to Tags & Connectors
+
+In the dropdown menu, select **"Tags & Connectors"** (marked as "2" in the interface). This section contains all integration-related settings.
+
+### 3. Find the Connectors Section
+
+Scroll down in the menu to locate the **"Connectors"** option (marked as "3" in the interface) and click on it.
+
+### 4. Copy Your API Token
+
+On the API information screen, you'll see your unique access token in the text field provided (marked as "4" in the interface). Click the **"Copy token"** button to copy it to your clipboard.
+
+## Important Notes
+
+### Security
+
+Your API token is unique to your account and should be kept secure. Treat it like a password and never share it publicly or commit it to version control systems.
+
+### Documentation
+
+You can access comprehensive API documentation by visiting the link provided below the token field in your Sealmetrics dashboard.
+
+### Authentication
+
+The API uses the same credentials as your main application, so no additional setup is required beyond obtaining your token.
+
+### Token Rotation
+
+If you need to refresh your token for security reasons, contact the Sealmetrics support team.
+
+## Next Steps
+
+Once you have your API token, you can:
+
+- Use it with the **Python connector** for programmatic access
+- Use it with the **BigQuery connector** for data warehouse integration
+- Access the **Jupyter Notebook examples** provided by Sealmetrics
+- Download the **PDF manual** for advanced integration scenarios
+- Connect to **Power BI** using the provided connectors
+
+## Best Practices
+
+### Secure Storage
+
+Store your API token securely using environment variables or secret management systems:
+
+```bash
+# Example: .env file
+SEALMETRICS_API_TOKEN=your_token_here
+```
+
+Never hardcode tokens directly in your application code.
+
+### Access Control
+
+Only share your API token with team members who need direct API access. For team collaboration, consider using Sealmetrics' team management features instead.
+
+## Troubleshooting
+
+### Can't Find the Profile Icon?
+
+Make sure you're logged into your Sealmetrics dashboard. The profile icon is located in the top-right corner of the screen.
+
+### Don't See the Connectors Option?
+
+Verify that your account has API access enabled. Some plan levels may have different features available.
+
+### Token Not Copying?
+
+Try manually selecting the token text and using your browser's copy function (Ctrl+C or Cmd+C).
+
+## Getting Help
+
+If you encounter any issues obtaining your API token, contact the Sealmetrics support team through your dashboard or via the help center.
+
+## Related Resources
+
+- Sealmetrics API Documentation
+- Python Connector Guide
+- BigQuery Integration Setup
+- Power BI Connector Installation
+- Jupyter Notebook Examples
+
+---
+
+**Need more help?** Visit the Sealmetrics Help Center or contact our support team for assistance with API integration

@@ -1,0 +1,206 @@
+---
+title: How Consentless Tracking Works
+sidebar_label: How Consentless Tracking Works
+description: Learn how SealMetrics delivers 100% consentless web analytics through aggregate, privacy-preserving measurement technologies.
+---
+
+# How Consentless Tracking Works
+
+Consentless tracking represents a fundamental evolution in web analytics:  
+shifting from **individual user tracking** to **aggregate, privacy-preserving measurement**.
+
+SealMetrics pioneered this approach through dual tracking technologies designed to capture complete website behavior **without personal data, without cookies, and without requiring user consent**.
+
+---
+
+# 1. The Core Methodology  
+## Aggregate Measurement Instead of Individual Tracking
+
+### Traditional Analytics (❌ Requires Consent)
+- Uses cookies to store visitor IDs  
+- Reconstructs individual user journeys  
+- Builds detailed behavioral profiles  
+- Tracks users across sessions  
+- Loses **50–85%** of data when users decline cookies  
+
+### SealMetrics Consentless Approach (✅ No Consent Required)
+- Measures **isolated, aggregate events**, not people  
+- No cookies, no fingerprinting, no local storage  
+- No user identification or profiling  
+- 100% traffic capture — every hit is measured  
+- Fully compliant with GDPR, ePrivacy, CCPA, PECR  
+
+---
+
+# 2. Dual Consentless Tracking System  
+## The Only System in the World with Two Privacy-Preserving Measurement Modes
+
+SealMetrics combines two tracking techniques to offer flexibility based on privacy needs.
+
+---
+
+## **A. Session-ID Based Tracking**  
+### How It Works
+- Generates a **temporary, session-limited ID**  
+- ID expires as soon as the session ends  
+- No cross-session linking  
+- No persistent identifiers  
+
+### Data Captured
+- Page views for the duration of the session  
+- Events happening in the same visit  
+
+### Privacy Safeguards
+- No user-level profiles  
+- No personal data collected  
+- Session IDs cannot identify individuals  
+- Immediate anonymization at point of capture  
+
+---
+
+## **B. Isolated Hits Tracking (SuperPrivacy Mode)**  
+### How It Works
+- Every interaction = a **fully isolated hit**  
+- No linking between hits  
+- No session reconstruction  
+- No behavioral pattern building  
+
+### Why It’s the Most Private Method
+- No correlation = no possibility of identifying a person  
+- Ideal for strict privacy environments (e.g., healthcare, government)  
+- Fastest processing due to ultra-minimal dataset  
+
+---
+
+# 3. The Four-Variable System  
+## SealMetrics Only Captures These Four Anonymous Variables
+
+Each hit includes:
+
+1. **Timestamp**  
+2. **User Agent** *(captured but NOT stored)*  
+3. **Current URL**  
+4. **Referral URL**
+
+Nothing more.
+
+This extremely minimal dataset makes personal identification technically impossible.
+
+---
+
+# 4. How Data Is Collected and Processed  
+## Technical Flow of Consentless Tracking
+
+### Step 1 — Event Detection
+- JavaScript tracker detects page views or events  
+- No cookies, local storage, or fingerprinting  
+- Immediate anonymization  
+
+### Step 2 — Processing Layer
+- Events processed through privacy-preserving algorithms  
+- Patterns aggregated statistically  
+- No cross-hit linking  
+
+### Step 3 — Insight Generation
+- Dashboards and reports show aggregate behavior  
+- No user journeys  
+- No personal data, ever  
+
+---
+
+# 5. The “Ping” Methodology  
+SealMetrics uses a privacy-safe request system similar to search engines’ crawlers.
+
+### Traditional Analytics “Pings”  
+❌ Associated with user identifiers  
+❌ Require consent  
+❌ Build behavioral profiles  
+
+### SealMetrics Privacy Pings  
+✅ Fully anonymous  
+✅ No consent required  
+✅ Used only to understand aggregate behavior  
+
+---
+
+# 6. Tracker Options  
+## Choose the Privacy Model That Fits Your Needs
+
+### **GlobalTracker (Recommended for 98% of websites)**  
+- Follows hit sequence within a single session  
+- Offers session-level behavior insights  
+- No user identification  
+- Ideal for e-commerce and marketing teams  
+
+### **SuperPrivacy Tracker (Maximum Anonymity)**  
+- Each hit completely independent  
+- No session logic  
+- Zero correlation possible  
+- Ideal for healthcare, government, finance  
+
+---
+
+# 7. Privacy-Safe Attribution  
+## How Conversions Are Attributed Without Tracking People
+
+SealMetrics uses:
+
+- **Last-click attribution**
+- **UTM parameter processing**
+- **Anonymous channel assignment**
+
+Conversions are linked to channels — **not to individuals**.
+
+---
+
+# 8. Compliance by Design  
+## Why SealMetrics Doesn’t Require Consent
+
+### GDPR
+- No personal data → GDPR does not apply  
+- No identifiers, no profiles, no tracking of individuals  
+
+### ePrivacy Directive
+- No cookies  
+- No local storage  
+- No access to terminal equipment  
+
+### CCPA / PECR
+- No personal information  
+- No sale or sharing of user-level data  
+
+### European Infrastructure
+- 100% hosted in Dublin (Ireland)  
+- No international data transfers  
+
+This is **privacy-by-design**, not privacy-by-policy.
+
+---
+
+# 9. Real-World Implementation Example
+
+```html
+<!-- Basic Sealmetrics Implementation -->
+<script>
+(function() {
+  var options = {
+    account: 'ADD-ACCOUNT-ID',
+    event: 'pageview',
+    use_session: 1
+  };
+  var url = "//app.sealmetrics.com/tag/v2/tracker";
+  function loadScript(callback) {
+    var script = document.createElement("script");
+    script.src = url;
+    script.async = true;
+    script.onload = function() { callback && callback(); };
+    document.head.appendChild(script);
+  }
+  loadScript(function() {
+    options.id = Math.floor((Math.random() * 999) + 1);
+    if (window.sm) {
+      new window.sm(options).track(options.event);
+    }
+  });
+})();
+</script>

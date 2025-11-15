@@ -1,0 +1,77 @@
+---
+title: "Do Temporary Session Identifiers (Session IDs) Require Consent Under GDPR?"
+description: "Understanding when Session IDs require user consent under GDPR and ePrivacy, and how SealMetrics ensures full regulatory compliance."
+category: "Legal"
+subcategory: "GDPR & ePrivacy Compliance"
+updated: "2025-02-01"
+---
+
+# Do Temporary Session Identifiers (Session IDs) Require Consent Under GDPR?
+
+A common question around privacy-compliant analytics is whether **temporary Session IDs** fall under “tracking technologies” that require user consent.  
+The short answer: **it depends on how the Session ID is implemented**.
+
+## When Session IDs *Do* Require Consent
+
+A temporary Session ID **requires consent** if:
+
+- It is **stored in a cookie** or similar persistent storage  
+- It can be used to **recognize a user over time**  
+- It can be combined with other identifiers to **reconstruct a profile**  
+- It is used for **tracking across multiple domains**  
+
+In these cases, the Session ID becomes a **personal identifier**, making consent mandatory under:
+
+- **GDPR**
+- **ePrivacy Directive**
+- Local guidelines (CNIL, AEPD, ICO…)
+
+## When Session IDs *Do Not* Require Consent
+
+Regulators such as **CNIL (France)** and **AEPD (Spain)** explicitly allow “cookie-less session identifiers” for **audience measurement**, *as long as* they meet **strict conditions**:
+
+### Conditions for Consent-Free Session IDs
+
+- **Used exclusively for audience measurement** (no marketing / profiling)  
+- **No cross-site tracking**  
+- **Not persistent** → disappears after the browser session ends  
+- **Not stored in cookies or localStorage**  
+- **Cannot be combined with other identifiers** to re-identify the user  
+- **No fingerprinting techniques**  
+
+If all these requirements are met, the Session ID is considered **non-identifying**, and consent is not required.
+
+## How SealMetrics Ensures Compliance
+
+SealMetrics provides two measurement modes to adapt to different privacy levels:
+
+### 1. Session ID Mode  
+✔ Temporary Session IDs  
+✔ Fully compliant with CNIL & AEPD consent exemptions  
+✔ No persistence  
+✔ No personal identification  
+
+Session IDs are used only within the active session to group hits — never to track or identify users.
+
+### 2. Super-Privacy Mode (Isolated Hits)  
+✔ **No Session IDs at all**  
+✔ No cookies  
+✔ No identifiers  
+✔ Maximum anonymity  
+
+This mode guarantees **absolute compliance** with GDPR, ePrivacy, and the strictest interpretations of privacy law.
+
+## Summary
+
+| Scenario | Requires Consent? | Why |
+|---------|-------------------|------|
+| Session ID stored in a cookie | **Yes** | Persistence = identification |
+| Temporary ID without cookies | **No** | Cannot identify the user |
+| Cross-site session tracking | **Yes** | Considered profiling |
+| Isolated hits (no Session ID) | **No** | No identifiers at all |
+
+---
+
+**SealMetrics ensures that all tracking—Session-based or Isolated—remains fully compliant with GDPR and ePrivacy, without compromising your analytics.**
+
+If quieres que prepare el siguiente artículo legal, mándamelo y sigo con la misma estructura.
