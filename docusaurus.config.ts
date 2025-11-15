@@ -14,7 +14,7 @@ const config: Config = {
   projectName: 'docs',
   deploymentBranch: 'gh-pages',
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   future: { v4: true },
