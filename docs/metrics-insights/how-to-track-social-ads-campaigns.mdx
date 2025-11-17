@@ -1,0 +1,44 @@
+---
+title: How to Track Social Ads Campaigns
+description: Learn how to track Facebook and Meta Ads campaigns in SealMetrics without cookies using UTM parameters and privacy-first attribution.
+sidebar_label: Tracking Social Ads Campaigns
+---
+
+# How to Track Social Ads Campaigns
+
+SealMetrics can track traffic from Meta Ads — including Facebook and Instagram — **without cookies**, using only privacy-safe parameters.  
+The key requirement: **UTM parameters** must be added to your ad URLs.  
+Without UTMs, SealMetrics cannot reliably distinguish paid vs. unpaid traffic coming from Meta domains.
+
+---
+
+## Why UTMs Matter for Meta Ads Tracking
+
+Meta traffic often arrives with minimal referrer information.  
+If UTMs are *not* added:
+
+❌ Paid and organic Meta traffic blend together  
+❌ Campaign-level reporting disappears  
+❌ You cannot analyze ad set or creative performance  
+
+If UTMs *are* added:
+
+✔ Full campaign attribution  
+✔ Clear performance insights  
+✔ Correct paid vs. organic classification  
+✔ No cookies required
+
+---
+
+## How to Track Facebook Ads Campaigns Without Cookies
+
+### Use UTM Parameters
+UTM parameters are tags added to your ad URLs that SealMetrics can read instantly — no identifiers, no session tracking.
+
+#### How to implement UTMs
+1. Add UTM parameters to all destination URLs  
+2. Follow consistent naming conventions  
+3. Include all relevant UTM fields  
+
+Recommended structure:
+https://yourwebsite.com?utm_source=facebook&utm_medium=cpc&utm_campaign=summer_sale&utm_term=running_shoes

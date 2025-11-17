@@ -1,0 +1,125 @@
+---
+title: "Authentication"
+description: "How to authenticate with the SealMetrics API using Bearer tokens."
+category: "API"
+subcategory: "Authentication"
+updated: "2025-02-01"
+---
+
+# Authentication
+
+API Seal Metrics uses **Bearer token authentication** to secure all API requests. Before accessing any data endpoints, you must obtain an authentication token through the login process. This token must be included in the `Authorization` header of all subsequent API requests.
+
+---
+
+## Login Endpoint
+
+To authenticate, send a `POST` request to:
+
+```
+https://app.sealmetrics.com/api/auth/login
+```
+
+### Request Headers
+
+| Header        | Value             |
+|--------------|-------------------|
+| Content-Type | application/json  |
+
+### Request Body
+
+```json
+{
+  "email": "your_email@example.com",
+  "password": "your_password"
+}
+```
+
+---
+
+## Example Request (cURL)
+
+```bash
+curl --location 'https://app.sealmetrics.com/api/auth/login' --header 'Content-Type: application/json' --data-raw '{
+    "email": "demo@sealmetrics.com",
+    "password": "demo"
+}'
+```
+
+---
+
+## Successful Response
+
+```json
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImpoaS1Nzg5MzQzIn0...",
+  "token_type": "Bearer",
+  "expires_at": "2025-07-09T18:14:44.000000Z"
+}
+```
+
+---
+
+## Using the Token
+
+Include the token in **all authenticated requests**:
+
+| Header        | Value                         |
+|--------------|--------------------------------|
+| Authorization | Bearer `your_access_token`    |
+| Accept        | application/json              |
+| Connection    | keep-alive                    |
+| Accept-Encoding | gzip, deflate, br           |
+
+### Example Authenticated Request (cURL)
+
+```bash
+curl --location 'https://app.sealmetrics.com/api/report/acquisition?account_id=000000000000000000001234&report_type=Source&date_range=20230601,20230630&skip=0&limit=100' --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI:ImpoaS1Nzg5MzQzIn0...' --header 'Accept: application/json' --header 'Connection: keep-alive' --header 'Accept-Encoding: gzip, deflate, br'
+```
+
+---
+
+## Token Expiration & Renewal
+
+The token expires at the timestamp provided in `expires_at`.
+
+You should:
+
+1. Store both the token and expiration time  
+2. Check validity before each request  
+3. Renew the token using the login endpoint if expired  
+4. Replace the stored token with the new one  
+
+---
+
+## Security Best Practices
+
+- Never hardcode credentials in code  
+- Use environment variables or secure secret vaults  
+- Implement error handling for failed authentication  
+- Renew tokens automatically  
+- Always use HTTPS  
+- Limit who/what can access the token  
+- Log authentication events for auditing  
+
+---
+
+## Troubleshooting
+
+Common issues:
+
+### **401 Unauthorized**
+- Incorrect email or password  
+- Missing or malformed Authorization header  
+
+### **Token Expired**
+- Obtain a new token via login endpoint  
+
+### **Invalid Token Format**
+- Ensure header is exactly:  
+  `Authorization: Bearer your_token_here`
+
+### **Network Errors**
+- Check connectivity or API uptime  
+
+If issues persist, contact SealMetrics API support with the exact error message and request details.

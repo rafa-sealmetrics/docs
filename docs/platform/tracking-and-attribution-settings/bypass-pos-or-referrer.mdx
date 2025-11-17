@@ -1,0 +1,51 @@
+---
+title: Bypass POS or Referrer
+sidebar_label: Bypass POS or Referrer
+description: Learn how to exclude payment gateways and external domains from being counted as referrers in SealMetrics.
+---
+
+# Bypass POS or Referrer
+
+When a user completes a purchase through a **POS (Point of Sale)** or external payment page (Stripe, PayPal, Redsys…), they temporarily leave your site.  
+When they return to your **thank-you page**, SealMetrics may detect this as a new session and attribute the referrer incorrectly.
+
+This causes conversions to appear as coming from:
+❌ *payment* instead of  
+✔️ the original source (Google Ads, Facebook, Email, etc.)
+
+---
+
+## How Bypass POS / Referrer Works
+
+You can configure SealMetrics to **ignore specific referrers**, ensuring that once users return from a payment domain, the system keeps the original traffic source instead of overwriting it.
+
+---
+
+## How to Set It Up
+
+1. Go to **Accounts**
+2. Click **Edit**
+3. Scroll to **Referral Exclusion List**
+4. Add domains you want to exclude (e.g. payment providers)
+5. Click **Update**
+
+---
+
+## Example Screenshot
+
+![Referral Exclusion Set//img/platform/bypass-pos-referrer-1.png)
+
+![Referral Exclusion Li//img/platform/bypass-pos-referrer-2.png)
+
+---
+
+## Why This Matters
+
+This avoids:
+- Incorrect attribution to *payment*
+- Lost ROAS visibility  
+- Broken marketing funnels  
+
+You keep the **real traffic source** intact.
+
+---

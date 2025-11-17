@@ -1,0 +1,50 @@
+---
+title: "API Endpoints Overview"
+description: "Detailed documentation of SealMetrics API endpoints and common parameters."
+---
+
+# API Endpoints
+
+This section provides detailed documentation for each endpoint available in the API Seal Metrics v1.0, including required parameters, optional parameters, example requests, and example responses.
+
+---
+
+## Common Parameters
+
+| Parameter     | Type    | Description |
+|---------------|---------|-------------|
+| **account_id** | string | Your account identifier (required for most endpoints) |
+| **date_range** | string | Date range in `YYYYMMDD,YYYYMMDD` or predefined values |
+| **skip** | integer | Records to skip (pagination), default: `0` |
+| **limit** | integer | Max records to return, default: `100`, max: `100` |
+| **country** | string | ISO 3166-1 alpha-2 country filter (optional) |
+| **utm_medium** | string | Filter by medium (email, cpc, social, etc.) |
+| **utm_source** | string | Filter by source (google, facebook, newsletter…) |
+| **utm_campaign** | string | Filter by campaign name |
+| **show_utms** | boolean | Display UTM parameters (default: false) |
+
+---
+
+## Date Range Options
+
+`date_range` accepts the following formats:
+
+### Specific range  
+```
+20230601,20230630
+```
+
+### Predefined values
+- `today`
+- `yesterday`
+- `last_7_days`
+- `last_14_days`
+- `last_30_days`
+- `last_60_days`
+- `last_90_days`
+- `this_month`
+- `last_month`
+- `this_week_monday_sunday`
+- `this_week_sunday_saturday`
+- `this_year`
+- `last_year`

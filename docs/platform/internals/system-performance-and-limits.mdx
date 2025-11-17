@@ -1,0 +1,73 @@
+---
+title: System Performance & Limits
+description: Learn how Sealmetrics handles processing performance, scaling, infrastructure capacity, and theoretical limits during high-traffic situations.
+sidebar_position: 6
+tags: [performance, limits, scaling, analytics infrastructure, sealmetrics]
+---
+
+# System Performance & Limits
+
+Sealmetrics is built to scale automatically and handle continuous traffic without data loss.
+
+This document explains the key performance characteristics and system limits.
+
+---
+
+## Auto-Scaling Infrastructure
+
+The platform uses distributed, scalable processing clusters designed to:
+
+- Handle high traffic loads  
+- Automatically allocate new processing resources  
+- Maintain low latency  
+- Protect against overload scenarios  
+
+---
+
+## Processing Capacity
+
+Sealmetrics processes millions of hits per hour.
+
+Key behaviors:
+
+- Pageviews scale horizontally  
+- Events receive priority allocation  
+- Queueing activates only during extreme spikes  
+
+---
+
+## Theoretical Limits
+
+While there is no hard cap, factors affecting performance include:
+
+- Sudden traffic surges  
+- Sustained multi-hour peak load  
+- Highly event-heavy sites  
+- Multiple high-traffic domains on the same account  
+
+Even in extreme situations, all hits remain captured.
+
+---
+
+## Fault Tolerance
+
+Sealmetrics architecture includes:
+
+- Redundant clusters  
+- Automatic failover  
+- No single point of failure  
+- Protected write-ahead logs  
+- Distributed queuing  
+
+This prevents:
+
+- Data loss  
+- Corruption  
+- Partial ingestion failures  
+
+---
+
+## Summary
+
+Sealmetrics offers a robust, auto-scaling, fault-tolerant infrastructure designed for real-world analytics at scale.  
+No data loss. No sampling. No shortcuts.

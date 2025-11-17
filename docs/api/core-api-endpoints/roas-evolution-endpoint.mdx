@@ -1,0 +1,156 @@
+---
+title: "ROAS Evolution Endpoint"
+description: "Documentation for SealMetrics ROAS Evolution API endpoint."
+category: "API"
+subcategory: "Endpoints"
+updated: "2025-02-01"
+---
+
+# ROAS Evolution Endpoint
+
+The ROAS Evolution endpoint provides detailed analytics about Return on Advertising Spend (ROAS) over time. This endpoint allows you to track and analyze the effectiveness of your marketing investments across different channels and campaigns.
+
+## Endpoint Details
+
+- **URL:** `https://app.sealmetrics.com/api/report/roas-evolution`
+- **Method:** GET  
+- **Authentication:** Bearer Token required
+
+## Request Parameters
+
+### Headers
+
+| Header | Value | Required |
+|--------|--------|----------|
+| Authorization | Bearer `your_access_token` | Yes |
+| Accept | application/json | Yes |
+| Connection | keep-alive | Recommended |
+| Accept-Encoding | gzip, deflate, br | Recommended |
+
+### Query Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|--------|-----------|-------------|
+| account_id | string | Yes | Your account identifier |
+| date_range | string | Yes | Date range (YYYYMMDD,YYYYMMDD or presets like `this_month`) |
+| skip | integer | No | Records to skip (default 0) |
+| limit | integer | No | Max records to return (default 100, max 100) |
+| time_unit | string | No | "daily", "weekly", or "monthly" (default: daily) |
+| utm_medium | string | No | Filter by medium |
+| utm_source | string | No | Filter by source |
+| utm_campaign | string | No | Filter by campaign |
+| country | string | No | ISO country code |
+
+## Example Request
+
+### cURL
+```bash
+curl --location 'https://app.sealmetrics.com/api/report/roas-evolution?account_id=000000000000000000001234&date_range=this_month&skip=0&limit=100&time_unit=daily' --header 'Authorization: Bearer TOKEN_HERE' --header 'Accept: application/json' --header 'Connection: keep-alive' --header 'Accept-Encoding: gzip, deflate, br'
+```
+
+### Python
+```python
+import requests
+
+url = "https://app.sealmetrics.com/api/report/roas-evolution"
+
+querystring = {
+    "account_id": "000000000000000000001234",
+    "date_range": "this_month",
+    "skip": "0",
+    "limit": "100",
+    "time_unit": "daily"
+}
+
+headers = {
+    "Authorization": "Bearer TOKEN_HERE",
+    "Accept": "application/json",
+    "Connection": "keep-alive",
+    "Accept-Encoding": "gzip, deflate, br"
+}
+
+response = requests.get(url, headers=headers, params=querystring)
+print(response.text)
+```
+
+### JavaScript
+```javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer TOKEN_HERE");
+myHeaders.append("Accept", "application/json");
+myHeaders.append("Connection", "keep-alive");
+myHeaders.append("Accept-Encoding", "gzip, deflate, br");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch("https://app.sealmetrics.com/api/report/roas-evolution?account_id=000000000000000000001234&date_range=this_month&skip=0&limit=100&time_unit=daily", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "status": "ok",
+  "data": [
+    {
+      "_id": "2024-07-01",
+      "clicks": 1623,
+      "page_views": 10458,
+      "conversions": 117,
+      "microconversions": 441,
+      "revenue": 42466.97
+    },
+    {
+      "_id": "2024-07-02",
+      "clicks": 1845,
+      "page_views": 11258,
+      "conversions": 132,
+      "microconversions": 487,
+      "revenue": 38975.23
+    }
+  ]
+}
+```
+
+### Response Parameters
+
+| Field | Type | Description |
+|-------|--------|-------------|
+| _id | string | Date/time period based on `time_unit` |
+| clicks | number | Clicks in the period |
+| page_views | number | Page views in the period |
+| conversions | number | Conversions in the period |
+| microconversions | number | Microconversions in the period |
+| revenue | number | Revenue in the period |
+
+### Error Response (401 Unauthorized)
+```json
+{
+  "status": "error",
+  "message": "Unauthenticated"
+}
+```
+
+### Error Response (400 Bad Request)
+```json
+{
+  "status": "error",
+  "message": "Missing required parameter: account_id"
+}
+```
+
+## Notes
+
+- Use `time_unit` to control aggregation granularity.
+- Combine with UTM filters for deeper attribution.
+- ROAS = revenue / ad spend (ad spend is not included in this endpoint).
+
