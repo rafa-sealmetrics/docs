@@ -71,13 +71,17 @@ const config: Config = {
         alt: 'SealMetrics Logo',
         src: 'img/logo.svg',
       },
-      items: [
-        { label: 'Documentation', to: '/intro', position: 'left' },
-        { label: 'API Reference', to: '/api/overview', position: 'left' },
-        { label: 'Changelog', to: '/changelog', position: 'left' },
-        { to: '/blog', label: 'Blog', position: 'left' },
-        { href: 'https://sealmetrics.com', label: 'Website', position: 'right' },
-      ],
+items: [
+  { label: 'Documentation', to: '/intro', position: 'left' },
+  { label: 'API Reference', to: '/api/overview', position: 'left' },
+  { label: 'Changelog', to: '/changelog', position: 'left' },
+  { to: '/blog', label: 'Blog', position: 'left' },
+  { href: 'https://sealmetrics.com', label: 'Website', position: 'right' },
+  {
+    type: 'search',
+    position: 'right',
+  },
+],
     },
 
     footer: {
@@ -116,11 +120,11 @@ const config: Config = {
     // 🚀 ALGOLIA DOCSEARCH
     // -------------------------
     algolia: {
-      appId: 'CGIHF419IR',
-      apiKey: '379d9732cb8663ed4de3e2d0d59ce1b0',
-      indexName: 'docs_sealmetrics_com_cgihf419ir_pages',
-      contextualSearch: true,
-    },
+  appId: 'CGIHF419IR',
+  apiKey: '379d9732cb8663ed4de3e2d0d59ce1b0',
+  indexName: 'Sealmetrics Docs',
+  contextualSearch: true,
+},
   } satisfies Preset.ThemeConfig,
 };
 
