@@ -1,0 +1,69 @@
+{
+  "permalink": "/blog/cookieless-analytics-guide",
+  "source": "@site/blog/cookieless-analytics-guide.mdx",
+  "title": "Cookieless Analytics: Complete Guide 2026",
+  "description": "Cookieless analytics captures 100% of visitor data without consent banners. Complete guide to implementation, GDPR compliance, and comparison with cookie-based analytics. 2026 updated.",
+  "date": "2025-11-13T00:00:00.000Z",
+  "tags": [
+    {
+      "inline": false,
+      "label": "Analytics",
+      "permalink": "/blog/tags/analytics",
+      "description": "Web Analytics Technology"
+    },
+    {
+      "inline": false,
+      "label": "GDPR",
+      "permalink": "/blog/tags/gdpr",
+      "description": "GDPR"
+    },
+    {
+      "inline": false,
+      "label": "Privacy",
+      "permalink": "/blog/tags/privacy",
+      "description": "Privacy related content"
+    },
+    {
+      "inline": false,
+      "label": "cookieless",
+      "permalink": "/blog/tags/cookieless",
+      "description": "Cookieless Technology"
+    }
+  ],
+  "readingTime": 16.86,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Rafael Jimenez",
+      "title": "CMO & Founder @ SealMetrics",
+      "url": "https://www.linkedin.com/in/rafajimenez",
+      "imageURL": "/img/rafa-sealmetrics.png",
+      "key": "rafael jimenez",
+      "page": null
+    }
+  ],
+  "frontMatter": {
+    "slug": "cookieless-analytics-guide",
+    "title": "Cookieless Analytics: Complete Guide 2026",
+    "description": "Cookieless analytics captures 100% of visitor data without consent banners. Complete guide to implementation, GDPR compliance, and comparison with cookie-based analytics. 2026 updated.",
+    "authors": [
+      "rafael jimenez"
+    ],
+    "tags": [
+      "analytics",
+      "gdpr",
+      "privacy",
+      "cookieless"
+    ],
+    "date": "2025-11-13T00:00:00.000Z"
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "Real-time tracking consent",
+    "permalink": "/blog/real-time-tracking-consent"
+  },
+  "nextItem": {
+    "title": "GDPR Compliant Analytics: Complete Framework 2026",
+    "permalink": "/blog/gdpr-compliant-analytics-framework"
+  }
+}

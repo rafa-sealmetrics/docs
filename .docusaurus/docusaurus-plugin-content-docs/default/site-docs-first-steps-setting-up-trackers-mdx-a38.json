@@ -1,0 +1,68 @@
+{
+  "id": "first-steps/setting-up-trackers",
+  "title": "Setting Up Trackers in SealMetrics",
+  "description": "Learn how to configure and set up global and conversion trackers in SealMetrics to start collecting privacy-first analytics data.",
+  "source": "@site/docs/first-steps/setting-up-trackers.mdx",
+  "sourceDirName": "first-steps",
+  "slug": "/first-steps/setting-up-trackers",
+  "permalink": "/first-steps/setting-up-trackers",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "tracker setup",
+      "permalink": "/tags/tracker-setup"
+    },
+    {
+      "inline": true,
+      "label": "sealmetrics",
+      "permalink": "/tags/sealmetrics"
+    },
+    {
+      "inline": true,
+      "label": "analytics",
+      "permalink": "/tags/analytics"
+    },
+    {
+      "inline": true,
+      "label": "conversions",
+      "permalink": "/tags/conversions"
+    },
+    {
+      "inline": true,
+      "label": "pixel",
+      "permalink": "/tags/pixel"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5,
+    "title": "Setting Up Trackers in SealMetrics",
+    "description": "Learn how to configure and set up global and conversion trackers in SealMetrics to start collecting privacy-first analytics data.",
+    "tags": [
+      "tracker setup",
+      "sealmetrics",
+      "analytics",
+      "conversions",
+      "pixel"
+    ],
+    "keywords": [
+      "sealmetrics tracker setup",
+      "global tracker",
+      "conversion pixel",
+      "cookieless analytics",
+      "first steps"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "See Your Data Flow in Real-Time with SealMetrics",
+    "permalink": "/first-steps/see-your-data-flow"
+  },
+  "next": {
+    "title": "Why SealMetrics Can Measure Without Consent",
+    "permalink": "/first-steps/why-sealmetrics-measures-without-consent"
+  }
+}

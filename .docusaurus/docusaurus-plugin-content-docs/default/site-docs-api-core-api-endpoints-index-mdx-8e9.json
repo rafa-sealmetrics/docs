@@ -1,0 +1,18 @@
+{
+  "id": "api/core-api-endpoints/index",
+  "title": "Core API Endpoints",
+  "description": "Access aggregated analytics data through these endpoints.",
+  "source": "@site/docs/api/core-api-endpoints/index.mdx",
+  "sourceDirName": "api/core-api-endpoints",
+  "slug": "/api/core-api-endpoints/",
+  "permalink": "/api/core-api-endpoints/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "sidebar_position": 0,
+    "title": "Core API Endpoints"
+  }
+}

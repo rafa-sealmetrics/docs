@@ -1,0 +1,29 @@
+{
+  "id": "metrics-insights/understanding-not-set",
+  "title": "Understanding the \"(not set)\" Value in SealMetrics Reports",
+  "description": "Learn why SealMetrics shows \"(not set)\" in your reports, what causes missing UTM parameters, and how to avoid attribution gaps.",
+  "source": "@site/docs/metrics-insights/understanding-not-set.mdx",
+  "sourceDirName": "metrics-insights",
+  "slug": "/metrics-insights/understanding-not-set",
+  "permalink": "/metrics-insights/understanding-not-set",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 12,
+  "frontMatter": {
+    "title": "Understanding the \"(not set)\" Value in SealMetrics Reports",
+    "sidebar_label": "(not set) value explained",
+    "description": "Learn why SealMetrics shows \"(not set)\" in your reports, what causes missing UTM parameters, and how to avoid attribution gaps.",
+    "sidebar_position": 12
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rejoined Traffic",
+    "permalink": "/metrics-insights/rejoined-traffic"
+  },
+  "next": {
+    "title": "Change UTM parameters",
+    "permalink": "/metrics-insights/how-to-change-utm-parameters"
+  }
+}

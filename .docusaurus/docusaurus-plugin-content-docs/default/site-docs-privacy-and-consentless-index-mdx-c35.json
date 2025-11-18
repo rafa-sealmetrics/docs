@@ -1,0 +1,61 @@
+{
+  "id": "privacy-and-consentless/index",
+  "title": "Privacy & Consentless Analytics",
+  "description": "Learn about SealMetrics’ privacy-first philosophy, consentless analytics technology, and key platform benefits.",
+  "source": "@site/docs/privacy-and-consentless/index.mdx",
+  "sourceDirName": "privacy-and-consentless",
+  "slug": "/privacy-and-consentless/",
+  "permalink": "/privacy-and-consentless/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "privacy",
+      "permalink": "/tags/privacy"
+    },
+    {
+      "inline": true,
+      "label": "consentless analytics",
+      "permalink": "/tags/consentless-analytics"
+    },
+    {
+      "inline": true,
+      "label": "gdpr",
+      "permalink": "/tags/gdpr"
+    },
+    {
+      "inline": true,
+      "label": "cookieless",
+      "permalink": "/tags/cookieless"
+    },
+    {
+      "inline": true,
+      "label": "compliance",
+      "permalink": "/tags/compliance"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "title": "Privacy & Consentless Analytics",
+    "sidebar_position": 0,
+    "description": "Learn about SealMetrics’ privacy-first philosophy, consentless analytics technology, and key platform benefits.",
+    "tags": [
+      "privacy",
+      "consentless analytics",
+      "gdpr",
+      "cookieless",
+      "compliance"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Ignore Page View",
+    "permalink": "/implementation/tracking-methods/ignore-page-view"
+  },
+  "next": {
+    "title": "What is Consentless Analytics?",
+    "permalink": "/privacy-and-consentless/what-is-consentless-analytics"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "api/appendix/appendix",
+  "title": "Appendix",
+  "description": "Glossary, status codes, rate limits, and changelog for the SealMetrics API.",
+  "source": "@site/docs/api/appendix/appendix.mdx",
+  "sourceDirName": "api/appendix",
+  "slug": "/api/appendix/",
+  "permalink": "/api/appendix/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Appendix",
+    "description": "Glossary, status codes, rate limits, and changelog for the SealMetrics API.",
+    "category": "API",
+    "subcategory": "Appendix",
+    "updated": "2025-02-01"
+  }
+}

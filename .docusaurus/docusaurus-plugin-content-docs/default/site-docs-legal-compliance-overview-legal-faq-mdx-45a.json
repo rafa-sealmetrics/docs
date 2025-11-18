@@ -1,0 +1,28 @@
+{
+  "id": "legal/compliance-overview/legal-faq",
+  "title": "Legal FAQ — SealMetrics Compliance Questions",
+  "description": "Frequently asked legal, compliance, privacy, and data protection questions about SealMetrics.",
+  "source": "@site/docs/legal/compliance-overview/legal-faq.mdx",
+  "sourceDirName": "legal/compliance-overview",
+  "slug": "/legal/compliance-overview/legal-faq",
+  "permalink": "/legal/compliance-overview/legal-faq",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 50,
+  "frontMatter": {
+    "title": "Legal FAQ — SealMetrics Compliance Questions",
+    "description": "Frequently asked legal, compliance, privacy, and data protection questions about SealMetrics.",
+    "sidebar_position": 50
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Compliance Overview",
+    "permalink": "/legal/compliance-overview/"
+  },
+  "next": {
+    "title": "How SealMetrics Blocks Bot Traffic Without Handling IPs",
+    "permalink": "/legal/compliance-overview/how-sealmetrics-blocks-bot-traffic"
+  }
+}

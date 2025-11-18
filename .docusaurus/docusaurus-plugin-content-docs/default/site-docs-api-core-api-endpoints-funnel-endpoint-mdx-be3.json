@@ -1,0 +1,20 @@
+{
+  "id": "api/core-api-endpoints/funnel-endpoint",
+  "title": "Funnel Endpoint",
+  "description": "SealMetrics API — Funnel analytics endpoint documentation.",
+  "source": "@site/docs/api/core-api-endpoints/funnel-endpoint.mdx",
+  "sourceDirName": "api/core-api-endpoints",
+  "slug": "/api/core-api-endpoints/funnel-endpoint",
+  "permalink": "/api/core-api-endpoints/funnel-endpoint",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Funnel Endpoint",
+    "description": "SealMetrics API — Funnel analytics endpoint documentation.",
+    "category": "API Documentation",
+    "subcategory": "Endpoints",
+    "updated": "2025-02-01"
+  }
+}

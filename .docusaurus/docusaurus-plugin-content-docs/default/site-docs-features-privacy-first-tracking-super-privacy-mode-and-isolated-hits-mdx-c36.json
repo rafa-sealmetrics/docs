@@ -1,0 +1,29 @@
+{
+  "id": "features/privacy-first-tracking/super-privacy-mode-and-isolated-hits",
+  "title": "Super-Privacy Mode & Isolated Hits Explained",
+  "description": "Learn how SealMetrics' Super-Privacy mode ensures maximum anonymity by treating every page hit as a fully isolated event with no user identifiers.",
+  "source": "@site/docs/features/privacy-first-tracking/super-privacy-mode-and-isolated-hits.mdx",
+  "sourceDirName": "features/privacy-first-tracking",
+  "slug": "/features/privacy-first-tracking/super-privacy-mode-and-isolated-hits",
+  "permalink": "/features/privacy-first-tracking/super-privacy-mode-and-isolated-hits",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "Super-Privacy Mode & Isolated Hits Explained",
+    "sidebar_label": "Super-Privacy Mode (Isolated Hits)",
+    "description": "Learn how SealMetrics' Super-Privacy mode ensures maximum anonymity by treating every page hit as a fully isolated event with no user identifiers.",
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Privacy-first Tracking",
+    "permalink": "/category/privacy-first-tracking"
+  },
+  "next": {
+    "title": "Attribution without User-ID",
+    "permalink": "/features/privacy-first-tracking/if-no-userid-how-attribution-works"
+  }
+}

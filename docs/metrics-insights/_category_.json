@@ -1,8 +1,0 @@
-{
-  "label": "Metrics & Insights",
-  "position": 7,
-  "link": {
-    "type": "generated-index",
-    "description": "Learn how to interpret SealMetrics metrics, understand analytics terminology, and extract actionable insights from your data."
-  }
-}

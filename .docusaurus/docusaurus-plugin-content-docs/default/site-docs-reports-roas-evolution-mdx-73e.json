@@ -1,0 +1,74 @@
+{
+  "id": "reports/roas-evolution",
+  "title": "ROAS Evolution Report Overview",
+  "description": "Learn how to analyze the evolution of ROAS, conversions, and revenue in SealMetrics using daily, weekly, or monthly filters.",
+  "source": "@site/docs/reports/roas-evolution.mdx",
+  "sourceDirName": "reports",
+  "slug": "/reports/roas-evolution",
+  "permalink": "/reports/roas-evolution",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "ROAS",
+      "permalink": "/tags/roas"
+    },
+    {
+      "inline": true,
+      "label": "analytics",
+      "permalink": "/tags/analytics"
+    },
+    {
+      "inline": true,
+      "label": "marketing performance",
+      "permalink": "/tags/marketing-performance"
+    },
+    {
+      "inline": true,
+      "label": "revenue",
+      "permalink": "/tags/revenue"
+    },
+    {
+      "inline": true,
+      "label": "reports",
+      "permalink": "/tags/reports"
+    },
+    {
+      "inline": true,
+      "label": "privacy-first",
+      "permalink": "/tags/privacy-first"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "title": "ROAS Evolution Report Overview",
+    "description": "Learn how to analyze the evolution of ROAS, conversions, and revenue in SealMetrics using daily, weekly, or monthly filters.",
+    "tags": [
+      "ROAS",
+      "analytics",
+      "marketing performance",
+      "revenue",
+      "reports",
+      "privacy-first"
+    ],
+    "keywords": [
+      "sealmetrics roas report",
+      "roas analytics",
+      "conversion tracking",
+      "campaign performance",
+      "cookieless analytics"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Traffic Source Analysis Report",
+    "permalink": "/reports/acquisition"
+  },
+  "next": {
+    "title": "Sales Funnel Report with SealMetrics",
+    "permalink": "/reports/sales-funnel"
+  }
+}

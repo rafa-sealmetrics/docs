@@ -1,0 +1,74 @@
+{
+  "id": "first-steps/why-sealmetrics-measures-without-consent",
+  "title": "Why SealMetrics Can Measure Without Consent",
+  "description": "Discover why SealMetrics can measure web traffic without user consent while fully complying with GDPR, ePrivacy, and CNIL guidelines.",
+  "source": "@site/docs/first-steps/why-sealmetrics-measures-without-consent.mdx",
+  "sourceDirName": "first-steps",
+  "slug": "/first-steps/why-sealmetrics-measures-without-consent",
+  "permalink": "/first-steps/why-sealmetrics-measures-without-consent",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "consentless analytics",
+      "permalink": "/tags/consentless-analytics"
+    },
+    {
+      "inline": true,
+      "label": "privacy compliance",
+      "permalink": "/tags/privacy-compliance"
+    },
+    {
+      "inline": true,
+      "label": "gdpr",
+      "permalink": "/tags/gdpr"
+    },
+    {
+      "inline": true,
+      "label": "cnil",
+      "permalink": "/tags/cnil"
+    },
+    {
+      "inline": true,
+      "label": "aepd",
+      "permalink": "/tags/aepd"
+    },
+    {
+      "inline": true,
+      "label": "cookieless",
+      "permalink": "/tags/cookieless"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5,
+    "title": "Why SealMetrics Can Measure Without Consent",
+    "description": "Discover why SealMetrics can measure web traffic without user consent while fully complying with GDPR, ePrivacy, and CNIL guidelines.",
+    "tags": [
+      "consentless analytics",
+      "privacy compliance",
+      "gdpr",
+      "cnil",
+      "aepd",
+      "cookieless"
+    ],
+    "keywords": [
+      "sealmetrics consentless analytics",
+      "gdpr compliant analytics",
+      "cookieless tracking",
+      "privacy-first measurement",
+      "cnil guidelines"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting Up Trackers in SealMetrics",
+    "permalink": "/first-steps/setting-up-trackers"
+  },
+  "next": {
+    "title": "Quick Journey through the Platform",
+    "permalink": "/first-steps/quick-journey"
+  }
+}

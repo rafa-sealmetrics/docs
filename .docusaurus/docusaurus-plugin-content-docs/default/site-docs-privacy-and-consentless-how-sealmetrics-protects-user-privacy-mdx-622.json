@@ -1,0 +1,55 @@
+{
+  "id": "privacy-and-consentless/how-sealmetrics-protects-user-privacy",
+  "title": "How SealMetrics Protects User Privacy",
+  "description": "Learn how SealMetrics ensures genuine user privacy through data minimization, anonymization, and zero personal data processing.",
+  "source": "@site/docs/privacy-and-consentless/how-sealmetrics-protects-user-privacy.mdx",
+  "sourceDirName": "privacy-and-consentless",
+  "slug": "/privacy-and-consentless/how-sealmetrics-protects-user-privacy",
+  "permalink": "/privacy-and-consentless/how-sealmetrics-protects-user-privacy",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "privacy",
+      "permalink": "/tags/privacy"
+    },
+    {
+      "inline": true,
+      "label": "gdpr",
+      "permalink": "/tags/gdpr"
+    },
+    {
+      "inline": true,
+      "label": "compliance",
+      "permalink": "/tags/compliance"
+    },
+    {
+      "inline": true,
+      "label": "anonymization",
+      "permalink": "/tags/anonymization"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "How SealMetrics Protects User Privacy",
+    "description": "Learn how SealMetrics ensures genuine user privacy through data minimization, anonymization, and zero personal data processing.",
+    "sidebar_position": 3,
+    "tags": [
+      "privacy",
+      "gdpr",
+      "compliance",
+      "anonymization"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "How Sealmetrics determines the country without using IP addresses",
+    "permalink": "/privacy-and-consentless/country-determination-timezone"
+  },
+  "next": {
+    "title": "Frequently Asked Questions",
+    "permalink": "/privacy-and-consentless/faq"
+  }
+}

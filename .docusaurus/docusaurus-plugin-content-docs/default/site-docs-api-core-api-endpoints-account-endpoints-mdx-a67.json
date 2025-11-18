@@ -1,0 +1,20 @@
+{
+  "id": "api/core-api-endpoints/account-endpoints",
+  "title": "Account Endpoints",
+  "description": "Retrieve account information associated with your SealMetrics API credentials.",
+  "source": "@site/docs/api/core-api-endpoints/account-endpoints.mdx",
+  "sourceDirName": "api/core-api-endpoints",
+  "slug": "/api/core-api-endpoints/account-endpoints",
+  "permalink": "/api/core-api-endpoints/account-endpoints",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Account Endpoints",
+    "description": "Retrieve account information associated with your SealMetrics API credentials.",
+    "category": "API",
+    "subcategory": "Authentication & Accounts",
+    "updated": "2025-02-01"
+  }
+}

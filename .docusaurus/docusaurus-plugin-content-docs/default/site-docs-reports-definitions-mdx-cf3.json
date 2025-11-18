@@ -1,0 +1,68 @@
+{
+  "id": "reports/definitions",
+  "title": "Definitions",
+  "description": "Complete glossary of key SealMetrics metrics — understand entrances, pageviews, conversions, micro-conversions, revenue, and advanced KPIs.",
+  "source": "@site/docs/reports/definitions.mdx",
+  "sourceDirName": "reports",
+  "slug": "/reports/definitions",
+  "permalink": "/reports/definitions",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "metrics",
+      "permalink": "/tags/metrics"
+    },
+    {
+      "inline": true,
+      "label": "analytics",
+      "permalink": "/tags/analytics"
+    },
+    {
+      "inline": true,
+      "label": "definitions",
+      "permalink": "/tags/definitions"
+    },
+    {
+      "inline": true,
+      "label": "reports",
+      "permalink": "/tags/reports"
+    },
+    {
+      "inline": true,
+      "label": "privacy-first",
+      "permalink": "/tags/privacy-first"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5,
+    "title": "Definitions",
+    "description": "Complete glossary of key SealMetrics metrics — understand entrances, pageviews, conversions, micro-conversions, revenue, and advanced KPIs.",
+    "tags": [
+      "metrics",
+      "analytics",
+      "definitions",
+      "reports",
+      "privacy-first"
+    ],
+    "keywords": [
+      "sealmetrics definitions",
+      "analytics glossary",
+      "conversion metrics",
+      "cookieless analytics",
+      "performance tracking"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Sales Funnel Report with SealMetrics",
+    "permalink": "/reports/sales-funnel"
+  },
+  "next": {
+    "title": "Referral vs Direct Traffic",
+    "permalink": "/metrics-insights/referral-vs-direct-traffic"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "platform/user-management/roles-management",
+  "title": "Roles Management",
+  "description": "Learn the difference between Admin and User roles in SealMetrics and what permissions each role has.",
+  "source": "@site/docs/platform/user-management/roles-management.mdx",
+  "sourceDirName": "platform/user-management",
+  "slug": "/platform/user-management/roles-management",
+  "permalink": "/platform/user-management/roles-management",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Roles Management",
+    "sidebar_label": "Roles Management",
+    "sidebar_position": 1,
+    "description": "Learn the difference between Admin and User roles in SealMetrics and what permissions each role has."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Change Time Zone",
+    "permalink": "/platform/account-setup/how-to-change-timezone"
+  },
+  "next": {
+    "title": "Create Admin User",
+    "permalink": "/platform/user-management/create-admin-user"
+  }
+}

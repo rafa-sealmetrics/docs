@@ -1,0 +1,79 @@
+{
+  "permalink": "/blog/long-term-analytics-data-retention",
+  "source": "@site/blog/long-term-analytics.mdx",
+  "title": "Long-Term Analytics: 25-Month Data Retention Without Consent",
+  "description": "Sealmetrics retains analytics data for 25 months without requiring consent. Learn how cookieless tracking enables long-term analysis while staying GDPR compliant.",
+  "date": "2024-06-13T00:00:00.000Z",
+  "tags": [
+    {
+      "inline": true,
+      "label": "data-retention",
+      "permalink": "/blog/tags/data-retention"
+    },
+    {
+      "inline": true,
+      "label": "long-term-analytics",
+      "permalink": "/blog/tags/long-term-analytics"
+    },
+    {
+      "inline": true,
+      "label": "GDPR",
+      "permalink": "/blog/tags/gdpr"
+    },
+    {
+      "inline": true,
+      "label": "cookieless-analytics",
+      "permalink": "/blog/tags/cookieless-analytics"
+    },
+    {
+      "inline": false,
+      "label": "Privacy",
+      "permalink": "/blog/tags/privacy",
+      "description": "Privacy related content"
+    }
+  ],
+  "readingTime": 12.02,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Rafael Jimenez",
+      "title": "CMO & Founder @ SealMetrics",
+      "url": "https://www.linkedin.com/in/rafajimenez",
+      "imageURL": "/img/rafa-sealmetrics.png",
+      "key": "rafael jimenez",
+      "page": null
+    }
+  ],
+  "frontMatter": {
+    "slug": "long-term-analytics-data-retention",
+    "title": "Long-Term Analytics: 25-Month Data Retention Without Consent",
+    "authors": [
+      "rafael jimenez"
+    ],
+    "tags": [
+      "data-retention",
+      "long-term-analytics",
+      "GDPR",
+      "cookieless-analytics",
+      "privacy"
+    ],
+    "description": "Sealmetrics retains analytics data for 25 months without requiring consent. Learn how cookieless tracking enables long-term analysis while staying GDPR compliant.",
+    "date": "2024-06-13T00:00:00.000Z",
+    "keywords": [
+      "long-term analytics",
+      "data retention",
+      "25-month retention",
+      "cookieless analytics",
+      "GDPR compliant analytics",
+      "Sealmetrics",
+      "analytics without consent",
+      "privacy-first analytics"
+    ],
+    "hide_table_of_contents": false
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "Cookieless Analytics vs Cookie-based",
+    "permalink": "/blog/cookieless-analytics-vs-cookie-based"
+  }
+}

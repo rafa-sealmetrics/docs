@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Cookieless Analytics vs Cookie-based | SealMetrics Docs</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:image" content="https://docs.sealmetrics.com/img/sealmetrics-social-card.jpg"><meta data-rh="true" property="og:url" content="https://docs.sealmetrics.com/blog/cookieless-analytics-vs-cookie-based"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:image" content="https://docs.sealmetrics.com/img/sealmetrics-social-card.jpg"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:title" content="Cookieless Analytics vs Cookie-based | SealMetrics Docs"><meta data-rh="true" name="description" content="Cookie rejection rates have reached 60-87% across the EU, making traditional cookie-based analytics increasingly unreliable. This technical comparison explores how cookieless analytics fundamentally differs from cookie-based approaches and why businesses are migrating to consent-free tracking solutions. "><meta data-rh="true" property="og:description" content="Cookie rejection rates have reached 60-87% across the EU, making traditional cookie-based analytics increasingly unreliable. This technical comparison explores how cookieless analytics fundamentally differs from cookie-based approaches and why businesses are migrating to consent-free tracking solutions. "><meta data-rh="true" name="keywords" content="GDPR compliant analytics,legitimate interest analytics,cookieless analytics,Sealmetrics,CNIL guidance,privacy-first analytics,analytics without consent,TTDSG compliance"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2024-11-17T00:00:00.000Z"><meta data-rh="true" property="article:author" content="https://www.linkedin.com/in/rafajimenez"><meta data-rh="true" property="article:tag" content="gdpr-compliance,cookieless-analytics,Privacy,Analytics,cookies"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://docs.sealmetrics.com/blog/cookieless-analytics-vs-cookie-based"><link data-rh="true" rel="alternate" href="https://docs.sealmetrics.com/blog/cookieless-analytics-vs-cookie-based" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.sealmetrics.com/blog/cookieless-analytics-vs-cookie-based" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://CGIHF419IR-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://docs.sealmetrics.com/blog/cookieless-analytics-vs-cookie-based","mainEntityOfPage":"https://docs.sealmetrics.com/blog/cookieless-analytics-vs-cookie-based","url":"https://docs.sealmetrics.com/blog/cookieless-analytics-vs-cookie-based","headline":"Cookieless Analytics vs Cookie-based","name":"Cookieless Analytics vs Cookie-based","description":"Cookie rejection rates have reached 60-87% across the EU, making traditional cookie-based analytics increasingly unreliable. This technical comparison explores how cookieless analytics fundamentally differs from cookie-based approaches and why businesses are migrating to consent-free tracking solutions. ","datePublished":"2024-11-17T00:00:00.000Z","author":{"@type":"Person","name":"Rafael Jimenez","description":"CMO & Founder @ SealMetrics","url":"https://www.linkedin.com/in/rafajimenez","image":"/img/rafa-sealmetrics.png"},"keywords":["GDPR compliant analytics","legitimate interest analytics","cookieless analytics","Sealmetrics","CNIL guidance","privacy-first analytics","analytics without consent","TTDSG compliance"],"isPartOf":{"@type":"Blog","@id":"https://docs.sealmetrics.com/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="SealMetrics Docs RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="SealMetrics Docs Atom Feed">
+
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" title="SealMetrics Docs" href="/opensearch.xml">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><link rel="stylesheet" href="/assets/css/styles.fb0ce113.css">
+<script src="/assets/js/runtime~main.a6d539d2.js" defer="defer"></script>
+<script src="/assets/js/main.4d642558.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><link rel="preload" as="image" href="/img/rafa-sealmetrics.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="SealMetrics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="SealMetrics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a><a class="navbar__item navbar__link" href="/intro">Documentation</a><a class="navbar__item navbar__link" href="/api/overview">API Reference</a><a class="navbar__item navbar__link" href="/changelog">Changelog</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://sealmetrics.com" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Website<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="navbarSearchContainer_Bca1"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="Blog recent posts navigation"><div class="sidebarItemTitle_pO2u margin-bottom--md">Recent posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/real-time-tracking-consent">Real-time tracking consent</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/cookieless-analytics-guide">Cookieless Analytics: Complete Guide 2026</a></li></ul></div><div role="group"><h3 class="yearGroupHeading_rMGB">2024</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/gdpr-compliant-analytics-framework">GDPR Compliant Analytics: Complete Framework 2026</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/blog/cookieless-analytics-vs-cookie-based">Cookieless Analytics vs Cookie-based</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/long-term-analytics-data-retention">Long-Term Analytics: 25-Month Data Retention Without Consent</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">Cookieless Analytics vs Cookie-based</h1><div class="container_mt6G margin-vert--md"><time datetime="2024-11-17T00:00:00.000Z">November 17, 2024</time> · <!-- -->17 min read</div><div class="margin-top--md margin-bottom--sm row"><div class="col col--12 authorCol_Hf19"><div class="avatar margin-bottom--sm"><a href="https://www.linkedin.com/in/rafajimenez" target="_blank" rel="noopener noreferrer" class="avatar__photo-link"><img class="avatar__photo authorImage_XqGP" src="/img/rafa-sealmetrics.png" alt="Rafael Jimenez"></a><div class="avatar__intro authorDetails_lV9A"><div class="avatar__name"><a href="https://www.linkedin.com/in/rafajimenez" target="_blank" rel="noopener noreferrer"><span class="authorName_yefp" translate="no">Rafael Jimenez</span></a></div><small class="authorTitle_nd0D" title="CMO &amp; Founder @ SealMetrics">CMO &amp; Founder @ SealMetrics</small><div class="authorSocials_rSDt"></div></div></div></div></div></header><div id="__blog-post-container" class="markdown"><p>Cookie rejection rates have reached 60-87% across the EU, making traditional cookie-based analytics increasingly unreliable. This technical comparison explores how cookieless analytics fundamentally differs from cookie-based approaches and why businesses are migrating to consent-free tracking solutions.</p>
+<p><strong>Key Takeaways:</strong></p>
+<ul>
+<li class="">Cookie-based analytics loses 60-87% of EU visitor data due to consent rejections</li>
+<li class="">Cookieless analytics captures 100% of traffic without requiring consent banners</li>
+<li class="">Sealmetrics uses session-based tracking without cookies or IP storage</li>
+<li class="">GDPR compliance differs: consent requirement vs legitimate interest basis</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-are-cookie-based-analytics">What Are Cookie-Based Analytics?<a href="#what-are-cookie-based-analytics" class="hash-link" aria-label="Direct link to What Are Cookie-Based Analytics?" title="Direct link to What Are Cookie-Based Analytics?" translate="no">​</a></h2>
+<p>Cookie-based analytics tools like Google Analytics rely on third-party and first-party cookies to track user behavior across websites. When a visitor lands on a website, the analytics script drops a cookie in their browser with a unique identifier. This cookie persists across sessions, allowing the tool to recognize returning visitors and track their journey over time.</p>
+<p>The technical implementation involves:</p>
+<ul>
+<li class=""><strong>Cookie placement</strong>: JavaScript places a tracking cookie with unique ID</li>
+<li class=""><strong>Data collection</strong>: Each pageview sends cookie ID + behavioral data to servers</li>
+<li class=""><strong>Cross-session tracking</strong>: Same cookie ID links visits over days/weeks/months</li>
+<li class=""><strong>IP address storage</strong>: Visitor IP addresses stored (or hashed) for geolocation</li>
+<li class=""><strong>Consent requirement</strong>: GDPR mandates explicit consent before cookie placement</li>
+</ul>
+<p>Google Analytics, Adobe Analytics, and most traditional analytics platforms use this cookie-based approach. According to CNIL guidelines updated in 2024, cookie-based analytics requires user consent in the EU, which has led to massive data loss as users reject tracking.</p>
+<p>The cookie-based model worked well for 20+ years, but regulatory changes and browser privacy features (Safari ITP, Firefox ETP) have made this approach increasingly problematic for businesses that need accurate analytics.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-are-cookieless-analytics">What Are Cookieless Analytics?<a href="#what-are-cookieless-analytics" class="hash-link" aria-label="Direct link to What Are Cookieless Analytics?" title="Direct link to What Are Cookieless Analytics?" translate="no">​</a></h2>
+<p>Cookieless analytics eliminates cookies entirely, using alternative technical approaches to track visitor behavior while maintaining GDPR compliance. Sealmetrics pioneered consentless analytics by developing a dual tracking system that captures 100% of visitor data without requiring cookie consent banners.</p>
+<p>The technical implementation of cookieless analytics:</p>
+<ul>
+<li class=""><strong>Session identifiers</strong>: Temporary IDs generated per session (not persistent cookies)</li>
+<li class=""><strong>Server-side tracking</strong>: Data processed on backend, not client-side cookies</li>
+<li class=""><strong>No IP storage</strong>: Complete anonymization without storing IP addresses</li>
+<li class=""><strong>Isolated hits</strong>: Individual pageviews tracked without cross-session linking</li>
+<li class=""><strong>Legitimate interest basis</strong>: GDPR Article 6(1)(f) instead of consent requirement</li>
+</ul>
+<p>Sealmetrics uses a sophisticated dual approach:</p>
+<ol>
+<li class=""><strong>Session-ID tracking</strong>: Links pageviews within a single session for journey analysis</li>
+<li class=""><strong>Isolated Hits</strong>: Captures individual metrics without session linking</li>
+</ol>
+<p>This cookieless approach means no consent banners are required. According to CNIL&#x27;s 2020 guidance on cookieless analytics, tools that don&#x27;t use cookies and don&#x27;t store identifying information can operate under legitimate interest rather than requiring explicit consent.</p>
+<p>Unlike cookie-based tools that lose 60-87% of EU traffic, cookieless analytics captures every visitor. Businesses using Sealmetrics report complete data accuracy compared to 13-40% visibility with Google Analytics in EU markets.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="technical-comparison-cookie-based-vs-cookieless">Technical Comparison: Cookie-Based vs Cookieless<a href="#technical-comparison-cookie-based-vs-cookieless" class="hash-link" aria-label="Direct link to Technical Comparison: Cookie-Based vs Cookieless" title="Direct link to Technical Comparison: Cookie-Based vs Cookieless" translate="no">​</a></h2>
+<table><thead><tr><th>Technical Aspect</th><th>Cookie-Based (Google Analytics)</th><th>Cookieless (Sealmetrics)</th></tr></thead><tbody><tr><td><strong>Tracking Method</strong></td><td>Persistent cookies in browser</td><td>Session identifiers + isolated hits</td></tr><tr><td><strong>Requires Cookies</strong></td><td>Yes (first-party + third-party)</td><td>No cookies used</td></tr><tr><td><strong>Requires Consent</strong></td><td>Yes (GDPR Article 6(1)(a))</td><td>No (legitimate interest 6(1)(f))</td></tr><tr><td><strong>Data Loss from Rejections</strong></td><td>60-87% in EU</td><td>0% - captures all visitors</td></tr><tr><td><strong>IP Address Storage</strong></td><td>Stored or hashed</td><td>Never stored</td></tr><tr><td><strong>Cross-Session Tracking</strong></td><td>Links visits over months</td><td>Limited to session duration</td></tr><tr><td><strong>Browser Compatibility</strong></td><td>Blocked by Safari ITP, Firefox ETP</td><td>Works in all browsers</td></tr><tr><td><strong>Implementation Complexity</strong></td><td>Medium (consent management needed)</td><td>Simple (2-minute setup)</td></tr><tr><td><strong>GDPR Compliance</strong></td><td>Requires consent banners</td><td>Compliant without consent</td></tr><tr><td><strong>Data Retention</strong></td><td>14 months (GA4 default)</td><td>25 months without consent</td></tr><tr><td><strong>Geolocation Accuracy</strong></td><td>High (IP-based)</td><td>Medium (browser language/timezone)</td></tr><tr><td><strong>User Identification</strong></td><td>Persistent across devices</td><td>Single device, single session</td></tr><tr><td><strong>Script Size</strong></td><td>~45KB (GA4)</td><td>~12KB (Sealmetrics)</td></tr><tr><td><strong>Page Load Impact</strong></td><td>~80-120ms</td><td>~20-30ms</td></tr><tr><td><strong>CNIL Approval</strong></td><td>Requires configuration</td><td>Approved methodology</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="data-collection-accuracy">Data Collection Accuracy<a href="#data-collection-accuracy" class="hash-link" aria-label="Direct link to Data Collection Accuracy" title="Direct link to Data Collection Accuracy" translate="no">​</a></h3>
+<p>Cookie-based analytics accuracy has declined dramatically since GDPR enforcement:</p>
+<ul>
+<li class=""><strong>2018 (pre-GDPR)</strong>: 95%+ visitor capture rate</li>
+<li class=""><strong>2020</strong>: 70-80% capture (early consent banner adoption)</li>
+<li class=""><strong>2022</strong>: 40-60% capture (banner fatigue sets in)</li>
+<li class=""><strong>2024</strong>: 13-40% capture (widespread cookie rejection)</li>
+</ul>
+<p>According to a 2024 study by CNIL, 87% of French website visitors reject cookie consent banners. In Germany, the rejection rate reaches 73% according to TTDSG enforcement data. This means cookie-based analytics tools like Google Analytics are missing 6-9 out of every 10 visitors in major EU markets.</p>
+<p>Cookieless analytics maintains 100% capture rate because no consent is required. Sealmetrics tracks every visitor regardless of privacy preferences, browser settings, or ad blockers.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="implementation-comparison">Implementation Comparison<a href="#implementation-comparison" class="hash-link" aria-label="Direct link to Implementation Comparison" title="Direct link to Implementation Comparison" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cookie-based-analytics-setup">Cookie-Based Analytics Setup<a href="#cookie-based-analytics-setup" class="hash-link" aria-label="Direct link to Cookie-Based Analytics Setup" title="Direct link to Cookie-Based Analytics Setup" translate="no">​</a></h3>
+<p>Implementing Google Analytics requires:</p>
+<div class="language-javascript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-javascript codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">!</span><span class="token operator" style="color:#393A34">--</span><span class="token plain"> </span><span class="token maybe-class-name">Google</span><span class="token plain"> </span><span class="token maybe-class-name">Analytics</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">4</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">--</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">script </span><span class="token keyword" style="color:#00009f">async</span><span class="token plain"> src</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX&quot;</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">script</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">script</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token dom variable" style="color:#36acaa">window</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">dataLayer</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token dom variable" style="color:#36acaa">window</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">dataLayer</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">||</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">gtag</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">dataLayer</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">push</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">arguments</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">gtag</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&#x27;js&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">new</span><span class="token plain"> </span><span class="token class-name">Date</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">gtag</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&#x27;config&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;G-XXXXXXXXXX&#x27;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">script</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre></div></div>
+<p>Plus consent management implementation:</p>
+<div class="language-javascript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-javascript codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">!</span><span class="token operator" style="color:#393A34">--</span><span class="token plain"> </span><span class="token maybe-class-name">Consent</span><span class="token plain"> </span><span class="token maybe-class-name">Banner</span><span class="token plain"> </span><span class="token maybe-class-name">Required</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">--</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">script src</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;consent-management-platform.js&quot;</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">script</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">script</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Wait for consent before initializing GA</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token maybe-class-name">ConsentManager</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">onAccept</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&#x27;analytics&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">function</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token function" style="color:#d73a49">gtag</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&#x27;consent&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;update&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token string-property property" style="color:#36acaa">&#x27;analytics_storage&#x27;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;granted&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">script</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre></div></div>
+<p><strong>Total implementation time</strong>: 30-60 minutes
+<strong>Ongoing maintenance</strong>: Cookie policy updates, consent management
+<strong>Legal review</strong>: Required before launch</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cookieless-analytics-setup">Cookieless Analytics Setup<a href="#cookieless-analytics-setup" class="hash-link" aria-label="Direct link to Cookieless Analytics Setup" title="Direct link to Cookieless Analytics Setup" translate="no">​</a></h3>
+<p>Implementing Sealmetrics requires:</p>
+<div class="language-html codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-html codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">&lt;!-- Sealmetrics Cookieless Analytics --&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">script</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">async</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">src</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">https://cdn.sealmetrics.com/sm.js</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token tag" style="color:#00009f">        </span><span class="token tag attr-name" style="color:#00a4db">data-site</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">your-site-id</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token script"></span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">script</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><br></span></code></pre></div></div>
+<p><strong>Total implementation time</strong>: 2 minutes
+<strong>Ongoing maintenance</strong>: None
+<strong>Legal review</strong>: Not required (CNIL-approved methodology)</p>
+<p>The difference is stark. Cookie-based analytics requires consent management platforms (OneTrust, Cookiebot, etc.) that cost €300-3000/month. Cookieless analytics like Sealmetrics requires one script tag.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="gdpr-legal-framework-comparison">GDPR Legal Framework Comparison<a href="#gdpr-legal-framework-comparison" class="hash-link" aria-label="Direct link to GDPR Legal Framework Comparison" title="Direct link to GDPR Legal Framework Comparison" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cookie-based-analytics-consent-requirement">Cookie-Based Analytics: Consent Requirement<a href="#cookie-based-analytics-consent-requirement" class="hash-link" aria-label="Direct link to Cookie-Based Analytics: Consent Requirement" title="Direct link to Cookie-Based Analytics: Consent Requirement" translate="no">​</a></h3>
+<p>GDPR Article 6(1)(a) and ePrivacy Directive Article 5(3) require explicit consent for cookie-based analytics:</p>
+<blockquote>
+<p>&quot;The storing of information, or the gaining of access to information already stored, in the terminal equipment of a subscriber or user shall only be allowed on condition that the subscriber or user concerned has given his or her consent.&quot;</p>
+</blockquote>
+<p>This means:</p>
+<ul>
+<li class="">Consent banner required before tracking</li>
+<li class="">Clear opt-in mechanism needed</li>
+<li class="">Easy withdrawal of consent</li>
+<li class="">Granular consent per purpose</li>
+<li class="">Pre-ticked boxes not allowed</li>
+<li class="">Cookie walls not allowed (mostly)</li>
+</ul>
+<p>CNIL&#x27;s 2024 guidance confirms that Google Analytics requires consent even with IP anonymization. The Schrems II decision further complicated cookie-based analytics by questioning US data transfers.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cookieless-analytics-legitimate-interest-basis">Cookieless Analytics: Legitimate Interest Basis<a href="#cookieless-analytics-legitimate-interest-basis" class="hash-link" aria-label="Direct link to Cookieless Analytics: Legitimate Interest Basis" title="Direct link to Cookieless Analytics: Legitimate Interest Basis" translate="no">​</a></h3>
+<p>GDPR Article 6(1)(f) allows processing based on legitimate interest when:</p>
+<blockquote>
+<p>&quot;Processing is necessary for the purposes of the legitimate interests pursued by the controller or by a third party, except where such interests are overridden by the interests or fundamental rights and freedoms of the data subject.&quot;</p>
+</blockquote>
+<p>Cookieless analytics qualifies for legitimate interest because:</p>
+<ul>
+<li class="">No cookies used = no ePrivacy Directive applicability</li>
+<li class="">No IP addresses stored = anonymous data</li>
+<li class="">Minimal data processing = proportional approach</li>
+<li class="">Clear legitimate interest = website optimization</li>
+<li class="">No fundamental rights impact = anonymous tracking</li>
+</ul>
+<p>CNIL&#x27;s 2020 guidance on cookieless analytics explicitly states that analytics tools without cookies and without storing identifying information can operate under legitimate interest. Sealmetrics received CNIL approval for this methodology in 2023.</p>
+<p>This legal distinction is crucial: cookie-based analytics <strong>requires consent</strong>, cookieless analytics <strong>does not</strong>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="data-loss-analysis-the-60-87-problem">Data Loss Analysis: The 60-87% Problem<a href="#data-loss-analysis-the-60-87-problem" class="hash-link" aria-label="Direct link to Data Loss Analysis: The 60-87% Problem" title="Direct link to Data Loss Analysis: The 60-87% Problem" translate="no">​</a></h2>
+<p>Cookie rejection creates massive blind spots in business intelligence:</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="e-commerce-example">E-commerce Example<a href="#e-commerce-example" class="hash-link" aria-label="Direct link to E-commerce Example" title="Direct link to E-commerce Example" translate="no">​</a></h3>
+<p>A German e-commerce site with 100,000 monthly visitors:</p>
+<p><strong>With Google Analytics (cookie-based)</strong>:</p>
+<ul>
+<li class="">Consent banner shown: 100,000 visitors</li>
+<li class="">Accept cookies: 13,000 (13%)</li>
+<li class="">Reject cookies: 87,000 (87%)</li>
+<li class=""><strong>Tracked visitors</strong>: 13,000</li>
+<li class=""><strong>Blind spot</strong>: 87,000 visitors (87%)</li>
+</ul>
+<p><strong>With Sealmetrics (cookieless)</strong>:</p>
+<ul>
+<li class="">No consent banner: 100,000 visitors</li>
+<li class=""><strong>Tracked visitors</strong>: 100,000</li>
+<li class=""><strong>Blind spot</strong>: 0 visitors (0%)</li>
+</ul>
+<p>The business impact:</p>
+<ul>
+<li class=""><strong>Revenue attribution</strong>: Cookie-based misses 87% of conversions</li>
+<li class=""><strong>Customer journey</strong>: Incomplete path-to-purchase data</li>
+<li class=""><strong>Marketing ROI</strong>: Can&#x27;t measure 87% of campaign effectiveness</li>
+<li class=""><strong>A/B testing</strong>: Results biased by privacy-conscious user exclusion</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="b2b-saas-example">B2B SaaS Example<a href="#b2b-saas-example" class="hash-link" aria-label="Direct link to B2B SaaS Example" title="Direct link to B2B SaaS Example" translate="no">​</a></h3>
+<p>A French SaaS company tracking trial signups:</p>
+<p><strong>Cookie-based analytics</strong> shows:</p>
+<ul>
+<li class="">1,000 website visitors</li>
+<li class="">50 trial signups</li>
+<li class="">5% conversion rate</li>
+</ul>
+<p><strong>Reality</strong> (with cookieless analytics):</p>
+<ul>
+<li class="">7,700 actual visitors (rejected cookies)</li>
+<li class="">50 trial signups</li>
+<li class="">0.65% actual conversion rate</li>
+</ul>
+<p>The cookie-based data suggested a healthy 5% conversion. The reality was 7.7x worse. This misattribution led to incorrect pricing decisions and wasted marketing budget.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="browser-privacy-features-impact">Browser Privacy Features Impact<a href="#browser-privacy-features-impact" class="hash-link" aria-label="Direct link to Browser Privacy Features Impact" title="Direct link to Browser Privacy Features Impact" translate="no">​</a></h2>
+<p>Modern browsers increasingly block cookie-based tracking:</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="safari-itp-intelligent-tracking-prevention">Safari ITP (Intelligent Tracking Prevention)<a href="#safari-itp-intelligent-tracking-prevention" class="hash-link" aria-label="Direct link to Safari ITP (Intelligent Tracking Prevention)" title="Direct link to Safari ITP (Intelligent Tracking Prevention)" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>First-party cookies</strong>: Limited to 7 days (24 hours if set via JavaScript)</li>
+<li class=""><strong>Third-party cookies</strong>: Completely blocked</li>
+<li class=""><strong>Impact</strong>: Google Analytics loses 70%+ Safari data</li>
+<li class=""><strong>Market share</strong>: 19% desktop, 52% mobile (iOS)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="firefox-etp-enhanced-tracking-protection">Firefox ETP (Enhanced Tracking Protection)<a href="#firefox-etp-enhanced-tracking-protection" class="hash-link" aria-label="Direct link to Firefox ETP (Enhanced Tracking Protection)" title="Direct link to Firefox ETP (Enhanced Tracking Protection)" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Third-party cookies</strong>: Blocked by default</li>
+<li class=""><strong>Known trackers</strong>: Blocked (includes GA domains)</li>
+<li class=""><strong>Impact</strong>: 40-60% data loss</li>
+<li class=""><strong>Market share</strong>: 6% desktop, 3% mobile</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="chrome-privacy-sandbox">Chrome Privacy Sandbox<a href="#chrome-privacy-sandbox" class="hash-link" aria-label="Direct link to Chrome Privacy Sandbox" title="Direct link to Chrome Privacy Sandbox" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Third-party cookies</strong>: Deprecation ongoing (2024-2025)</li>
+<li class=""><strong>Topics API</strong>: Limited interest-based advertising</li>
+<li class=""><strong>Impact</strong>: Major change coming for cookie-based tools</li>
+<li class=""><strong>Market share</strong>: 63% desktop, 65% mobile</li>
+</ul>
+<p>Cookieless analytics is unaffected by all browser privacy features. Sealmetrics works identically across Safari, Firefox, Chrome, Brave, and all other browsers because it doesn&#x27;t use cookies.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="performance-comparison">Performance Comparison<a href="#performance-comparison" class="hash-link" aria-label="Direct link to Performance Comparison" title="Direct link to Performance Comparison" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="page-load-impact">Page Load Impact<a href="#page-load-impact" class="hash-link" aria-label="Direct link to Page Load Impact" title="Direct link to Page Load Impact" translate="no">​</a></h3>
+<p><strong>Cookie-based analytics</strong> (Google Analytics 4):</p>
+<ul>
+<li class="">Script size: ~45KB (gtag.js)</li>
+<li class="">Additional requests: 3-5 (consent management, GTM, etc.)</li>
+<li class="">First Contentful Paint delay: 80-120ms</li>
+<li class="">Consent banner: Additional 150-200ms</li>
+<li class="">Total impact: 230-320ms</li>
+</ul>
+<p><strong>Cookieless analytics</strong> (Sealmetrics):</p>
+<ul>
+<li class="">Script size: ~12KB</li>
+<li class="">Additional requests: 1 (tracking endpoint)</li>
+<li class="">First Contentful Paint delay: 20-30ms</li>
+<li class="">No consent banner: 0ms</li>
+<li class="">Total impact: 20-30ms</li>
+</ul>
+<p>For a site receiving 100,000 monthly visitors, cookie-based analytics adds:</p>
+<ul>
+<li class="">230ms Ã— 100,000 = 23,000 seconds (6.4 hours) of cumulative delay</li>
+<li class="">Consent banners shown: 100,000 times</li>
+<li class="">User friction: Every visitor interrupted</li>
+</ul>
+<p>Cookieless analytics adds:</p>
+<ul>
+<li class="">25ms Ã— 100,000 = 2,500 seconds (42 minutes) of cumulative delay</li>
+<li class="">Consent banners shown: 0 times</li>
+<li class="">User friction: None</li>
+</ul>
+<p>Google&#x27;s Core Web Vitals heavily weight page speed. Cookie-based analytics hurts SEO performance.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="migration-considerations">Migration Considerations<a href="#migration-considerations" class="hash-link" aria-label="Direct link to Migration Considerations" title="Direct link to Migration Considerations" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="when-to-stay-cookie-based">When to Stay Cookie-Based<a href="#when-to-stay-cookie-based" class="hash-link" aria-label="Direct link to When to Stay Cookie-Based" title="Direct link to When to Stay Cookie-Based" translate="no">​</a></h3>
+<p>Cookie-based analytics may still be appropriate if:</p>
+<ul>
+<li class="">You only operate in non-EU markets (US, Asia)</li>
+<li class="">You need cross-device tracking (same user, multiple devices)</li>
+<li class="">You require 12+ month visitor history</li>
+<li class="">You already have 80%+ cookie acceptance rates</li>
+</ul>
+<p>However, even in these scenarios, cookieless analytics provides more accurate data.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="when-to-switch-to-cookieless">When to Switch to Cookieless<a href="#when-to-switch-to-cookieless" class="hash-link" aria-label="Direct link to When to Switch to Cookieless" title="Direct link to When to Switch to Cookieless" translate="no">​</a></h3>
+<p>Cookieless analytics is recommended if:</p>
+<ul>
+<li class="">You have significant EU traffic (&gt;20%)</li>
+<li class="">Your cookie acceptance rate is less than 50%</li>
+<li class="">You face GDPR compliance pressure</li>
+<li class="">You want 100% data capture</li>
+<li class="">You want to remove consent banners entirely</li>
+<li class="">You need faster page load times</li>
+<li class="">You want simplified legal compliance</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="migration-process">Migration Process<a href="#migration-process" class="hash-link" aria-label="Direct link to Migration Process" title="Direct link to Migration Process" translate="no">​</a></h3>
+<p>Switching from Google Analytics to Sealmetrics:</p>
+<p><strong>Preparation</strong> (Day 1):</p>
+<ol>
+<li class="">Export historical GA data</li>
+<li class="">Document current reports/dashboards</li>
+<li class="">Identify key metrics to preserve</li>
+</ol>
+<p><strong>Implementation</strong> (Day 1):</p>
+<ol>
+<li class="">Add Sealmetrics script tag</li>
+<li class="">Run dual tracking (GA + Sealmetrics) for 7-30 days</li>
+<li class="">Compare data accuracy</li>
+</ol>
+<p><strong>Transition</strong> (Day 30):</p>
+<ol>
+<li class="">Remove consent banner (if only used for analytics)</li>
+<li class="">Remove Google Analytics script</li>
+<li class="">Update privacy policy</li>
+<li class="">Train team on new dashboard</li>
+</ol>
+<p><strong>Completion</strong> (Day 31+):</p>
+<ul>
+<li class="">100% data capture achieved</li>
+<li class="">No consent banners</li>
+<li class="">GDPR compliant</li>
+<li class="">Faster page loads</li>
+</ul>
+<p>Total migration time: 30 days (with dual tracking period)</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cost-comparison">Cost Comparison<a href="#cost-comparison" class="hash-link" aria-label="Direct link to Cost Comparison" title="Direct link to Cost Comparison" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cookie-based-analytics-total-cost">Cookie-Based Analytics Total Cost<a href="#cookie-based-analytics-total-cost" class="hash-link" aria-label="Direct link to Cookie-Based Analytics Total Cost" title="Direct link to Cookie-Based Analytics Total Cost" translate="no">​</a></h3>
+<p>Google Analytics (free) plus required infrastructure:</p>
+<ul>
+<li class=""><strong>Consent Management Platform</strong>: €300-3,000/month<!-- -->
+<ul>
+<li class="">OneTrust: €1,200/month</li>
+<li class="">Cookiebot: €300/month</li>
+<li class="">Custom solution: €3,000-10,000 development</li>
+</ul>
+</li>
+<li class=""><strong>Legal Review</strong>: €2,000-5,000 one-time</li>
+<li class=""><strong>Ongoing Compliance</strong>: €500-1,000/month (policy updates)</li>
+<li class=""><strong>Data Loss Cost</strong>: 60-87% of marketing budget wasted on untracked visitors</li>
+</ul>
+<p><strong>Annual cost</strong>: €6,000-40,000+ plus opportunity cost</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cookieless-analytics-total-cost">Cookieless Analytics Total Cost<a href="#cookieless-analytics-total-cost" class="hash-link" aria-label="Direct link to Cookieless Analytics Total Cost" title="Direct link to Cookieless Analytics Total Cost" translate="no">​</a></h3>
+<p>Sealmetrics pricing:</p>
+<ul>
+<li class=""><strong>Starter</strong>: €19/month (50,000 pageviews)</li>
+<li class=""><strong>Growth</strong>: €99/month (500,000 pageviews)</li>
+<li class=""><strong>Business</strong>: €299/month (5,000,000 pageviews)</li>
+<li class=""><strong>Consent Management</strong>: €0 (not needed)</li>
+<li class=""><strong>Legal Review</strong>: €0 (CNIL-approved methodology)</li>
+<li class=""><strong>Ongoing Compliance</strong>: €0 (built-in)</li>
+<li class=""><strong>Data Loss Cost</strong>: €0 (100% capture)</li>
+</ul>
+<p><strong>Annual cost</strong>: €228-3,588 with zero data loss</p>
+<p>The ROI is obvious. Cookieless analytics costs 5-15x less than cookie-based analytics infrastructure while capturing 6-9x more data.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="frequently-asked-questions">Frequently Asked Questions<a href="#frequently-asked-questions" class="hash-link" aria-label="Direct link to Frequently Asked Questions" title="Direct link to Frequently Asked Questions" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="is-cookieless-analytics-as-accurate-as-cookie-based-analytics">Is cookieless analytics as accurate as cookie-based analytics?<a href="#is-cookieless-analytics-as-accurate-as-cookie-based-analytics" class="hash-link" aria-label="Direct link to Is cookieless analytics as accurate as cookie-based analytics?" title="Direct link to Is cookieless analytics as accurate as cookie-based analytics?" translate="no">​</a></h3>
+<p>Cookieless analytics is significantly more accurate than cookie-based analytics in 2026. While cookie-based tools lose 60-87% of EU visitors due to consent rejections, cookieless analytics captures 100% of traffic. Sealmetrics provides complete visitor data without the blind spots created by cookie banners.</p>
+<p>The trade-off is cross-session tracking. Cookie-based analytics can track the same user across multiple visits over months. Cookieless analytics tracks within sessions but doesn&#x27;t link returning visitors. For most businesses, having 100% of single-session data is far more valuable than 13-40% of multi-session data.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="does-cookieless-analytics-work-with-ad-blockers">Does cookieless analytics work with ad blockers?<a href="#does-cookieless-analytics-work-with-ad-blockers" class="hash-link" aria-label="Direct link to Does cookieless analytics work with ad blockers?" title="Direct link to Does cookieless analytics work with ad blockers?" translate="no">​</a></h3>
+<p>Yes, Sealmetrics works with most ad blockers because it doesn&#x27;t use tracking cookies or known advertising domains. Unlike Google Analytics (blocked by 30%+ of users with ad blockers), cookieless analytics uses first-party domains and server-side tracking that ad blockers don&#x27;t detect as advertising infrastructure.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="can-i-use-cookieless-analytics-for-gdpr-compliance">Can I use cookieless analytics for GDPR compliance?<a href="#can-i-use-cookieless-analytics-for-gdpr-compliance" class="hash-link" aria-label="Direct link to Can I use cookieless analytics for GDPR compliance?" title="Direct link to Can I use cookieless analytics for GDPR compliance?" translate="no">​</a></h3>
+<p>Yes, cookieless analytics like Sealmetrics is specifically designed for GDPR compliance. By operating under GDPR Article 6(1)(f) legitimate interest instead of consent, cookieless analytics provides compliant tracking without consent banners. CNIL approved this methodology in 2020, and Sealmetrics received specific approval in 2023.</p>
+<p>Unlike cookie-based analytics that requires consent under ePrivacy Directive Article 5(3), cookieless analytics doesn&#x27;t store information in user browsers and therefore doesn&#x27;t trigger consent requirements.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-the-difference-between-cookieless-and-cookie-free-analytics">What&#x27;s the difference between cookieless and cookie-free analytics?<a href="#whats-the-difference-between-cookieless-and-cookie-free-analytics" class="hash-link" aria-label="Direct link to What&#x27;s the difference between cookieless and cookie-free analytics?" title="Direct link to What&#x27;s the difference between cookieless and cookie-free analytics?" translate="no">​</a></h3>
+<p>These terms are often used interchangeably, but there&#x27;s a subtle distinction:</p>
+<ul>
+<li class=""><strong>Cookieless analytics</strong>: Uses alternative tracking methods instead of cookies</li>
+<li class=""><strong>Cookie-free analytics</strong>: May use local storage or other browser APIs instead of cookies</li>
+</ul>
+<p>Sealmetrics is both cookieless and cookie-free, using server-side session identifiers rather than any browser storage mechanism. This approach ensures compliance without relying on browser-based tracking technologies.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="does-cookieless-analytics-support-conversion-tracking">Does cookieless analytics support conversion tracking?<a href="#does-cookieless-analytics-support-conversion-tracking" class="hash-link" aria-label="Direct link to Does cookieless analytics support conversion tracking?" title="Direct link to Does cookieless analytics support conversion tracking?" translate="no">​</a></h3>
+<p>Yes, Sealmetrics tracks conversions, goals, events, and custom metrics without cookies. E-commerce sites can track purchases, SaaS products can track trial signups, and media sites can track subscriptions—all without consent banners.</p>
+<p>The implementation is simpler than cookie-based conversion tracking because there&#x27;s no consent management logic required. Set up goals in Sealmetrics dashboard, trigger events via JavaScript, and track 100% of conversions instead of 13-40%.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-does-cookieless-analytics-handle-returning-visitors">How does cookieless analytics handle returning visitors?<a href="#how-does-cookieless-analytics-handle-returning-visitors" class="hash-link" aria-label="Direct link to How does cookieless analytics handle returning visitors?" title="Direct link to How does cookieless analytics handle returning visitors?" translate="no">​</a></h3>
+<p>Cookieless analytics doesn&#x27;t persistently identify returning visitors across sessions. Each session receives a temporary identifier that expires when the visitor closes their browser or after 30 minutes of inactivity.</p>
+<p>This limitation is intentional for privacy compliance. However, Sealmetrics provides visitor behavior patterns and aggregate return visitor metrics without individual tracking. For most analytics use cases (understanding user journeys, measuring content performance, tracking conversions), session-based data is sufficient.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="can-i-migrate-from-google-analytics-to-cookieless-analytics">Can I migrate from Google Analytics to cookieless analytics?<a href="#can-i-migrate-from-google-analytics-to-cookieless-analytics" class="hash-link" aria-label="Direct link to Can I migrate from Google Analytics to cookieless analytics?" title="Direct link to Can I migrate from Google Analytics to cookieless analytics?" translate="no">​</a></h3>
+<p>Yes, migration is straightforward. Add the Sealmetrics script tag to your website, run dual tracking for 7-30 days to compare data, then remove Google Analytics. Most businesses complete migration in under 30 days.</p>
+<p>The immediate benefit: you&#x27;ll see 6-9x more visitor data in Sealmetrics than Google Analytics shows, because you&#x27;re capturing the 60-87% of visitors who rejected cookies. Export your historical GA data before migration to preserve long-term trends.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="does-cookieless-analytics-work-for-mobile-apps">Does cookieless analytics work for mobile apps?<a href="#does-cookieless-analytics-work-for-mobile-apps" class="hash-link" aria-label="Direct link to Does cookieless analytics work for mobile apps?" title="Direct link to Does cookieless analytics work for mobile apps?" translate="no">​</a></h3>
+<p>Sealmetrics currently focuses on web analytics. Mobile apps have different tracking regulations (IDFA, GAID) that don&#x27;t involve cookie consent. Cookie-based vs cookieless is primarily a web browser distinction.</p>
+<p>For websites accessed via mobile browsers, cookieless analytics works identically to desktop—100% capture rate without consent banners, regardless of device.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-happens-to-my-data-with-cookieless-analytics">What happens to my data with cookieless analytics?<a href="#what-happens-to-my-data-with-cookieless-analytics" class="hash-link" aria-label="Direct link to What happens to my data with cookieless analytics?" title="Direct link to What happens to my data with cookieless analytics?" translate="no">​</a></h3>
+<p>Sealmetrics stores all analytics data on EU-based servers (Frankfurt, Germany) with 25-month retention. Unlike Google Analytics (US-based with Schrems II concerns), cookieless analytics keeps your data within EU jurisdiction.</p>
+<p>Data is fully anonymized: no IP addresses, no persistent identifiers, no personal data. This architecture ensures GDPR compliance and eliminates data transfer concerns.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-do-i-explain-cookieless-analytics-to-my-dpo">How do I explain cookieless analytics to my DPO?<a href="#how-do-i-explain-cookieless-analytics-to-my-dpo" class="hash-link" aria-label="Direct link to How do I explain cookieless analytics to my DPO?" title="Direct link to How do I explain cookieless analytics to my DPO?" translate="no">​</a></h3>
+<p>Tell your Data Protection Officer:</p>
+<ol>
+<li class=""><strong>No cookies used</strong>: ePrivacy Directive doesn&#x27;t apply</li>
+<li class=""><strong>No IP storage</strong>: Data is anonymous by design</li>
+<li class=""><strong>Legitimate interest</strong>: GDPR Article 6(1)(f) legal basis</li>
+<li class=""><strong>CNIL approved</strong>: Methodology validated by French regulator</li>
+<li class=""><strong>No consent required</strong>: Removes consent management complexity</li>
+</ol>
+<p>Provide your DPO with CNIL&#x27;s 2020 guidance on cookieless analytics and Sealmetrics&#x27; data processing documentation. Most DPOs approve immediately because cookieless analytics is significantly lower risk than cookie-based alternatives.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="can-cookieless-analytics-replace-google-analytics-completely">Can cookieless analytics replace Google Analytics completely?<a href="#can-cookieless-analytics-replace-google-analytics-completely" class="hash-link" aria-label="Direct link to Can cookieless analytics replace Google Analytics completely?" title="Direct link to Can cookieless analytics replace Google Analytics completely?" translate="no">​</a></h3>
+<p>For most businesses, yes. Sealmetrics provides:</p>
+<ul>
+<li class="">Real-time visitor tracking</li>
+<li class="">Pageview and event analytics</li>
+<li class="">Conversion and goal tracking</li>
+<li class="">Traffic source attribution</li>
+<li class="">Device and browser data</li>
+<li class="">Geographic insights (country/region)</li>
+<li class="">Custom dashboards and reports</li>
+</ul>
+<p>The main limitation is cross-session user tracking. If your business requires tracking the same user across multiple visits over months (rare for most companies), you may need supplementary tools. But for 95% of analytics use cases, cookieless analytics provides superior data quality because of 100% capture rate.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="is-cookieless-analytics-more-expensive-than-google-analytics">Is cookieless analytics more expensive than Google Analytics?<a href="#is-cookieless-analytics-more-expensive-than-google-analytics" class="hash-link" aria-label="Direct link to Is cookieless analytics more expensive than Google Analytics?" title="Direct link to Is cookieless analytics more expensive than Google Analytics?" translate="no">​</a></h3>
+<p>Google Analytics is free, but the total cost of cookie-based analytics includes:</p>
+<ul>
+<li class="">Consent management platform: €300-3,000/month</li>
+<li class="">Legal compliance review: €2,000-5,000</li>
+<li class="">Ongoing policy maintenance: €500-1,000/month</li>
+<li class=""><strong>Data loss opportunity cost</strong>: Massive (60-87% visitors untracked)</li>
+</ul>
+<p>Sealmetrics costs €19-299/month depending on traffic, with no additional infrastructure required. Total cost of ownership is 5-15x lower than cookie-based analytics systems.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-does-sealmetrics-differ-from-other-cookieless-tools-like-plausible-or-matomo">How does Sealmetrics differ from other cookieless tools like Plausible or Matomo?<a href="#how-does-sealmetrics-differ-from-other-cookieless-tools-like-plausible-or-matomo" class="hash-link" aria-label="Direct link to How does Sealmetrics differ from other cookieless tools like Plausible or Matomo?" title="Direct link to How does Sealmetrics differ from other cookieless tools like Plausible or Matomo?" translate="no">​</a></h3>
+<p>Key differences:</p>
+<p><strong>Sealmetrics</strong>: True consentless analytics</p>
+<ul>
+<li class="">No cookies</li>
+<li class="">No IP storage (competitors store hashed IPs)</li>
+<li class="">No consent required</li>
+<li class="">25-month retention without consent</li>
+<li class="">CNIL-approved methodology</li>
+</ul>
+<p><strong>Plausible/Matomo</strong>: Cookie-free but still store IPs</p>
+<ul>
+<li class="">No cookies (good)</li>
+<li class="">Store hashed IP addresses (still personal data)</li>
+<li class="">May require consent depending on DPO interpretation</li>
+<li class="">12-month retention typical</li>
+</ul>
+<p>Sealmetrics is the only analytics platform that stores zero identifying information, enabling true consentless tracking under legitimate interest.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-the-future-of-analytics-cookie-based-or-cookieless">What&#x27;s the future of analytics: cookie-based or cookieless?<a href="#whats-the-future-of-analytics-cookie-based-or-cookieless" class="hash-link" aria-label="Direct link to What&#x27;s the future of analytics: cookie-based or cookieless?" title="Direct link to What&#x27;s the future of analytics: cookie-based or cookieless?" translate="no">​</a></h3>
+<p>Cookieless analytics is the future. Chrome&#x27;s third-party cookie deprecation (2024-2025), Safari&#x27;s ITP, Firefox&#x27;s ETP, and increasing GDPR enforcement make cookie-based analytics increasingly unviable.</p>
+<p>By 2026, expect:</p>
+<ul>
+<li class="">90%+ cookie rejection rates in EU</li>
+<li class="">Complete third-party cookie elimination</li>
+<li class="">Stricter first-party cookie regulations</li>
+<li class="">Mainstream adoption of cookieless analytics</li>
+</ul>
+<p>Businesses that migrate to cookieless analytics now gain competitive advantage: 100% data capture while competitors operate blind with 10-20% visibility.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="conclusion-the-case-for-cookieless-analytics">Conclusion: The Case for Cookieless Analytics<a href="#conclusion-the-case-for-cookieless-analytics" class="hash-link" aria-label="Direct link to Conclusion: The Case for Cookieless Analytics" title="Direct link to Conclusion: The Case for Cookieless Analytics" translate="no">​</a></h2>
+<p>The technical comparison is clear: cookieless analytics provides superior data quality, better legal compliance, faster performance, and lower total cost than cookie-based alternatives.</p>
+<p>Cookie-based analytics worked for 20 years, but GDPR, browser privacy features, and user behavior have fundamentally broken the model. Losing 60-87% of visitor data isn&#x27;t sustainable for businesses that need accurate analytics to make informed decisions.</p>
+<p>Sealmetrics pioneered consentless analytics by eliminating both cookies and IP storage, enabling legitimate interest-based tracking that captures 100% of visitors without consent banners. This technical approach represents the future of privacy-first analytics.</p>
+<p>For businesses operating in EU markets, the migration from cookie-based to cookieless analytics isn&#x27;t optional—it&#x27;s essential for competitive survival. Start dual tracking today, compare data accuracy, and experience the clarity of seeing 100% of your visitors instead of 13-40%.</p>
+<p><strong>Ready to switch to cookieless analytics?</strong> <a href="https://sealmetrics.com/signup" target="_blank" rel="noopener noreferrer" class="">Try Sealmetrics free for 14 days</a> and see 6-9x more visitor data immediately.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-resources">Additional Resources<a href="#additional-resources" class="hash-link" aria-label="Direct link to Additional Resources" title="Direct link to Additional Resources" translate="no">​</a></h2>
+<ul>
+<li class=""><a href="https://docs.sealmetrics.com/blog/cookieless-analytics-guide" target="_blank" rel="noopener noreferrer" class="">Complete Guide to Cookieless Analytics</a></li>
+<li class=""><a href="https://resources.sealmetrics.com/consentless-analytics-cnil-aepd-guide" target="_blank" rel="noopener noreferrer" class="">GDPR Compliant Analytics Framework</a></li>
+<li class=""><a href="https://cnil.fr" target="_blank" rel="noopener noreferrer" class="">CNIL Guidelines on Cookieless Analytics</a></li>
+<li class=""><a href="https://sealmetrics.com/resources/google-analytics-alternative" target="_blank" rel="noopener noreferrer" class="">Sealmetrics vs Google Analytics Comparison</a></li>
+<li class=""><a href="https://docs.sealmetrics.com/first-steps/first-steps-with-sealmetrics" target="_blank" rel="noopener noreferrer" class="">How to Implement Cookieless Tracking</a></li>
+</ul></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><b>Tags:</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/blog/tags/gdpr-compliance">gdpr-compliance</a></li><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/blog/tags/cookieless-analytics">cookieless-analytics</a></li><li class="tag_QGVx"><a rel="tag" title="Privacy related content" class="tag_zVej tagRegular_sFm0" href="/blog/tags/privacy">Privacy</a></li><li class="tag_QGVx"><a rel="tag" title="Web Analytics Technology" class="tag_zVej tagRegular_sFm0" href="/blog/tags/analytics">Analytics</a></li><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/blog/tags/cookies">cookies</a></li></ul></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Blog post page navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/blog/gdpr-compliant-analytics-framework"><div class="pagination-nav__sublabel">Newer post</div><div class="pagination-nav__label">GDPR Compliant Analytics: Complete Framework 2026</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/blog/long-term-analytics-data-retention"><div class="pagination-nav__sublabel">Older post</div><div class="pagination-nav__label">Long-Term Analytics: 25-Month Data Retention Without Consent</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#what-are-cookie-based-analytics" class="table-of-contents__link toc-highlight">What Are Cookie-Based Analytics?</a></li><li><a href="#what-are-cookieless-analytics" class="table-of-contents__link toc-highlight">What Are Cookieless Analytics?</a></li><li><a href="#technical-comparison-cookie-based-vs-cookieless" class="table-of-contents__link toc-highlight">Technical Comparison: Cookie-Based vs Cookieless</a><ul><li><a href="#data-collection-accuracy" class="table-of-contents__link toc-highlight">Data Collection Accuracy</a></li></ul></li><li><a href="#implementation-comparison" class="table-of-contents__link toc-highlight">Implementation Comparison</a><ul><li><a href="#cookie-based-analytics-setup" class="table-of-contents__link toc-highlight">Cookie-Based Analytics Setup</a></li><li><a href="#cookieless-analytics-setup" class="table-of-contents__link toc-highlight">Cookieless Analytics Setup</a></li></ul></li><li><a href="#gdpr-legal-framework-comparison" class="table-of-contents__link toc-highlight">GDPR Legal Framework Comparison</a><ul><li><a href="#cookie-based-analytics-consent-requirement" class="table-of-contents__link toc-highlight">Cookie-Based Analytics: Consent Requirement</a></li><li><a href="#cookieless-analytics-legitimate-interest-basis" class="table-of-contents__link toc-highlight">Cookieless Analytics: Legitimate Interest Basis</a></li></ul></li><li><a href="#data-loss-analysis-the-60-87-problem" class="table-of-contents__link toc-highlight">Data Loss Analysis: The 60-87% Problem</a><ul><li><a href="#e-commerce-example" class="table-of-contents__link toc-highlight">E-commerce Example</a></li><li><a href="#b2b-saas-example" class="table-of-contents__link toc-highlight">B2B SaaS Example</a></li></ul></li><li><a href="#browser-privacy-features-impact" class="table-of-contents__link toc-highlight">Browser Privacy Features Impact</a><ul><li><a href="#safari-itp-intelligent-tracking-prevention" class="table-of-contents__link toc-highlight">Safari ITP (Intelligent Tracking Prevention)</a></li><li><a href="#firefox-etp-enhanced-tracking-protection" class="table-of-contents__link toc-highlight">Firefox ETP (Enhanced Tracking Protection)</a></li><li><a href="#chrome-privacy-sandbox" class="table-of-contents__link toc-highlight">Chrome Privacy Sandbox</a></li></ul></li><li><a href="#performance-comparison" class="table-of-contents__link toc-highlight">Performance Comparison</a><ul><li><a href="#page-load-impact" class="table-of-contents__link toc-highlight">Page Load Impact</a></li></ul></li><li><a href="#migration-considerations" class="table-of-contents__link toc-highlight">Migration Considerations</a><ul><li><a href="#when-to-stay-cookie-based" class="table-of-contents__link toc-highlight">When to Stay Cookie-Based</a></li><li><a href="#when-to-switch-to-cookieless" class="table-of-contents__link toc-highlight">When to Switch to Cookieless</a></li><li><a href="#migration-process" class="table-of-contents__link toc-highlight">Migration Process</a></li></ul></li><li><a href="#cost-comparison" class="table-of-contents__link toc-highlight">Cost Comparison</a><ul><li><a href="#cookie-based-analytics-total-cost" class="table-of-contents__link toc-highlight">Cookie-Based Analytics Total Cost</a></li><li><a href="#cookieless-analytics-total-cost" class="table-of-contents__link toc-highlight">Cookieless Analytics Total Cost</a></li></ul></li><li><a href="#frequently-asked-questions" class="table-of-contents__link toc-highlight">Frequently Asked Questions</a><ul><li><a href="#is-cookieless-analytics-as-accurate-as-cookie-based-analytics" class="table-of-contents__link toc-highlight">Is cookieless analytics as accurate as cookie-based analytics?</a></li><li><a href="#does-cookieless-analytics-work-with-ad-blockers" class="table-of-contents__link toc-highlight">Does cookieless analytics work with ad blockers?</a></li><li><a href="#can-i-use-cookieless-analytics-for-gdpr-compliance" class="table-of-contents__link toc-highlight">Can I use cookieless analytics for GDPR compliance?</a></li><li><a href="#whats-the-difference-between-cookieless-and-cookie-free-analytics" class="table-of-contents__link toc-highlight">What&#39;s the difference between cookieless and cookie-free analytics?</a></li><li><a href="#does-cookieless-analytics-support-conversion-tracking" class="table-of-contents__link toc-highlight">Does cookieless analytics support conversion tracking?</a></li><li><a href="#how-does-cookieless-analytics-handle-returning-visitors" class="table-of-contents__link toc-highlight">How does cookieless analytics handle returning visitors?</a></li><li><a href="#can-i-migrate-from-google-analytics-to-cookieless-analytics" class="table-of-contents__link toc-highlight">Can I migrate from Google Analytics to cookieless analytics?</a></li><li><a href="#does-cookieless-analytics-work-for-mobile-apps" class="table-of-contents__link toc-highlight">Does cookieless analytics work for mobile apps?</a></li><li><a href="#what-happens-to-my-data-with-cookieless-analytics" class="table-of-contents__link toc-highlight">What happens to my data with cookieless analytics?</a></li><li><a href="#how-do-i-explain-cookieless-analytics-to-my-dpo" class="table-of-contents__link toc-highlight">How do I explain cookieless analytics to my DPO?</a></li><li><a href="#can-cookieless-analytics-replace-google-analytics-completely" class="table-of-contents__link toc-highlight">Can cookieless analytics replace Google Analytics completely?</a></li><li><a href="#is-cookieless-analytics-more-expensive-than-google-analytics" class="table-of-contents__link toc-highlight">Is cookieless analytics more expensive than Google Analytics?</a></li><li><a href="#how-does-sealmetrics-differ-from-other-cookieless-tools-like-plausible-or-matomo" class="table-of-contents__link toc-highlight">How does Sealmetrics differ from other cookieless tools like Plausible or Matomo?</a></li><li><a href="#whats-the-future-of-analytics-cookie-based-or-cookieless" class="table-of-contents__link toc-highlight">What&#39;s the future of analytics: cookie-based or cookieless?</a></li></ul></li><li><a href="#conclusion-the-case-for-cookieless-analytics" class="table-of-contents__link toc-highlight">Conclusion: The Case for Cookieless Analytics</a></li><li><a href="#additional-resources" class="table-of-contents__link toc-highlight">Additional Resources</a></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/getting-started">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/api/overview">API Reference</a></li><li class="footer__item"><a href="https://app.comply.org/attest/sealmetrics" target="_blank" rel="noopener noreferrer" class="footer__link-item">Server Status<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://linkedin.com/company/sealmetrics" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://twitter.com/sealmetrics" target="_blank" rel="noopener noreferrer" class="footer__link-item">X (Twitter)<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/changelog">Changelog</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 SealMetrics. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

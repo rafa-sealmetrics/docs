@@ -1,0 +1,26 @@
+{
+  "id": "metrics-insights/how-to-track-google-ads-campaigns",
+  "title": "How to Track Google Ads Campaigns",
+  "description": "Learn how to correctly track Google Ads campaigns in SealMetrics using UTM parameters and Google Ads value-track templates.",
+  "source": "@site/docs/metrics-insights/how-to-track-google-ads-campaigns.mdx",
+  "sourceDirName": "metrics-insights",
+  "slug": "/metrics-insights/how-to-track-google-ads-campaigns",
+  "permalink": "/metrics-insights/how-to-track-google-ads-campaigns",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "How to Track Google Ads Campaigns",
+    "description": "Learn how to correctly track Google Ads campaigns in SealMetrics using UTM parameters and Google Ads value-track templates."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "SEO Traffic Calculation",
+    "permalink": "/metrics-insights/how-sealmetrics-calculates-seo-traffic"
+  },
+  "next": {
+    "title": "Tracking Social Ads Campaigns",
+    "permalink": "/metrics-insights/how-to-track-social-ads-campaigns"
+  }
+}

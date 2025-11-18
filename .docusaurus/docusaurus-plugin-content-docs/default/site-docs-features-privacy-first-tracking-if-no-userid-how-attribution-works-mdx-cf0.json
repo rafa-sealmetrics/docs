@@ -1,0 +1,29 @@
+{
+  "id": "features/privacy-first-tracking/if-no-userid-how-attribution-works",
+  "title": "How Attribution Works Without a User-ID",
+  "description": "Learn how SealMetrics attributes traffic and conversions without using User-IDs, cookies, or cross-session tracking — fully compliant and consentless.",
+  "source": "@site/docs/features/privacy-first-tracking/if-no-userid-how-attribution-works.mdx",
+  "sourceDirName": "features/privacy-first-tracking",
+  "slug": "/features/privacy-first-tracking/if-no-userid-how-attribution-works",
+  "permalink": "/features/privacy-first-tracking/if-no-userid-how-attribution-works",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "How Attribution Works Without a User-ID",
+    "sidebar_label": "Attribution without User-ID",
+    "description": "Learn how SealMetrics attributes traffic and conversions without using User-IDs, cookies, or cross-session tracking — fully compliant and consentless.",
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Super-Privacy Mode (Isolated Hits)",
+    "permalink": "/features/privacy-first-tracking/super-privacy-mode-and-isolated-hits"
+  },
+  "next": {
+    "title": "Not Blocked by AdBlockers",
+    "permalink": "/features/privacy-first-tracking/why-sealmetrics-not-blocked-by-adblockers"
+  }
+}

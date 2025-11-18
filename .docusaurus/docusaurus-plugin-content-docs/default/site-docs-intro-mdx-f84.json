@@ -1,0 +1,70 @@
+{
+  "id": "intro",
+  "title": "SealMetrics Documentation",
+  "description": "Learn how to use SealMetrics — the privacy-first analytics platform that tracks 100% of your data without cookies or consent banners.",
+  "source": "@site/docs/intro.mdx",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/intro",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "sealmetrics",
+      "permalink": "/tags/sealmetrics"
+    },
+    {
+      "inline": true,
+      "label": "documentation",
+      "permalink": "/tags/documentation"
+    },
+    {
+      "inline": true,
+      "label": "privacy-first analytics",
+      "permalink": "/tags/privacy-first-analytics"
+    },
+    {
+      "inline": true,
+      "label": "implementation",
+      "permalink": "/tags/implementation"
+    },
+    {
+      "inline": true,
+      "label": "api",
+      "permalink": "/tags/api"
+    },
+    {
+      "inline": true,
+      "label": "reports",
+      "permalink": "/tags/reports"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "sidebar_position": 0,
+    "title": "SealMetrics Documentation",
+    "description": "Learn how to use SealMetrics — the privacy-first analytics platform that tracks 100% of your data without cookies or consent banners.",
+    "tags": [
+      "sealmetrics",
+      "documentation",
+      "privacy-first analytics",
+      "implementation",
+      "api",
+      "reports"
+    ],
+    "keywords": [
+      "sealmetrics docs",
+      "cookieless analytics guide",
+      "implementation",
+      "API reference",
+      "gdpr compliance"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Reports Overview",
+    "permalink": "/getting-started/reports/"
+  }
+}

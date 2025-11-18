@@ -1,0 +1,14 @@
+{
+  "id": "api/authentication/login-endpoint",
+  "title": "Login Endpoint",
+  "description": "Overview",
+  "source": "@site/docs/api/authentication/login-endpoint.mdx",
+  "sourceDirName": "api/authentication",
+  "slug": "/api/authentication/login-endpoint",
+  "permalink": "/api/authentication/login-endpoint",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

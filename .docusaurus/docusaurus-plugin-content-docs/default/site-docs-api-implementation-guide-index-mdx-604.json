@@ -1,0 +1,18 @@
+{
+  "id": "api/implementation-guide/index",
+  "title": "Implementation Guide",
+  "description": "Step-by-step guides for implementing the SealMetrics API.",
+  "source": "@site/docs/api/implementation-guide/index.mdx",
+  "sourceDirName": "api/implementation-guide",
+  "slug": "/api/implementation-guide/",
+  "permalink": "/api/implementation-guide/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "sidebar_position": 0,
+    "title": "Implementation Guide"
+  }
+}

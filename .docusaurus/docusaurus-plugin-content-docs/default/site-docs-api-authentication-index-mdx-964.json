@@ -1,0 +1,18 @@
+{
+  "id": "api/authentication/index",
+  "title": "Authentication",
+  "description": "Learn how to authenticate with the SealMetrics API.",
+  "source": "@site/docs/api/authentication/index.mdx",
+  "sourceDirName": "api/authentication",
+  "slug": "/api/authentication/",
+  "permalink": "/api/authentication/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "sidebar_position": 0,
+    "title": "Authentication"
+  }
+}

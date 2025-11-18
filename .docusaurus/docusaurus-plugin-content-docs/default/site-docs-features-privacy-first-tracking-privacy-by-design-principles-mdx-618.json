@@ -1,0 +1,27 @@
+{
+  "id": "features/privacy-first-tracking/privacy-by-design-principles",
+  "title": "Privacy by Design Principles",
+  "description": "Learn how SealMetrics implements Privacy by Design through its architecture, processes, and technical safeguards.",
+  "source": "@site/docs/features/privacy-first-tracking/privacy-by-design-principles.mdx",
+  "sourceDirName": "features/privacy-first-tracking",
+  "slug": "/features/privacy-first-tracking/privacy-by-design-principles",
+  "permalink": "/features/privacy-first-tracking/privacy-by-design-principles",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Privacy by Design Principles",
+    "sidebar_label": "Privacy by Design Principles",
+    "description": "Learn how SealMetrics implements Privacy by Design through its architecture, processes, and technical safeguards."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "1st Party Tracker",
+    "permalink": "/features/privacy-first-tracking/1st-party-tracker"
+  },
+  "next": {
+    "title": "What We Track vs What We Don’t",
+    "permalink": "/features/privacy-first-tracking/what-we-track-vs-what-we-dont"
+  }
+}

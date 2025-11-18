@@ -1,0 +1,18 @@
+{
+  "id": "api/introduction/index",
+  "title": "Introduction",
+  "description": "Learn the basics of the SealMetrics API.",
+  "source": "@site/docs/api/introduction/index.mdx",
+  "sourceDirName": "api/introduction",
+  "slug": "/api/introduction/",
+  "permalink": "/api/introduction/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "sidebar_position": 0,
+    "title": "Introduction"
+  }
+}

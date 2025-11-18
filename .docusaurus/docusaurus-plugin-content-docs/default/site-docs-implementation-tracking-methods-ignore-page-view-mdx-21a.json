@@ -1,0 +1,23 @@
+{
+  "id": "implementation/tracking-methods/ignore-page-view",
+  "title": "Ignore Page View",
+  "description": "What is Ignore Page View?",
+  "source": "@site/docs/implementation/tracking-methods/ignore-page-view.mdx",
+  "sourceDirName": "implementation/tracking-methods",
+  "slug": "/implementation/tracking-methods/ignore-page-view",
+  "permalink": "/implementation/tracking-methods/ignore-page-view",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "How to Track SPA Sites",
+    "permalink": "/implementation/tracking-methods/how-to-track-spa-sites"
+  },
+  "next": {
+    "title": "Privacy & Consentless Analytics",
+    "permalink": "/privacy-and-consentless/"
+  }
+}

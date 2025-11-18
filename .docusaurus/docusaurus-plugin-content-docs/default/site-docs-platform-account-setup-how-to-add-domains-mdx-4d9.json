@@ -1,0 +1,29 @@
+{
+  "id": "platform/account-setup/how-to-add-domains",
+  "title": "How to Add Domains to Your Account",
+  "description": "Learn how to add and configure domains within your SealMetrics account.",
+  "source": "@site/docs/platform/account-setup/how-to-add-domains.mdx",
+  "sourceDirName": "platform/account-setup",
+  "slug": "/platform/account-setup/how-to-add-domains",
+  "permalink": "/platform/account-setup/how-to-add-domains",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "How to Add Domains to Your Account",
+    "sidebar_label": "Add Domains",
+    "sidebar_position": 2,
+    "description": "Learn how to add and configure domains within your SealMetrics account."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Delete an Account",
+    "permalink": "/platform/account-setup/how-to-delete-account"
+  },
+  "next": {
+    "title": "Find Account ID",
+    "permalink": "/platform/account-setup/find-account-id"
+  }
+}

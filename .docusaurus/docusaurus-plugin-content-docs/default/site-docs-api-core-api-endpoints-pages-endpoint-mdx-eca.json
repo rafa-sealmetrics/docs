@@ -1,0 +1,20 @@
+{
+  "id": "api/core-api-endpoints/pages-endpoint",
+  "title": "Pages Endpoint",
+  "description": "Documentation for the Pages endpoint in the SealMetrics API.",
+  "source": "@site/docs/api/core-api-endpoints/pages-endpoint.mdx",
+  "sourceDirName": "api/core-api-endpoints",
+  "slug": "/api/core-api-endpoints/pages-endpoint",
+  "permalink": "/api/core-api-endpoints/pages-endpoint",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Pages Endpoint",
+    "description": "Documentation for the Pages endpoint in the SealMetrics API.",
+    "category": "API Endpoints",
+    "subcategory": "Reports",
+    "updated": "2025-02-01"
+  }
+}

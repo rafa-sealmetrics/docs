@@ -1,0 +1,33 @@
+{
+  "id": "faq/privacy-technical",
+  "title": "Technical Privacy Model",
+  "description": "Learn exactly what data SealMetrics collects, what it does not collect, and how privacy is enforced technically.",
+  "source": "@site/docs/faq/privacy-technical.mdx",
+  "sourceDirName": "faq",
+  "slug": "/faq/privacy-technical",
+  "permalink": "/faq/privacy-technical",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "Technical Privacy Model",
+    "sidebar_position": 6,
+    "description": "Learn exactly what data SealMetrics collects, what it does not collect, and how privacy is enforced technically.",
+    "keywords": [
+      "privacy model",
+      "gdpr analytics",
+      "cookieless measurement"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Implementation & Tracking",
+    "permalink": "/faq/implementation"
+  },
+  "next": {
+    "title": "Product Features",
+    "permalink": "/faq/product"
+  }
+}

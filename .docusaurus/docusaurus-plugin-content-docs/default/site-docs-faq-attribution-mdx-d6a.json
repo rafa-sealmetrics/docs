@@ -1,0 +1,33 @@
+{
+  "id": "faq/attribution",
+  "title": "Attribution Model",
+  "description": "Learn how last-click attribution works under privacy constraints and why SealMetrics uses it.",
+  "source": "@site/docs/faq/attribution.mdx",
+  "sourceDirName": "faq",
+  "slug": "/faq/attribution",
+  "permalink": "/faq/attribution",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Attribution Model",
+    "sidebar_position": 4,
+    "description": "Learn how last-click attribution works under privacy constraints and why SealMetrics uses it.",
+    "keywords": [
+      "attribution model",
+      "consentless attribution",
+      "last click gdpr"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "GA4 vs SealMetrics",
+    "permalink": "/faq/ga4-vs-sealmetrics"
+  },
+  "next": {
+    "title": "Implementation & Tracking",
+    "permalink": "/faq/implementation"
+  }
+}

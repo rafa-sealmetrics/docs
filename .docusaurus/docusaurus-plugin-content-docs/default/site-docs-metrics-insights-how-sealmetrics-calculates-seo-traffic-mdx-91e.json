@@ -1,0 +1,27 @@
+{
+  "id": "metrics-insights/how-sealmetrics-calculates-seo-traffic",
+  "title": "How SealMetrics Calculates SEO Traffic",
+  "description": "Learn how SealMetrics differentiates SEO traffic from paid traffic using a privacy-first methodology.",
+  "source": "@site/docs/metrics-insights/how-sealmetrics-calculates-seo-traffic.mdx",
+  "sourceDirName": "metrics-insights",
+  "slug": "/metrics-insights/how-sealmetrics-calculates-seo-traffic",
+  "permalink": "/metrics-insights/how-sealmetrics-calculates-seo-traffic",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "How SealMetrics Calculates SEO Traffic",
+    "sidebar_label": "SEO Traffic Calculation",
+    "description": "Learn how SealMetrics differentiates SEO traffic from paid traffic using a privacy-first methodology."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Entrances",
+    "permalink": "/metrics-insights/how-sealmetrics-calculates-entrances"
+  },
+  "next": {
+    "title": "How to Track Google Ads Campaigns",
+    "permalink": "/metrics-insights/how-to-track-google-ads-campaigns"
+  }
+}

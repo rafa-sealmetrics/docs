@@ -1,8 +1,0 @@
-{
-  "label": "Tracking & Attribution Settings",
-  "position": 4,
-  "link": {
-    "type": "generated-index",
-    "description": "Configure how SealMetrics tracks, attributes, and processes traffic, conversions, and user interactions."
-  }
-}

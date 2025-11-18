@@ -1,0 +1,17 @@
+{
+  "id": "api/core-api-endpoints/api-endpoints",
+  "title": "API Endpoints Overview",
+  "description": "Detailed documentation of SealMetrics API endpoints and common parameters.",
+  "source": "@site/docs/api/core-api-endpoints/api-endpoints.mdx",
+  "sourceDirName": "api/core-api-endpoints",
+  "slug": "/api/core-api-endpoints/api-endpoints",
+  "permalink": "/api/core-api-endpoints/api-endpoints",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "API Endpoints Overview",
+    "description": "Detailed documentation of SealMetrics API endpoints and common parameters."
+  }
+}

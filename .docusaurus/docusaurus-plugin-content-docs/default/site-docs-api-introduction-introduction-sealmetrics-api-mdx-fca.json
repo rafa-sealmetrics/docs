@@ -1,0 +1,20 @@
+{
+  "id": "api/introduction/introduction-sealmetrics-api",
+  "title": "Introduction to the Sealmetrics API",
+  "description": "Learn how to use the Sealmetrics API to access analytics, marketing performance data, and automate reporting workflows.",
+  "source": "@site/docs/api/introduction/introduction-sealmetrics-api.mdx",
+  "sourceDirName": "api/introduction",
+  "slug": "/api/introduction/introduction-sealmetrics-api",
+  "permalink": "/api/introduction/introduction-sealmetrics-api",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Introduction to the Sealmetrics API",
+    "description": "Learn how to use the Sealmetrics API to access analytics, marketing performance data, and automate reporting workflows.",
+    "category": "API",
+    "subcategory": "Introduction",
+    "updated": "2025-02-01"
+  }
+}

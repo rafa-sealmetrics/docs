@@ -1,0 +1,74 @@
+{
+  "id": "reports/acquisition",
+  "title": "Traffic Source Analysis Report",
+  "description": "Learn how to use SealMetrics’ acquisition sources report to analyze traffic sources, conversions, ROAS, and channel performance.",
+  "source": "@site/docs/reports/acquisition.mdx",
+  "sourceDirName": "reports",
+  "slug": "/reports/acquisition",
+  "permalink": "/reports/acquisition",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "traffic sources",
+      "permalink": "/tags/traffic-sources"
+    },
+    {
+      "inline": true,
+      "label": "analytics",
+      "permalink": "/tags/analytics"
+    },
+    {
+      "inline": true,
+      "label": "acquisition",
+      "permalink": "/tags/acquisition"
+    },
+    {
+      "inline": true,
+      "label": "ROAS",
+      "permalink": "/tags/roas"
+    },
+    {
+      "inline": true,
+      "label": "reports",
+      "permalink": "/tags/reports"
+    },
+    {
+      "inline": true,
+      "label": "privacy-first",
+      "permalink": "/tags/privacy-first"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "Traffic Source Analysis Report",
+    "description": "Learn how to use SealMetrics’ acquisition sources report to analyze traffic sources, conversions, ROAS, and channel performance.",
+    "tags": [
+      "traffic sources",
+      "analytics",
+      "acquisition",
+      "ROAS",
+      "reports",
+      "privacy-first"
+    ],
+    "keywords": [
+      "sealmetrics traffic report",
+      "acquisition sources",
+      "ROAS analytics",
+      "privacy-first analytics",
+      "marketing channels"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "SealMetrics Dashboard at a Glance",
+    "permalink": "/reports/dashboard"
+  },
+  "next": {
+    "title": "ROAS Evolution Report Overview",
+    "permalink": "/reports/roas-evolution"
+  }
+}

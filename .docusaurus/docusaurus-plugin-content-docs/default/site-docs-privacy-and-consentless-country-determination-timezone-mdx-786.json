@@ -1,0 +1,55 @@
+{
+  "id": "privacy-and-consentless/country-determination-timezone",
+  "title": "How Sealmetrics determines the country without using IP addresses",
+  "description": "Learn how SealMetrics ensures genuine user privacy through data minimization, anonymization, and zero personal data processing.",
+  "source": "@site/docs/privacy-and-consentless/country-determination-timezone.mdx",
+  "sourceDirName": "privacy-and-consentless",
+  "slug": "/privacy-and-consentless/country-determination-timezone",
+  "permalink": "/privacy-and-consentless/country-determination-timezone",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "privacy",
+      "permalink": "/tags/privacy"
+    },
+    {
+      "inline": true,
+      "label": "gdpr",
+      "permalink": "/tags/gdpr"
+    },
+    {
+      "inline": true,
+      "label": "compliance",
+      "permalink": "/tags/compliance"
+    },
+    {
+      "inline": true,
+      "label": "anonymization",
+      "permalink": "/tags/anonymization"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "How Sealmetrics determines the country without using IP addresses",
+    "description": "Learn how SealMetrics ensures genuine user privacy through data minimization, anonymization, and zero personal data processing.",
+    "sidebar_position": 3,
+    "tags": [
+      "privacy",
+      "gdpr",
+      "compliance",
+      "anonymization"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "SealMetrics Key Benefits Overview",
+    "permalink": "/privacy-and-consentless/key-benefits"
+  },
+  "next": {
+    "title": "How SealMetrics Protects User Privacy",
+    "permalink": "/privacy-and-consentless/how-sealmetrics-protects-user-privacy"
+  }
+}

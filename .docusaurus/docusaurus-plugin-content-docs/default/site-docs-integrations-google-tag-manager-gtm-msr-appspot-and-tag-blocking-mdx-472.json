@@ -1,0 +1,27 @@
+{
+  "id": "integrations/google-tag-manager/gtm-msr-appspot-and-tag-blocking",
+  "title": "What is gtm-msr.appspot.com and How to Prevent It from Triggering Tags in GTM",
+  "description": "Learn why gtm-msr.appspot.com appears in Google Tag Manager and how to prevent it from firing tags or polluting your analytics.",
+  "source": "@site/docs/integrations/google-tag-manager/gtm-msr-appspot-and-tag-blocking.mdx",
+  "sourceDirName": "integrations/google-tag-manager",
+  "slug": "/integrations/google-tag-manager/gtm-msr-appspot-and-tag-blocking",
+  "permalink": "/integrations/google-tag-manager/gtm-msr-appspot-and-tag-blocking",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "What is gtm-msr.appspot.com and How to Prevent It from Triggering Tags in GTM",
+    "sidebar_label": "Prevent GTM Preview Traffic",
+    "description": "Learn why gtm-msr.appspot.com appears in Google Tag Manager and how to prevent it from firing tags or polluting your analytics."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "SealMetrics vs ERP Conversions",
+    "permalink": "/metrics-insights/why-more-conversions-than-erp"
+  },
+  "next": {
+    "title": "index",
+    "permalink": "/integrations/"
+  }
+}

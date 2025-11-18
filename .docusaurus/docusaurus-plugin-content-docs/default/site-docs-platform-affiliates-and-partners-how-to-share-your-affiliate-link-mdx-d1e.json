@@ -1,0 +1,27 @@
+{
+  "id": "platform/affiliates-and-partners/how-to-share-your-affiliate-link",
+  "title": "How to Share Your Affiliate Link",
+  "description": "Learn how to create and share your Sealmetrics affiliate link and access your commissions dashboard.",
+  "source": "@site/docs/platform/affiliates-and-partners/how-to-share-your-affiliate-link.mdx",
+  "sourceDirName": "platform/affiliates-and-partners",
+  "slug": "/platform/affiliates-and-partners/how-to-share-your-affiliate-link",
+  "permalink": "/platform/affiliates-and-partners/how-to-share-your-affiliate-link",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "how-to-share-your-affiliate-link",
+    "title": "How to Share Your Affiliate Link",
+    "description": "Learn how to create and share your Sealmetrics affiliate link and access your commissions dashboard."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Affiliates & Partners",
+    "permalink": "/category/affiliates--partners"
+  },
+  "next": {
+    "title": "Delete an Account",
+    "permalink": "/platform/account-setup/how-to-delete-account"
+  }
+}

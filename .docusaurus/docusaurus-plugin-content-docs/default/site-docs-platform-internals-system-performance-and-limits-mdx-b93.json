@@ -1,0 +1,61 @@
+{
+  "id": "platform/internals/system-performance-and-limits",
+  "title": "System Performance & Limits",
+  "description": "Learn how Sealmetrics handles processing performance, scaling, infrastructure capacity, and theoretical limits during high-traffic situations.",
+  "source": "@site/docs/platform/internals/system-performance-and-limits.mdx",
+  "sourceDirName": "platform/internals",
+  "slug": "/platform/internals/system-performance-and-limits",
+  "permalink": "/platform/internals/system-performance-and-limits",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "performance",
+      "permalink": "/tags/performance"
+    },
+    {
+      "inline": true,
+      "label": "limits",
+      "permalink": "/tags/limits"
+    },
+    {
+      "inline": true,
+      "label": "scaling",
+      "permalink": "/tags/scaling"
+    },
+    {
+      "inline": true,
+      "label": "analytics infrastructure",
+      "permalink": "/tags/analytics-infrastructure"
+    },
+    {
+      "inline": true,
+      "label": "sealmetrics",
+      "permalink": "/tags/sealmetrics"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "System Performance & Limits",
+    "description": "Learn how Sealmetrics handles processing performance, scaling, infrastructure capacity, and theoretical limits during high-traffic situations.",
+    "sidebar_position": 6,
+    "tags": [
+      "performance",
+      "limits",
+      "scaling",
+      "analytics infrastructure",
+      "sealmetrics"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Data Accuracy & Reconciliation",
+    "permalink": "/platform/internals/data-accuracy-and-reconciliation"
+  },
+  "next": {
+    "title": "Bot Traffic Filtering in Sealmetrics",
+    "permalink": "/platform/internals/bot-traffic-filtering"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "features/consentless-analytics/how-consentless-tracking-works",
+  "title": "How Consentless Tracking Works",
+  "description": "Learn how SealMetrics delivers 100% consentless web analytics through aggregate, privacy-preserving measurement technologies.",
+  "source": "@site/docs/features/consentless-analytics/how-consentless-tracking-works.mdx",
+  "sourceDirName": "features/consentless-analytics",
+  "slug": "/features/consentless-analytics/how-consentless-tracking-works",
+  "permalink": "/features/consentless-analytics/how-consentless-tracking-works",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "How Consentless Tracking Works",
+    "sidebar_label": "How Consentless Tracking Works",
+    "description": "Learn how SealMetrics delivers 100% consentless web analytics through aggregate, privacy-preserving measurement technologies."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Benefits of Consentless Tracking",
+    "permalink": "/features/consentless-analytics/benefits-consentless-analytics"
+  },
+  "next": {
+    "title": "Event Properties",
+    "permalink": "/features/event-tracking-and-custom-data/understanding-event-properties"
+  }
+}

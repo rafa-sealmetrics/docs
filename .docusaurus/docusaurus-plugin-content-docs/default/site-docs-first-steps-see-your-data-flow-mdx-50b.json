@@ -1,0 +1,62 @@
+{
+  "id": "first-steps/see-your-data-flow",
+  "title": "See Your Data Flow in Real-Time with SealMetrics",
+  "description": "Learn how SealMetrics delivers instant, real-time analytics without cookies or consent banners.",
+  "source": "@site/docs/first-steps/see-your-data-flow.mdx",
+  "sourceDirName": "first-steps",
+  "slug": "/first-steps/see-your-data-flow",
+  "permalink": "/first-steps/see-your-data-flow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "real-time analytics",
+      "permalink": "/tags/real-time-analytics"
+    },
+    {
+      "inline": true,
+      "label": "data flow",
+      "permalink": "/tags/data-flow"
+    },
+    {
+      "inline": true,
+      "label": "consentless tracking",
+      "permalink": "/tags/consentless-tracking"
+    },
+    {
+      "inline": true,
+      "label": "sealmetrics",
+      "permalink": "/tags/sealmetrics"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "title": "See Your Data Flow in Real-Time with SealMetrics",
+    "description": "Learn how SealMetrics delivers instant, real-time analytics without cookies or consent banners.",
+    "tags": [
+      "real-time analytics",
+      "data flow",
+      "consentless tracking",
+      "sealmetrics"
+    ],
+    "keywords": [
+      "real-time tracking",
+      "live analytics",
+      "consentless analytics",
+      "cookieless tracking",
+      "sealmetrics real-time"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "How to Measure Conversions and Micro-Conversions",
+    "permalink": "/first-steps/how-to-measure-conversions"
+  },
+  "next": {
+    "title": "Setting Up Trackers in SealMetrics",
+    "permalink": "/first-steps/setting-up-trackers"
+  }
+}

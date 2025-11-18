@@ -1,0 +1,27 @@
+{
+  "id": "metrics-insights/direct-traffic",
+  "title": "Understanding Direct Traffic in SealMetrics",
+  "description": "Learn how SealMetrics classifies Direct traffic and how referrer detection impacts traffic source attribution.",
+  "source": "@site/docs/metrics-insights/direct-traffic.mdx",
+  "sourceDirName": "metrics-insights",
+  "slug": "/metrics-insights/direct-traffic",
+  "permalink": "/metrics-insights/direct-traffic",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Understanding Direct Traffic in SealMetrics",
+    "sidebar_label": "Direct Traffic",
+    "description": "Learn how SealMetrics classifies Direct traffic and how referrer detection impacts traffic source attribution."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "SealMetrics vs ERP Conversions",
+    "permalink": "/metrics-insights/attribution-model"
+  },
+  "next": {
+    "title": "Entrances",
+    "permalink": "/metrics-insights/how-sealmetrics-calculates-entrances"
+  }
+}

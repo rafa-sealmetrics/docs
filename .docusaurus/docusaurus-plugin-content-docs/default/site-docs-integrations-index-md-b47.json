@@ -1,0 +1,23 @@
+{
+  "id": "integrations/index",
+  "title": "index",
+  "description": "",
+  "source": "@site/docs/integrations/index.md",
+  "sourceDirName": "integrations",
+  "slug": "/integrations/",
+  "permalink": "/integrations/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Prevent GTM Preview Traffic",
+    "permalink": "/integrations/google-tag-manager/gtm-msr-appspot-and-tag-blocking"
+  },
+  "next": {
+    "title": "Content & Site Structure",
+    "permalink": "/implementation/content-site-structure/"
+  }
+}

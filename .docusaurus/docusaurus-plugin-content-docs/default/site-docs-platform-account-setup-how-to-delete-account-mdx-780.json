@@ -1,0 +1,29 @@
+{
+  "id": "platform/account-setup/how-to-delete-account",
+  "title": "How to Delete an Account",
+  "description": "Learn how to delete an account in SealMetrics from the platform dashboard.",
+  "source": "@site/docs/platform/account-setup/how-to-delete-account.mdx",
+  "sourceDirName": "platform/account-setup",
+  "slug": "/platform/account-setup/how-to-delete-account",
+  "permalink": "/platform/account-setup/how-to-delete-account",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "How to Delete an Account",
+    "sidebar_label": "Delete an Account",
+    "sidebar_position": 1,
+    "description": "Learn how to delete an account in SealMetrics from the platform dashboard."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "How to Share Your Affiliate Link",
+    "permalink": "/platform/affiliates-and-partners/how-to-share-your-affiliate-link"
+  },
+  "next": {
+    "title": "Add Domains",
+    "permalink": "/platform/account-setup/how-to-add-domains"
+  }
+}

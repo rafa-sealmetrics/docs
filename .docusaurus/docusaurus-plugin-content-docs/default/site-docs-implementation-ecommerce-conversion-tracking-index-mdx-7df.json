@@ -1,0 +1,27 @@
+{
+  "id": "implementation/ecommerce-conversion-tracking/index",
+  "title": "E-commerce Conversion Tracking",
+  "description": "Complete guide for tracking e-commerce conversions.",
+  "source": "@site/docs/implementation/ecommerce-conversion-tracking/index.mdx",
+  "sourceDirName": "implementation/ecommerce-conversion-tracking",
+  "slug": "/implementation/ecommerce-conversion-tracking/",
+  "permalink": "/implementation/ecommerce-conversion-tracking/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "sidebar_position": 0,
+    "title": "E-commerce Conversion Tracking"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Understanding Content Grouping in Sealmetrics",
+    "permalink": "/implementation/content-site-structure/content-grouping"
+  },
+  "next": {
+    "title": "conversion-funnel-tracking",
+    "permalink": "/implementation/ecommerce-conversion-tracking/conversion-funnel-tracking"
+  }
+}

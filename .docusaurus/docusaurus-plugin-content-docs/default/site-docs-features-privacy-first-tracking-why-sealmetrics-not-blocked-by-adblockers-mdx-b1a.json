@@ -1,0 +1,29 @@
+{
+  "id": "features/privacy-first-tracking/why-sealmetrics-not-blocked-by-adblockers",
+  "title": "Why SealMetrics Is Not Blocked by AdBlockers",
+  "description": "Learn why SealMetrics bypasses AdBlockers through 1st-party tracking and a privacy-first architecture that avoids third-party domain blocking.",
+  "source": "@site/docs/features/privacy-first-tracking/why-sealmetrics-not-blocked-by-adblockers.mdx",
+  "sourceDirName": "features/privacy-first-tracking",
+  "slug": "/features/privacy-first-tracking/why-sealmetrics-not-blocked-by-adblockers",
+  "permalink": "/features/privacy-first-tracking/why-sealmetrics-not-blocked-by-adblockers",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Why SealMetrics Is Not Blocked by AdBlockers",
+    "sidebar_label": "Not Blocked by AdBlockers",
+    "description": "Learn why SealMetrics bypasses AdBlockers through 1st-party tracking and a privacy-first architecture that avoids third-party domain blocking.",
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Attribution without User-ID",
+    "permalink": "/features/privacy-first-tracking/if-no-userid-how-attribution-works"
+  },
+  "next": {
+    "title": "1st Party Tracker",
+    "permalink": "/features/privacy-first-tracking/1st-party-tracker"
+  }
+}

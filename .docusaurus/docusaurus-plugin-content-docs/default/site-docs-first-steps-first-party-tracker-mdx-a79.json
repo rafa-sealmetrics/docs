@@ -1,0 +1,68 @@
+{
+  "id": "first-steps/first-party-tracker",
+  "title": "First Party Tracker",
+  "description": "Learn how SealMetrics’ first-party tracker works and how to install it for better privacy, compliance, and adblocker resistance.",
+  "source": "@site/docs/first-steps/first-party-tracker.mdx",
+  "sourceDirName": "first-steps",
+  "slug": "/first-steps/first-party-tracker",
+  "permalink": "/first-steps/first-party-tracker",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "first-party tracker",
+      "permalink": "/tags/first-party-tracker"
+    },
+    {
+      "inline": true,
+      "label": "sealmetrics",
+      "permalink": "/tags/sealmetrics"
+    },
+    {
+      "inline": true,
+      "label": "privacy",
+      "permalink": "/tags/privacy"
+    },
+    {
+      "inline": true,
+      "label": "analytics",
+      "permalink": "/tags/analytics"
+    },
+    {
+      "inline": true,
+      "label": "setup",
+      "permalink": "/tags/setup"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "title": "First Party Tracker",
+    "description": "Learn how SealMetrics’ first-party tracker works and how to install it for better privacy, compliance, and adblocker resistance.",
+    "tags": [
+      "first-party tracker",
+      "sealmetrics",
+      "privacy",
+      "analytics",
+      "setup"
+    ],
+    "keywords": [
+      "first-party tracking",
+      "cookieless analytics",
+      "adblocker resistant analytics",
+      "privacy-first analytics",
+      "sealmetrics setup"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "How SealMetrics Works",
+    "permalink": "/first-steps/how-sealmetrics-works"
+  },
+  "next": {
+    "title": "How to Measure Conversions and Micro-Conversions",
+    "permalink": "/first-steps/how-to-measure-conversions"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "faq/implementation",
+  "title": "Implementation & Tracking",
+  "description": "How to install the pixel, track events, use GTM, configure ecommerce, and verify tracking accuracy.",
+  "source": "@site/docs/faq/implementation.mdx",
+  "sourceDirName": "faq",
+  "slug": "/faq/implementation",
+  "permalink": "/faq/implementation",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Implementation & Tracking",
+    "sidebar_position": 5,
+    "description": "How to install the pixel, track events, use GTM, configure ecommerce, and verify tracking accuracy.",
+    "keywords": [
+      "tracking setup",
+      "sealmetrics pixel",
+      "event tracking"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Attribution Model",
+    "permalink": "/faq/attribution"
+  },
+  "next": {
+    "title": "Technical Privacy Model",
+    "permalink": "/faq/privacy-technical"
+  }
+}

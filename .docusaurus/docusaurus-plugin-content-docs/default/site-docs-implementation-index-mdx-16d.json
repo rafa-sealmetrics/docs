@@ -1,0 +1,27 @@
+{
+  "id": "implementation/index",
+  "title": "Implementation",
+  "description": "Learn how to implement SealMetrics tracking on your website.",
+  "source": "@site/docs/implementation/index.mdx",
+  "sourceDirName": "implementation",
+  "slug": "/implementation/",
+  "permalink": "/implementation/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "sidebar_position": 0,
+    "title": "Implementation"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "event-properties-guide",
+    "permalink": "/implementation/ecommerce-conversion-tracking/event-properties-guide"
+  },
+  "next": {
+    "title": "Tracking Methods",
+    "permalink": "/implementation/tracking-methods/"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "first-steps/index",
+  "title": "First Steps Overview",
+  "description": "Start your journey with SealMetrics — from installing your first tracker to seeing real-time, privacy-first analytics in action.",
+  "source": "@site/docs/first-steps/index.mdx",
+  "sourceDirName": "first-steps",
+  "slug": "/first-steps/",
+  "permalink": "/first-steps/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "first steps",
+      "permalink": "/tags/first-steps"
+    },
+    {
+      "inline": true,
+      "label": "getting started",
+      "permalink": "/tags/getting-started"
+    },
+    {
+      "inline": true,
+      "label": "setup",
+      "permalink": "/tags/setup"
+    },
+    {
+      "inline": true,
+      "label": "sealmetrics",
+      "permalink": "/tags/sealmetrics"
+    },
+    {
+      "inline": true,
+      "label": "analytics",
+      "permalink": "/tags/analytics"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "sidebar_position": 0,
+    "title": "First Steps Overview",
+    "description": "Start your journey with SealMetrics — from installing your first tracker to seeing real-time, privacy-first analytics in action.",
+    "tags": [
+      "first steps",
+      "getting started",
+      "setup",
+      "sealmetrics",
+      "analytics"
+    ],
+    "keywords": [
+      "getting started sealmetrics",
+      "analytics setup",
+      "consentless tracking",
+      "privacy-first analytics",
+      "cookieless measurement"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Getting Started Overview",
+    "permalink": "/getting-started/"
+  },
+  "next": {
+    "title": "First Steps with SealMetrics",
+    "permalink": "/first-steps/first-steps-with-sealmetrics"
+  }
+}

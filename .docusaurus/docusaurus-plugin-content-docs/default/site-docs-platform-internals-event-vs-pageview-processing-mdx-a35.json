@@ -1,0 +1,61 @@
+{
+  "id": "platform/internals/event-vs-pageview-processing",
+  "title": "Event vs Pageview Processing",
+  "description": "Understand the difference between event processing and pageview processing within Sealmetrics’ privacy-first architecture.",
+  "source": "@site/docs/platform/internals/event-vs-pageview-processing.mdx",
+  "sourceDirName": "platform/internals",
+  "slug": "/platform/internals/event-vs-pageview-processing",
+  "permalink": "/platform/internals/event-vs-pageview-processing",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "events",
+      "permalink": "/tags/events"
+    },
+    {
+      "inline": true,
+      "label": "pageviews",
+      "permalink": "/tags/pageviews"
+    },
+    {
+      "inline": true,
+      "label": "processing",
+      "permalink": "/tags/processing"
+    },
+    {
+      "inline": true,
+      "label": "analytics architecture",
+      "permalink": "/tags/analytics-architecture"
+    },
+    {
+      "inline": true,
+      "label": "sealmetrics",
+      "permalink": "/tags/sealmetrics"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Event vs Pageview Processing",
+    "description": "Understand the difference between event processing and pageview processing within Sealmetrics’ privacy-first architecture.",
+    "sidebar_position": 4,
+    "tags": [
+      "events",
+      "pageviews",
+      "processing",
+      "analytics architecture",
+      "sealmetrics"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "How Sealmetrics Stores Data",
+    "permalink": "/platform/internals/how-sealmetrics-stores-data"
+  },
+  "next": {
+    "title": "Data Accuracy & Reconciliation",
+    "permalink": "/platform/internals/data-accuracy-and-reconciliation"
+  }
+}

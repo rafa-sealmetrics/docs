@@ -1,0 +1,29 @@
+{
+  "id": "platform/user-management/create-admin-user",
+  "title": "How to Create an Admin User",
+  "description": "Step-by-step guide to creating a new Admin user in SealMetrics.",
+  "source": "@site/docs/platform/user-management/create-admin-user.mdx",
+  "sourceDirName": "platform/user-management",
+  "slug": "/platform/user-management/create-admin-user",
+  "permalink": "/platform/user-management/create-admin-user",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "How to Create an Admin User",
+    "sidebar_label": "Create Admin User",
+    "sidebar_position": 2,
+    "description": "Step-by-step guide to creating a new Admin user in SealMetrics."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Roles Management",
+    "permalink": "/platform/user-management/roles-management"
+  },
+  "next": {
+    "title": "Change Password",
+    "permalink": "/platform/user-management/change-password"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "api/appendix/troubleshooting",
+  "title": "Troubleshooting",
+  "description": "Common API errors, debugging techniques, and support guidance for SealMetrics API.",
+  "source": "@site/docs/api/appendix/troubleshooting.mdx",
+  "sourceDirName": "api/appendix",
+  "slug": "/api/appendix/troubleshooting",
+  "permalink": "/api/appendix/troubleshooting",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Troubleshooting",
+    "description": "Common API errors, debugging techniques, and support guidance for SealMetrics API.",
+    "category": "API Documentation",
+    "subcategory": "Troubleshooting & Debugging",
+    "updated": "2025-02-01"
+  }
+}

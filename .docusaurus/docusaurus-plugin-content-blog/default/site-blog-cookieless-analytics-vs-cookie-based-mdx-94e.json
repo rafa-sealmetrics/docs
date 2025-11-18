@@ -1,0 +1,84 @@
+{
+  "permalink": "/blog/cookieless-analytics-vs-cookie-based",
+  "source": "@site/blog/cookieless-analytics-vs-cookie-based.mdx",
+  "title": "Cookieless Analytics vs Cookie-based",
+  "description": "Cookie rejection rates have reached 60-87% across the EU, making traditional cookie-based analytics increasingly unreliable. This technical comparison explores how cookieless analytics fundamentally differs from cookie-based approaches and why businesses are migrating to consent-free tracking solutions. ",
+  "date": "2024-11-17T00:00:00.000Z",
+  "tags": [
+    {
+      "inline": true,
+      "label": "gdpr-compliance",
+      "permalink": "/blog/tags/gdpr-compliance"
+    },
+    {
+      "inline": true,
+      "label": "cookieless-analytics",
+      "permalink": "/blog/tags/cookieless-analytics"
+    },
+    {
+      "inline": false,
+      "label": "Privacy",
+      "permalink": "/blog/tags/privacy",
+      "description": "Privacy related content"
+    },
+    {
+      "inline": false,
+      "label": "Analytics",
+      "permalink": "/blog/tags/analytics",
+      "description": "Web Analytics Technology"
+    },
+    {
+      "inline": true,
+      "label": "cookies",
+      "permalink": "/blog/tags/cookies"
+    }
+  ],
+  "readingTime": 16.18,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Rafael Jimenez",
+      "title": "CMO & Founder @ SealMetrics",
+      "url": "https://www.linkedin.com/in/rafajimenez",
+      "imageURL": "/img/rafa-sealmetrics.png",
+      "key": "rafael jimenez",
+      "page": null
+    }
+  ],
+  "frontMatter": {
+    "slug": "cookieless-analytics-vs-cookie-based",
+    "title": "Cookieless Analytics vs Cookie-based",
+    "authors": [
+      "rafael jimenez"
+    ],
+    "tags": [
+      "gdpr-compliance",
+      "cookieless-analytics",
+      "privacy",
+      "analytics",
+      "cookies"
+    ],
+    "description": "Cookie rejection rates have reached 60-87% across the EU, making traditional cookie-based analytics increasingly unreliable. This technical comparison explores how cookieless analytics fundamentally differs from cookie-based approaches and why businesses are migrating to consent-free tracking solutions. ",
+    "date": "2024-11-17T00:00:00.000Z",
+    "keywords": [
+      "GDPR compliant analytics",
+      "legitimate interest analytics",
+      "cookieless analytics",
+      "Sealmetrics",
+      "CNIL guidance",
+      "privacy-first analytics",
+      "analytics without consent",
+      "TTDSG compliance"
+    ],
+    "hide_table_of_contents": false
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "GDPR Compliant Analytics: Complete Framework 2026",
+    "permalink": "/blog/gdpr-compliant-analytics-framework"
+  },
+  "nextItem": {
+    "title": "Long-Term Analytics: 25-Month Data Retention Without Consent",
+    "permalink": "/blog/long-term-analytics-data-retention"
+  }
+}

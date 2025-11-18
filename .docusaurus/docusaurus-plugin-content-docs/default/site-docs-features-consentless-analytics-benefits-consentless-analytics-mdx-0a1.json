@@ -1,0 +1,27 @@
+{
+  "id": "features/consentless-analytics/benefits-consentless-analytics",
+  "title": "Benefits of Consentless Tracking",
+  "description": "Understand why SealMetrics’ consentless architecture outperforms traditional analytics tools, offering accurate, future-proof, privacy-first measurement.",
+  "source": "@site/docs/features/consentless-analytics/benefits-consentless-analytics.mdx",
+  "sourceDirName": "features/consentless-analytics",
+  "slug": "/features/consentless-analytics/benefits-consentless-analytics",
+  "permalink": "/features/consentless-analytics/benefits-consentless-analytics",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Benefits of Consentless Tracking",
+    "sidebar_label": "Benefits of Consentless Tracking",
+    "description": "Understand why SealMetrics’ consentless architecture outperforms traditional analytics tools, offering accurate, future-proof, privacy-first measurement."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "What We Track vs What We Don’t",
+    "permalink": "/features/privacy-first-tracking/what-we-track-vs-what-we-dont"
+  },
+  "next": {
+    "title": "How Consentless Tracking Works",
+    "permalink": "/features/consentless-analytics/how-consentless-tracking-works"
+  }
+}

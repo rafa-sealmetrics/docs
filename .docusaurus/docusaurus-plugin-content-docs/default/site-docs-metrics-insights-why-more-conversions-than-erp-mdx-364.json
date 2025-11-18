@@ -1,0 +1,27 @@
+{
+  "id": "metrics-insights/why-more-conversions-than-erp",
+  "title": "Why Do I See More Conversions or Revenue in SealMetrics Than in My ERP?",
+  "description": "Understand why SealMetrics may show more conversions or revenue than your ERP and how to properly configure your tracking to avoid discrepancies.",
+  "source": "@site/docs/metrics-insights/why-more-conversions-than-erp.mdx",
+  "sourceDirName": "metrics-insights",
+  "slug": "/metrics-insights/why-more-conversions-than-erp",
+  "permalink": "/metrics-insights/why-more-conversions-than-erp",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Why Do I See More Conversions or Revenue in SealMetrics Than in My ERP?",
+    "sidebar_label": "SealMetrics vs ERP Conversions",
+    "description": "Understand why SealMetrics may show more conversions or revenue than your ERP and how to properly configure your tracking to avoid discrepancies."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "TERM Definition",
+    "permalink": "/metrics-insights/what-is-a-term"
+  },
+  "next": {
+    "title": "Prevent GTM Preview Traffic",
+    "permalink": "/integrations/google-tag-manager/gtm-msr-appspot-and-tag-blocking"
+  }
+}

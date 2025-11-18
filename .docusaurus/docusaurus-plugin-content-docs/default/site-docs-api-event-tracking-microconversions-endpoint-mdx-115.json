@@ -1,0 +1,20 @@
+{
+  "id": "api/event-tracking/microconversions-endpoint",
+  "title": "Microconversions Endpoint",
+  "description": "Retrieve and analyze microconversion events using the SealMetrics API.",
+  "source": "@site/docs/api/event-tracking/microconversions-endpoint.mdx",
+  "sourceDirName": "api/event-tracking",
+  "slug": "/api/event-tracking/microconversions-endpoint",
+  "permalink": "/api/event-tracking/microconversions-endpoint",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Microconversions Endpoint",
+    "description": "Retrieve and analyze microconversion events using the SealMetrics API.",
+    "category": "API",
+    "subcategory": "API Endpoints",
+    "updated": "2025-02-01"
+  }
+}

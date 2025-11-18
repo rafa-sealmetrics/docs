@@ -1,0 +1,29 @@
+{
+  "id": "legal/GDPR-and-ePrivacy/do-session-ids-require-consent",
+  "title": "Do Temporary Session Identifiers (Session IDs) Require Consent Under GDPR?",
+  "description": "Understanding when Session IDs require user consent under GDPR and ePrivacy, and how SealMetrics ensures full regulatory compliance.",
+  "source": "@site/docs/legal/GDPR-and-ePrivacy/do-session-ids-require-consent.mdx",
+  "sourceDirName": "legal/GDPR-and-ePrivacy",
+  "slug": "/legal/GDPR-and-ePrivacy/do-session-ids-require-consent",
+  "permalink": "/legal/GDPR-and-ePrivacy/do-session-ids-require-consent",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Do Temporary Session Identifiers (Session IDs) Require Consent Under GDPR?",
+    "description": "Understanding when Session IDs require user consent under GDPR and ePrivacy, and how SealMetrics ensures full regulatory compliance.",
+    "category": "Legal",
+    "subcategory": "GDPR & ePrivacy Compliance",
+    "updated": "2025-02-01"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "GDPR and ePrivacy",
+    "permalink": "/legal/GDPR-and-ePrivacy/"
+  },
+  "next": {
+    "title": "Compliance Overview",
+    "permalink": "/legal/compliance-overview/"
+  }
+}
