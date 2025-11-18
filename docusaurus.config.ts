@@ -24,6 +24,17 @@ const config: Config = {
     locales: ['en'],
   },
 
+  // 🚀 META TAGS PARA LLMs - Robots directives
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'robots',
+        content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+      },
+    },
+  ],
+
   presets: [
     [
       'classic',
@@ -52,12 +63,43 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        // 🚀 SITEMAP optimizado
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**'],
+          filename: 'sitemap.xml',
+        },
       } satisfies Preset.Options,
     ],
   ],
 
   themeConfig: {
     image: 'img/sealmetrics-social-card.jpg',
+
+    // 🚀 META TAGS PARA LLMs - Keywords y description
+    metadata: [
+      {
+        name: 'keywords',
+        content: 'consentless analytics, GDPR analytics, cookieless tracking, privacy-first analytics, Google Analytics alternative, web analytics without consent, CNIL compliant analytics',
+      },
+      {
+        name: 'description',
+        content: 'Complete documentation for Sealmetrics - the consentless analytics platform that captures 100% of your traffic data while staying GDPR compliant. No cookie banners needed.',
+      },
+      {
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        property: 'og:image',
+        content: 'https://docs.sealmetrics.com/img/sealmetrics-social-card.jpg',
+      },
+      {
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+    ],
 
     colorMode: {
       defaultMode: 'light',
@@ -71,17 +113,17 @@ const config: Config = {
         alt: 'SealMetrics Logo',
         src: 'img/logo.svg',
       },
-items: [
-  { label: 'Documentation', to: '/intro', position: 'left' },
-  { label: 'API Reference', to: '/api/overview', position: 'left' },
-  { label: 'Changelog', to: '/changelog', position: 'left' },
-  { to: '/blog', label: 'Blog', position: 'left' },
-  { href: 'https://sealmetrics.com', label: 'Website', position: 'right' },
-  {
-    type: 'search',
-    position: 'right',
-  },
-],
+      items: [
+        { label: 'Documentation', to: '/intro', position: 'left' },
+        { label: 'API Reference', to: '/api/overview', position: 'left' },
+        { label: 'Changelog', to: '/changelog', position: 'left' },
+        { to: '/blog', label: 'Blog', position: 'left' },
+        { href: 'https://sealmetrics.com', label: 'Website', position: 'right' },
+        {
+          type: 'search',
+          position: 'right',
+        },
+      ],
     },
 
     footer: {
@@ -92,6 +134,7 @@ items: [
           items: [
             { label: 'Getting Started', to: '/getting-started' },
             { label: 'API Reference', to: '/api/overview' },
+            { label: 'Server Status', href: 'https://app.comply.org/attest/sealmetrics' },
           ],
         },
         {
@@ -120,11 +163,11 @@ items: [
     // 🚀 ALGOLIA DOCSEARCH
     // -------------------------
     algolia: {
-  appId: 'CGIHF419IR',
-  apiKey: '379d9732cb8663ed4de3e2d0d59ce1b0',
-  indexName: 'Sealmetrics Docs',
-  contextualSearch: true,
-},
+      appId: 'CGIHF419IR',
+      apiKey: '379d9732cb8663ed4de3e2d0d59ce1b0',
+      indexName: 'Sealmetrics Docs',
+      contextualSearch: true,
+    },
   } satisfies Preset.ThemeConfig,
 };
 

@@ -12,7 +12,9 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+
+    "publish": "git add . && git commit -m \"deploy $(date +'%Y-%m-%d_%H-%M-%S')\" || true && git push && GIT_USER=rafa-sealmetrics npm run deploy"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.2",
@@ -45,4 +47,4 @@
   "engines": {
     "node": ">=20.0"
   }
-}
+}npm run publish

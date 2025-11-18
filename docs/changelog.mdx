@@ -1,1 +1,55 @@
-# Changelog
+---
+title: Release Notes - November 2025
+description: Performance improvements and Facebook Ads attribution updates
+date: 2025-11-17
+tags: [changelog, performance, facebook-ads, breaking-changes]
+---
+
+# Release Notes - November 2025
+
+## Performance Improvements
+
+### ⚡ 2.5x Faster Data Processing
+
+We've significantly optimized our processing infrastructure by increasing core capacity. Your data now processes **2.5 times faster**, meaning real-time dashboard updates and instant report generation.
+
+**Benefits:**
+- Faster dashboard loading times
+- Real-time data updates
+- Instant report generation
+- Improved overall platform responsiveness
+
+---
+
+## Breaking Changes & Updates
+
+### 🔄 Facebook Ads Attribution Update
+
+:::warning Breaking Change
+As of this release, the `fbclid` parameter is no longer used to identify Facebook Ads traffic due to its lack of reliability and consistency.
+:::
+
+**What this means for you:**
+
+- Facebook Ads traffic now **requires properly configured UTM tags** for accurate attribution
+- Ensure your campaigns include the parameters: `utm_source=facebook`, `utm_medium=paid` (or similar)
+- This improvement ensures more accurate attribution and full control over your data
+
+**Recommendation:** Review and update your Facebook Ads campaigns with appropriate UTMs to maintain complete visibility of your traffic.
+
+:::tip
+Need help configuring UTMs? Check out our [Facebook Ads Tracking Guide](/metrics-insights/how-to-track-social-ads-campaigns/#how-to-track-facebook-ads-campaigns-without-cookies)
+:::
+
+---
+
+## Migration Guide
+
+If you're currently relying on `fbclid` for Facebook Ads attribution, follow these steps:
+
+1. **Audit your campaigns:** Review all active Facebook Ads campaigns
+2. **Add UTM parameters:** Configure UTMs in your Facebook Ads Manager
+3. **Test:** Verify that traffic is being properly attributed in Sealmetrics
+4. **Monitor:** Check your reports to ensure continuity in your data
+
+Need assistance? [Contact our support team](mailto:support@sealmetrics.com)

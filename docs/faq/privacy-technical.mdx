@@ -36,3 +36,20 @@ No techniques that might identify or re-identify individuals.
 
 No.  
 Hits are isolated by design.
+
+## How can the country of origin of my visitors be determined without knowing their IP and while respecting user privacy?
+
+SealMetrics estimates the country using the timezone configured in the visitor’s browser, a technical value that does not identify the user and does not require processing IP addresses. Each timezone is mapped to the countries that use it. For unique timezones, the estimation is highly accurate; for shared timezones, the most likely country is selected.
+This method is reliable for aggregated analytics and fully aligns with privacy and data-minimization principles, as no IPs or personal identifiers are collected.
+
+## Why doesn’t SealMetrics use IP addresses for geolocation?
+
+Because processing IP addresses involves handling personal data under the GDPR. SealMetrics is built with a privacy-first approach: we do not track individuals or use data that could identify them. Using the timezone allows us to provide useful insights without relying on personal information.
+
+## Is the browser timezone considered personal data?
+
+No. The timezone is a technical value exposed automatically by the browser and does not identify an individual or allow profiling. On its own, it cannot be used for tracking and aligns with data-minimization principles established by privacy regulations.
+
+## How does timezone-based detection affect the accuracy of my reports?
+
+Reports show a country estimation based on the browser’s timezone. This is more than adequate for traffic analysis, marketing, attribution, and global trends. It does not provide city- or region-level accuracy, but it avoids processing personal data and keeps analytics within strict privacy compliance.
