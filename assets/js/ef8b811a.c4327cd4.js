@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkwebsite=globalThis.webpackChunkwebsite||[]).push([[1328],{6600:e=>{e.exports=JSON.parse('{"authors":[{"name":"Rafael Jimenez","title":"CMO & Founder @ SealMetrics","url":"https://www.linkedin.com/in/rafajimenez","imageURL":"/img/rafa-sealmetrics.png","key":"rafael jimenez","page":null,"count":5}]}')}}]);
