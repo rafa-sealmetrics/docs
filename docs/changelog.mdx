@@ -7,16 +7,43 @@ tags: [changelog, performance, facebook-ads, attribution, privacy]
 
 # Release Notes - November 2025
 
-## 🔧 Facebook Traffic Classification Fix (NEW – Nov 14, 19:00 UTC)
+## NEW: Legal Approval for IP-Based Bot Filtering (Nov 18, 20:00 UTC)
+
+After a thorough legal review, we now have official approval to implement **IP-based filtering** to improve traffic accuracy—without compromising user privacy.
+
+### How It Works
+
+- When a hit arrives, we check whether the IP is in our **bot IP database**  
+- If it matches → the hit is **excluded from your analytics**  
+- If it doesn’t match → we do **not** store the IP, we simply register it as **human traffic**
+
+### Privacy First
+
+- We do not retain or track IPs that aren't bots  
+- No identification or storage of human IPs  
+- Full compliance with privacy regulations
+
+This ensures:
+- Better protection of your analytics data  
+- No compromise on user privacy  
+- No personal data is ever stored or exposed
+
+It’s a technical improvement — but also a principle:
+You can have precision without violating privacy.
+You can have control without crossing the line.
+
+---
+
+## Facebook Traffic Classification Fix (NEW – Nov 14, 19:00 UTC)
 
 We've improved how SealMetrics classifies Facebook traffic to ensure higher accuracy between **organic** and **paid** sources.
 
-### ✅ What Was Happening Before
+### What Was Happening Before
 A minor issue caused some visits containing the **`fbclid`** parameter (but *without* UTM tags) to be incorrectly categorized as **facebook-ads**.
 
 This affected a small portion of traffic, but could distort organic vs. paid Facebook reporting.
 
-### 🚀 What Changed
+### What Changed
 As of **Wednesday, November 17 at 19:00 UTC**:
 
 - Traffic containing **only `fbclid`** and **no UTM parameters**  
@@ -25,7 +52,7 @@ As of **Wednesday, November 17 at 19:00 UTC**:
 - Only traffic containing proper **UTM campaign parameters**  
   → is classified as **Facebook Ads**
 
-### 📊 Impact on Your Reports
+### Impact on Your Reports
 - Improved accuracy in distinguishing paid vs. organic Facebook traffic  
 - Expect a slight increase in organic Facebook traffic from this timestamp onward  
 - Historical data remains unchanged to preserve consistency
@@ -34,8 +61,7 @@ As of **Wednesday, November 17 at 19:00 UTC**:
 
 ## Performance Improvements (Nov 10, 22:00 UTC)
 
-
-### ⚡ 2.5x Faster Data Processing
+### 2.5x Faster Data Processing
 
 We've significantly optimized our processing infrastructure by increasing core capacity. Your data now processes **2.5 times faster**, meaning real-time dashboard updates and instant report generation.
 
@@ -47,8 +73,7 @@ We've significantly optimized our processing infrastructure by increasing core c
 
 ---
 
-## 🔄 Facebook Ads Attribution Update ( Nov 13, 19:00 UTC)
-
+## Facebook Ads Attribution Update (Nov 13, 19:00 UTC)
 
 :::warning Breaking Change
 As of this release, the `fbclid` parameter is no longer used to identify Facebook Ads traffic due to its lack of reliability and consistency.

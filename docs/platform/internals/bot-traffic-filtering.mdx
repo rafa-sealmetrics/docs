@@ -1,90 +1,122 @@
 ---
 title: Bot Traffic Filtering in Sealmetrics
-description: Learn how Sealmetrics detects and filters bot traffic without using IP addresses while remaining fully compliant with privacy regulations.
+description: Learn how Sealmetrics detects and filters bot traffic using a three‑layer system fully compliant with European privacy regulations.
 sidebar_position: 7
 tags: [bot filtering, privacy, traffic quality, analytics integrity, sealmetrics]
 ---
 
 # Bot Traffic Filtering in Sealmetrics
 
-Sealmetrics filters bot traffic using methods that remain fully compliant with GDPR, ePrivacy, and PECR.  
-We never use IP addresses, fingerprints, or personal identifiers for bot detection.
+Sealmetrics filters bot traffic using a **three‑layer privacy‑safe system** fully compliant with GDPR, ePrivacy, and PECR.
 
-Instead, we rely on a privacy-safe dual filtering system.
+We do not track users, store personal identifiers, or use fingerprinting techniques.  
+All filtering methods operate without requiring consent.
 
----
-
-## Why We Don’t Use IP Filtering
-
-IP filtering is no longer compliant with European privacy regulations:
-
-- IP addresses are personal data  
-- Filtering based on IP requires consent  
-- Consentless analytics cannot rely on IP-based exclusion  
-
-Sealmetrics avoids all personal-data-based methods.
+Sealmetrics is the only analytics platform that combines **three independent systems** to block bots while remaining 100% privacy compliant.
 
 ---
 
-## 1. Automatic Bot Detection
+# Why This Matters
 
-Sealmetrics automatically filters all traffic where the **user agent contains “bot”** (case-insensitive):
+Bot traffic inflates metrics and corrupts business decisions.  
+Most tools rely on IP filtering or device-level identifiers that require user consent and violate EU privacy law.
 
-Examples:
-
-- `Googlebot`
-- `Bingbot`
-- `AhrefsBot`
-- `DuckDuckBot`
-
-This removes the majority of known crawler traffic.
+Sealmetrics provides high‑accuracy filtering **without** personal data.
 
 ---
 
-## 2. Behavioural Pattern Filtering
+# 1. Automatic Bot Detection (User-Agent Based)
 
-For bots that do *not* identify themselves, Sealmetrics applies behavior-based detection.
+Sealmetrics automatically filters all traffic where the **user agent contains “bot”**, case-insensitive.
+
+Examples include:
+
+- `Googlebot`  
+- `Bingbot`  
+- `AhrefsBot`  
+- `DuckDuckBot`  
+- Any crawler that self-identifies
+
+This removes the majority of standard crawlers instantly and without processing personal information.
+
+---
+
+# 2. Behavioural Pattern Filtering (Non‑Identified Bots)
+
+Bots that do not disclose themselves are detected through behaviour.
 
 A user agent is temporarily blocked when:
 
-**More than 4 clicks occur within 5 seconds**
+**More than 4 hits occur within 5 seconds**
 
-If triggered:
+When triggered:
 
-- That user agent is frozen for **1 hour**  
-- All hits from that agent are ignored during the freeze  
-- This applies to *all* user agents (bot or non-bot name)  
+- The user agent is frozen for **1 hour**  
+- All hits inside that window are filtered  
+- The rule applies to any user agent (bot name or not)
 
 This method:
 
+- Detects aggressive scrapers  
+- Blocks automated testing tools  
 - Avoids false positives  
-- Protects analytics quality  
-- Remains fully privacy-compliant  
-- Detects aggressive scrapers, spam bots, and automated testing traffic  
+- Preserves analytics accuracy  
+- Remains fully privacy compliant
 
 ---
 
-## Why This Approach Works
+# 3. Privacy‑Safe IP‑Based Bot Filtering (Legal Approval – Nov 2025)
 
-Behavior-based filtering is more accurate and privacy-safe than IP filtering.
+Sealmetrics now uses an **IP‑based blocklist** approved by the legal team.  
+This adds a third layer of precision *without ever storing or tracking human IP addresses*.
 
-### Benefits:
+### How it works
 
-- No personal data needed  
-- Compliant with GDPR & ePrivacy  
-- Detects real non-identified bots  
-- Protects analytics integrity  
-- Avoids blocking legitimate users based on network IP ranges  
+- Sealmetrics maintains a private database of **known bot IP ranges**  
+- When a hit arrives, we check if the incoming IP appears in this list  
+- If it matches → the hit is excluded  
+- If it does not match → we do not store the IP and cannot identify the user
+
+### Privacy Guarantee
+
+- Human IPs are never logged, stored, or processed beyond the single real‑time check  
+- No personal data is collected  
+- No identification or tracking is possible  
+- Fully compliant with GDPR, ePrivacy, and PECR
+
+This system allows us to block large bot networks and datacenter crawlers while protecting end‑user privacy.
 
 ---
 
-## Summary
+# Why Our Three‑Layer System Works Better
 
-Sealmetrics bot filtering is based on:
+Sealmetrics is the only analytics platform offering **three independent bot‑detection layers**, all privacy-safe:
 
-1. **User-agent bot exclusion**  
-2. **Behavioural detection & temporary blocking**  
+1. **User-Agent Bot Detection**  
+2. **Behavioural Detection & Temporary Blocking**  
+3. **Legally Approved IP‑Based Bot Filtering (no storage, no tracking)**
 
-No IPs. No fingerprints. No personal data.
+### Key Advantages
 
-A modern, compliant, and highly accurate approach for keeping your analytics clean.
+- Zero personal data collected  
+- Zero user identification  
+- Fully consentless and compliant  
+- Accurate detection of disclosed, hidden, and network‑level bots  
+- No risk of blocking legitimate users based on shared IP ranges  
+- Stronger protection than single-layer or IP-only systems
+
+---
+
+# Summary
+
+Sealmetrics ensures clean, reliable analytics through a unique 3‑layer filtering approach:
+
+1. **User-Agent filtering for declared bots**  
+2. **Behavioural pattern detection for hidden bots**  
+3. **Privacy‑safe IP blocklist filtering for known bot networks**
+
+No fingerprints.  
+No cookies.  
+No personal data.  
+
+Just accurate, compliant, modern analytics.
