@@ -50,7 +50,7 @@ For a complete overview of cookieless analytics, see our [Cookieless Analytics: 
 6. Sealmetrics Cookieless System
 7. Performance & Data Accuracy
 8. Comparison: Cookieless vs Cookie-Based
-9. Implementation Technical Guide
+9. Why Sealmetrics Wins Over Competitors
 10. FAQ: Technical Questions
 
 ---
@@ -219,9 +219,9 @@ IP addresses are **personal data** under GDPR. Storing them requires:
 2. Data Processing Agreement with hoster
 3. Data protection impact assessment
 
-**Most "cookieless" tools still hash IPs**, creating gray area (learn more in our [Sealmetrics vs Plausible comparison](/blog/sealmetrics-vs-plausible)):
+**Most "cookieless" tools still hash IPs**, creating gray area:
 ```javascript
-// Competitor approach (Plausible, Matomo)
+// Competitor approach
 const clientIP = req.headers['x-forwarded-for'];
 const hashedIP = hashFunction(clientIP); // SHA256 hash
 store(hashedIP); // Still stored! Still requires DPA
@@ -271,7 +271,7 @@ Hashed IP = Disputed, regulators disagree = Gray area risk
 **Practical difference for you**:
 - Sealmetrics: Deploy without consent banner ✓
 - Google Analytics: MUST have consent + DPA ✓
-- Plausible: Works without consent, but hashes IPs (regulatory risk)
+- Other tools: Work without consent, but hash IPs (regulatory risk)
 
 For a complete comparison of [cookieless vs cookie-based analytics](/blog/cookieless-analytics-vs-cookie-based), see our detailed technical guide.
 
@@ -365,7 +365,6 @@ const allowedPurposes = [
 └────────────────────────┬────────────────────────────────┘
                          │
                     HTTPS POST
-                    Encrypted
                          │
                          ▼
 ┌─────────────────────────────────────────────────────────┐
@@ -399,111 +398,6 @@ const allowedPurposes = [
 │  • Custom segments (referrer, device, etc)             │
 │  • GDPR-compliant data exports                         │
 └─────────────────────────────────────────────────────────┘
-```
-
-### Implementation Code Example
-```javascript
-// Complete Sealmetrics tracking implementation
-// Place in <head> of your website
-
-<script>
-(function() {
-  // 1. Configuration
-  const config = {
-    siteId: 'YOUR_SITE_ID', // Unique to your website
-    apiEndpoint: 'https://api.sealmetrics.io',
-    sessionExpiry: 2592000000, // 30 days in milliseconds
-  };
-
-  // 2. Generate session ID (random, unique, fresh each visit)
-  function generateSessionId() {
-    return 'sess_' +
-      Math.random().toString(36).substring(2, 15) +
-      Math.random().toString(36).substring(2, 15);
-  }
-
-  // 3. Get or create session
-  function getSession() {
-    let session = localStorage.getItem('_seal_session');
-
-    if (!session) {
-      session = generateSessionId();
-      localStorage.setItem('_seal_session', session);
-    }
-
-    return session;
-  }
-
-  // 4. Send pageview
-  function trackPageview() {
-    const sessionId = getSession();
-
-    const payload = {
-      siteId: config.siteId,
-      sessionId: sessionId,
-      type: 'pageview',
-      url: window.location.href,
-      referrer: document.referrer,
-      timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-      // NO IP address ✓
-      // NO persistent ID ✓
-    };
-
-    // Send via Beacon API (reliable, doesn't block)
-    navigator.sendBeacon(config.apiEndpoint + '/track',
-      JSON.stringify(payload)
-    );
-  }
-
-  // 5. Send events
-  window.sealmetrics = {
-    event: function(eventName, eventData) {
-      const payload = {
-        siteId: config.siteId,
-        sessionId: getSession(),
-        type: 'event',
-        eventName: eventName,
-        eventData: eventData,
-        timestamp: new Date().toISOString(),
-      };
-
-      navigator.sendBeacon(config.apiEndpoint + '/track',
-        JSON.stringify(payload)
-      );
-    }
-  };
-
-  // 6. Track initial pageview
-  trackPageview();
-
-  // 7. Track subsequent navigations (SPA support)
-  window.addEventListener('popstate', trackPageview);
-  const originalPushState = history.pushState;
-  history.pushState = function() {
-    originalPushState.apply(this, arguments);
-    trackPageview();
-  };
-})();
-</script>
-
-<!-- Usage examples -->
-<script>
-  // Track signup event
-  document.getElementById('signup-button').addEventListener('click', function() {
-    sealmetrics.event('signup', {
-      plan: 'pro',
-      source: 'pricing_page'
-    });
-  });
-
-  // Track purchase event
-  sealmetrics.event('purchase', {
-    amount: 299,
-    currency: 'USD',
-    product: 'annual_plan'
-  });
-</script>
 ```
 
 ---
@@ -547,15 +441,15 @@ RESULT: 100/100 = 100% data capture
 
 ### Accuracy Comparison Table
 
-| Metric | Google Analytics | Plausible | Matomo | Sealmetrics |
-|--------|-----------------|-----------|--------|------------|
-| **Data Capture Rate (EU)** | 13-40% | 60-75% | 60-75% | **100%** |
-| **Banner Required** | Yes | No | No | **No** |
-| **IP Stored** | Yes | Hashed | Hashed | **No** |
-| **Consent Required** | Yes | No | No | **No** |
-| **Session Expiry** | 2 years | Session-based | 30 mins | **30 days** |
-| **GDPR Compliance** | Requires DPA + consent | Built-in | Built-in | **Built-in** |
-| **Cookie Rejection Impact** | ~87% data loss | ~20% loss | ~20% loss | **0% loss** |
+| Metric | Google Analytics | Other Cookieless Tools | Sealmetrics |
+|--------|-----------------|----------------------|------------|
+| **Data Capture Rate (EU)** | 13-40% | 60-75% | **100%** |
+| **Banner Required** | Yes | No | **No** |
+| **IP Stored** | Yes | Hashed | **No** |
+| **Consent Required** | Yes | No | **No** |
+| **Session Expiry** | 2 years | 30 mins - Session-based | **Session-based** |
+| **GDPR Compliance** | Requires DPA + consent | Built-in | **Built-in** |
+| **Cookie Rejection Impact** | ~87% data loss | ~20% loss | **0% loss** |
 
 **Why Sealmetrics is Superior**:
 - No data loss from cookie rejection
@@ -637,83 +531,6 @@ Day 365: Safari user visits
 
 ---
 
-## Implementation Technical Guide
-
-### Step 1: Copy Tracking Snippet
-
-Get your unique snippet from Sealmetrics dashboard:
-```html
-<script async src="https://cdn.sealmetrics.io/seal.min.js"
-  data-site-id="YOUR_UNIQUE_SITE_ID"></script>
-```
-
-### Step 2: Place in Website
-
-Add to `<head>` section (or top of `<body>`):
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Your Website</title>
-
-  <!-- Sealmetrics - Place early for best coverage -->
-  <script async src="https://cdn.sealmetrics.io/seal.min.js"
-    data-site-id="YOUR_UNIQUE_SITE_ID"></script>
-</head>
-<body>
-  <!-- Your website content -->
-</body>
-</html>
-```
-
-### Step 3: Verify Installation
-```javascript
-// Check console - should show:
-// "Sealmetrics tracking active"
-
-// Or check in Network tab:
-// POST requests to api.sealmetrics.io/track
-```
-
-### Step 4: Add Event Tracking (Optional)
-```javascript
-// Track signup
-document.getElementById('signup-btn').addEventListener('click', () => {
-  sealmetrics.event('signup', {
-    plan_type: 'pro',
-    source_page: 'pricing'
-  });
-});
-
-// Track purchase
-sealmetrics.event('purchase', {
-  amount: 99,
-  currency: 'USD',
-  product: 'annual_plan'
-});
-
-// Track form submission
-document.getElementById('contact-form').addEventListener('submit', () => {
-  sealmetrics.event('form_submitted', {
-    form_type: 'contact',
-    form_page: window.location.pathname
-  });
-});
-```
-
-### Step 5: Check Dashboard
-
-1. Log into Sealmetrics dashboard
-2. Go to Site Settings
-3. Verify tracking code installed
-4. Check Real-Time Analytics (wait 1-2 minutes)
-5. See 100% of traffic appearing
-
-**Unlike Google Analytics, you'll see every visitor - no 87% data loss.**
-
----
-
 ## Why Sealmetrics Wins Over Competitors
 
 ### Technical Superiority
@@ -722,27 +539,20 @@ For detailed platform comparisons, see:
 - [Sealmetrics vs Google Analytics](/blog/google-analytics-vs-sealmetrics)
 - [Sealmetrics vs Plausible](/blog/sealmetrics-vs-plausible)
 
-**Google Analytics**
+**Cookie-Based Analytics (e.g., Google Analytics)**
 - ❌ Loses 87% EU traffic
 - ❌ Requires consent banner
-- ❌ Stores IPs (even GA4)
+- ❌ Stores IPs (even latest versions)
 - ❌ Safari ITP blocks tracking
 - ✓ Excellent for non-GDPR regions
 
-**Plausible**
+**Other Cookieless Tools**
 - ✓ Cookieless approach
 - ✓ No banner needed
-- ⚠️ Hashes IPs (gray area)
-- ✓ Good GDPR stance
+- ⚠️ Hash IPs (gray area)
+- ✓ Privacy-focused
 - ❌ Can miss JS-blocked traffic
-
-**Matomo**
-- ✓ Cookieless option
-- ✓ No banner needed
-- ⚠️ Hashes IPs (gray area)
-- ✓ Great for privacy
-- ❌ Can miss JS-blocked traffic
-- ❌ Self-hosting complexity
+- ❌ Some require self-hosting
 
 **Sealmetrics**
 - ✓ True cookieless (sessions only)
