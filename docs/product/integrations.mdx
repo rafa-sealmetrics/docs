@@ -1,0 +1,295 @@
+---
+sidebar_position: 3
+title: Integrations
+description: Learn how to integrate Sealmetrics with your website, CMS, or web application. Includes Google Tag Manager, WordPress, React, and API integration guides.
+tags: [integrations, google-tag-manager, wordpress, react, api, spa]
+keywords:
+  - sealmetrics integration
+  - google tag manager
+  - wordpress plugin
+  - react integration
+  - spa tracking
+  - api integration
+  - ecommerce tracking
+---
+
+# Integrations
+
+Sealmetrics fits seamlessly into your existing workflow. Whether you're running a simple website or a complex web application, integration takes minutes—not hours.
+
+## Direct Integration Methods
+
+### Manual Script Installation
+
+The fastest way to start tracking. Add one script tag to your website's `<head>` section and you're done.
+
+**Setup time:** 2 minutes
+
+**Perfect for:**
+- Static HTML websites
+- Custom-built applications
+- Direct control over your codebase
+- Developers who prefer manual implementation
+
+Simply copy your unique tracking code from the Sealmetrics dashboard and paste it into your site's header. Start seeing data immediately.
+
+### Google Tag Manager
+
+Deploy Sealmetrics through Google Tag Manager for centralized tag management and easy configuration updates.
+
+**Setup time:** 5 minutes
+
+**Perfect for:**
+- Marketing teams managing multiple tags
+- Organizations using GTM for tag governance
+- Sites that need frequent tracking updates
+- Teams that want non-developer configuration control
+
+**How it works:**
+1. Create a Custom HTML tag in GTM
+2. Add your Sealmetrics tracking code
+3. Set trigger to "All Pages" or customize by page type
+4. Publish your container
+
+Manage all your conversion tracking events directly in GTM without touching site code.
+
+### WordPress Plugin
+
+Native WordPress integration designed specifically for WordPress sites.
+
+**Setup time:** 3 minutes
+
+**Perfect for:**
+- WordPress blogs and content sites
+- WooCommerce stores
+- Multi-site WordPress installations
+- Non-technical users who prefer plugin installation
+
+Install from the WordPress plugin directory or upload manually. Configure your tracking ID in the settings panel and you're tracking immediately.
+
+## Framework-Specific Integration
+
+### React Applications
+
+Full support for Single Page Applications built with React.
+
+**Features:**
+- Automatic route change tracking
+- Virtual page view detection
+- Component-level event tracking
+- State-based conversion tracking
+
+**Implementation:**
+Add the Sealmetrics script to your `index.html` or use dynamic script loading in your React app. Configure route change detection to track navigation in your SPA.
+
+**Perfect for:**
+- React SPAs
+- Next.js applications
+- Create React App projects
+- Complex client-side routing
+
+### Single Page Applications (SPAs)
+
+Works with any SPA framework: Vue, Angular, Svelte, or custom JavaScript.
+
+**Features:**
+- Client-side routing detection
+- Virtual page view tracking
+- History API monitoring
+- Hash-based routing support
+
+Track navigation in modern web apps without page reloads. Sealmetrics automatically detects route changes and records them as page views.
+
+### AJAX Form Tracking
+
+Track form submissions that don't trigger page loads—perfect for modern web applications with async interactions.
+
+**Use cases:**
+- Newsletter signup forms
+- Lead generation forms
+- Contact forms
+- Multi-step forms
+- Chat widgets
+
+Trigger custom events when AJAX forms submit successfully. Measure conversion rates without requiring thank-you pages.
+
+## API Integration
+
+### REST API
+
+Full programmatic access to all your analytics data via REST API.
+
+**Authentication:** Bearer token (secure, simple)
+
+**Available endpoints:**
+- **Acquisition** - Traffic source data
+- **Pages** - Page performance metrics
+- **Conversions** - Goal completion data
+- **ROAS** - Revenue and advertising performance
+- **Funnel** - Conversion funnel analysis
+- **Events** - Custom event tracking data
+
+**Perfect for:**
+- Custom dashboard building
+- Automated reporting systems
+- Data warehouse integration
+- Business intelligence tools
+- Internal analytics platforms
+
+**Response format:** JSON
+
+**Use cases:**
+- Pull data into Google Sheets or Excel
+- Build executive dashboards in Tableau or Power BI
+- Integrate with CRM systems
+- Feed data into data lakes
+- Create custom alert systems
+
+### Data Export
+
+**CSV Export**
+Download any report in CSV format for offline analysis, presentations, or custom processing.
+
+**Use cases:**
+- Monthly executive reports
+- Client deliverables for agencies
+- Custom data analysis in Excel
+- Integration with accounting systems
+- Historical trend analysis
+
+## E-commerce Platform Integration
+
+### E-commerce Tracking
+
+Track revenue, transactions, and product performance across any e-commerce platform.
+
+**Supported event types:**
+- **Purchase events** - Completed transactions with revenue
+- **Add to cart** - Shopping intent tracking
+- **Checkout initiation** - Funnel entry detection
+- **Product views** - Individual SKU performance
+
+**Platform compatibility:**
+- WooCommerce (via WordPress plugin + custom events)
+- Shopify (via script injection)
+- Magento (manual script installation)
+- Custom e-commerce solutions
+- Any platform that supports custom JavaScript
+
+**Implementation:**
+Add e-commerce event tracking to checkout confirmation pages and cart interactions. Revenue automatically attributes to traffic sources for ROI calculation.
+
+## Development & Deployment Workflows
+
+### Version Control Integration
+
+Tracking code lives in your repository alongside your site code. Track analytics configuration changes with git.
+
+**Benefits:**
+- Analytics tracking under version control
+- Audit trail of tracking changes
+- Rollback capability
+- Team collaboration on analytics setup
+
+### Continuous Deployment
+
+Sealmetrics tracking survives deployment pipelines:
+- No breaking changes in tracker updates
+- Backend-controlled updates (no code changes needed)
+- Staging and production environment support
+- Safe to deploy without analytics disruption
+
+### Multiple Environment Support
+
+Use different tracking IDs for:
+- Development environments
+- Staging servers
+- Production sites
+
+Keep test traffic separate from real visitor data.
+
+## Multi-Domain & Multi-Site
+
+### Multiple Website Tracking
+
+Track multiple websites under one Sealmetrics account:
+
+- Each site gets its own tracking ID
+- Separate data streams per domain
+- Consolidated billing
+- Centralized team management
+- Individual site reports
+
+**Perfect for:**
+- Digital agencies managing client sites
+- Companies with multiple product websites
+- Portfolio sites with different domains
+- Franchise operations
+
+### Subdomain Tracking
+
+Automatically track across subdomains:
+
+- `www.example.com`
+- `app.example.com`
+- `blog.example.com`
+- `shop.example.com`
+
+Sessions continue seamlessly as users navigate your entire domain. No special configuration required.
+
+## Third-Party Tool Compatibility
+
+### Compatible With
+
+Sealmetrics works alongside your existing tools:
+
+- **A/B Testing Platforms** - Optimizely, VWO, Google Optimize
+- **Marketing Automation** - HubSpot, Marketo, ActiveCampaign
+- **CRM Systems** - Salesforce, Pipedrive, Zoho
+- **Email Marketing** - Mailchimp, ConvertKit, Sendinblue
+- **Chat Tools** - Intercom, Drift, Crisp
+- **Other Analytics** - Run Sealmetrics alongside GA4, Matomo, or others
+
+No conflicts. No interference. Measure comprehensively.
+
+### What We Don't Integrate With (Yet)
+
+Currently, Sealmetrics does not offer native integrations with:
+
+- Zapier (data available via API)
+- Slack or email webhooks (data available via API)
+- Direct CRM push (export via API instead)
+- Advertising platforms (Google Ads, Facebook Ads)
+- Data warehouses (BigQuery, Redshift)
+
+**Want an integration?** All analytics data is accessible via our REST API. Build custom integrations or let us know what you need.
+
+## Getting Started
+
+### Installation Process
+
+1. **Sign up** for Sealmetrics
+2. **Create a tracking ID** for your website
+3. **Choose your integration method:**
+   - Direct script tag
+   - Google Tag Manager
+   - WordPress plugin
+   - Framework-specific implementation
+4. **Verify tracking** in real-time dashboard
+5. **Configure goals** and conversion tracking
+6. **Start measuring** 100% of your traffic
+
+### Need Help?
+
+- **Documentation:** Complete guides for every integration method
+- **Support:** Email support for technical questions
+- **API Reference:** Full endpoint documentation with examples
+- **Community:** Share implementation patterns with other users
+
+---
+
+**Two minutes to complete data.**
+
+No complex setup. No lengthy configuration. Just add the script and start seeing the full picture of your website traffic.
+
+Ready to integrate? Start your free trial today.
