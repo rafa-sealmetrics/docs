@@ -1,0 +1,357 @@
+---
+sidebar_position: 4
+title: Security & Privacy
+description: Understand Sealmetrics' privacy-by-design architecture, GDPR compliance, data security measures, and why we never collect personal data.
+tags: [security, privacy, gdpr, eprivacy, ccpa, compliance, data-protection]
+keywords:
+  - sealmetrics security
+  - privacy by design
+  - GDPR compliance
+  - data protection
+  - cookieless analytics
+  - anonymous analytics
+  - EU data hosting
+  - no personal data
+---
+
+# Security & Privacy
+
+Sealmetrics was built from the ground up with one core principle: **privacy is not a feature, it's the foundation**. Every architectural decision, every line of code, every system design choice prioritizes user privacy and data security.
+
+## Privacy by Design
+
+### What We Don't Collect (Ever)
+
+Sealmetrics is built on what we **don't** track:
+
+- **No IP addresses** - Not collected, not stored, not processed at any layer
+- **No cookies** - Zero cookies, zero local storage, zero fingerprinting
+- **No persistent identifiers** - No user IDs, device IDs, or tracking tokens
+- **No personal information** - No emails, names, phone numbers, addresses
+- **No user journeys** - Cannot reconstruct individual browsing patterns across sessions
+- **No behavioral profiles** - Cannot build personality or preference models
+- **No cross-site tracking** - Only measures your website, never follows users elsewhere
+- **No sensitive data** - No health information, financial data, political views, religious beliefs
+
+This isn't a marketing claim. It's architecturally impossible for Sealmetrics to identify individual users.
+
+### The Four-Variable System
+
+Every interaction on your website is captured using exactly four data points:
+
+1. **Timestamp** - When the event occurred
+2. **User Agent** - Browser and device type (parsed but never stored)
+3. **Current URL** - The page being viewed
+4. **Referral URL** - Where the visitor came from
+
+That's the complete data set. Nothing more is collected. Nothing more is stored.
+
+### How Anonymization Works
+
+**At Collection:**
+- User agent strings are immediately parsed for browser/device insights
+- The raw user agent is discarded and never stored
+- No fingerprinting algorithms are applied
+- No attempt is made to create persistent identifiers
+
+**At Processing:**
+- Each event is processed in isolation
+- No correlation with other events from the same user
+- Statistical aggregation only
+- Individual-level data is never accessible
+
+**At Storage:**
+- Only aggregate patterns are stored
+- No way to reverse-engineer individual users
+- No raw user-level data persists anywhere in the system
+
+## Legal Compliance by Design
+
+### GDPR Compliance (No Consent Required)
+
+Sealmetrics operates under Article 6(1)(f) of GDPR: **Legitimate Interest**.
+
+**Why no consent is required:**
+- We don't collect personal data as defined by GDPR
+- No IP addresses = no personal identifiers
+- Anonymous aggregate data only
+- No possibility of individual identification
+- Processing is strictly necessary for analytics purposes
+- Minimal data collection approach
+
+**Data retention:** Up to 25 months without requiring user consent.
+
+**Your rights as a data controller:**
+- No GDPR compliance burden from using Sealmetrics
+- No need to update privacy policies for personal data processing
+- No Data Processing Agreement (DPA) required
+- No risk of GDPR violations from analytics
+
+### ePrivacy Directive Compliance (No Cookies = No Consent)
+
+The ePrivacy Directive (Cookie Law) requires consent for cookies and terminal storage.
+
+**Sealmetrics compliance:**
+- Zero cookies used
+- No local storage access
+- No code stored on user devices
+- No fingerprinting techniques
+- No session reconstruction across visits
+
+**Result:** No consent banner required. No data loss from cookie rejection.
+
+### CCPA Compliance
+
+The California Consumer Privacy Act regulates "personal information."
+
+**Sealmetrics compliance:**
+- No personal information collected as defined by CCPA
+- No sale of data (we don't have data to sell)
+- No third-party sharing
+- Anonymous analytics only
+
+**User rights:** Because we don't collect personal information, CCPA disclosure and deletion requirements don't apply.
+
+### PECR Compliance (UK Cookie Law)
+
+The Privacy and Electronic Communications Regulations apply in the UK.
+
+**Sealmetrics compliance:**
+- No cookies or similar technologies
+- No information stored on user devices
+- No access to device information beyond standard HTTP headers
+- Fully compliant without consent requirements
+
+## Data Security Measures
+
+### Infrastructure Security
+
+**Geographic isolation:**
+- All servers located in Dublin, Ireland (EU)
+- No international data transfers
+- EU data protection laws apply
+- No exposure to weaker privacy jurisdictions
+
+**Encryption:**
+- **In transit:** HTTPS/TLS encryption for all data transmission
+- **At rest:** Full encryption of stored data
+- End-to-end encryption throughout the entire system
+
+**Access controls:**
+- Strict role-based access controls
+- Granular permissions system
+- Principle of least privilege
+- Multi-factor authentication for administrative access
+
+**Audit trails:**
+- Complete logging of all system access
+- Operational activity monitoring
+- Security event tracking
+- Compliance audit support
+
+### Operational Security
+
+**Infrastructure redundancy:**
+- Multiple backup systems
+- Automatic failover capabilities
+- Geographic distribution within EU
+- 99.9% uptime SLA
+
+**Security monitoring:**
+- 24/7 system monitoring
+- Intrusion detection systems
+- Automated threat response
+- Regular vulnerability scanning
+
+**Incident response:**
+- Established incident response procedures
+- Security breach protocols
+- Rapid response capabilities
+- Transparent communication commitments
+
+**Regular audits:**
+- Ongoing security assessments
+- Third-party security audits
+- Penetration testing
+- Code security reviews
+
+### Application Security
+
+**Bot filtering:**
+- Sophisticated bot detection algorithms
+- Filters search engine crawlers (Googlebot, Bingbot)
+- Removes monitoring tools and scrapers
+- Blocks datacenter traffic
+- Protects data quality and system resources
+
+**Data validation:**
+- Input sanitization on all endpoints
+- Protection against injection attacks
+- Rate limiting on API endpoints
+- DDoS protection
+
+**Secure API access:**
+- Bearer token authentication
+- Token expiration policies
+- Secure token storage requirements
+- HTTPS-only API endpoints
+
+## Privacy Transparency
+
+### What We Track (The Complete List)
+
+**Page views:**
+- URL visited
+- Timestamp of visit
+- Referring URL
+- Browser type (derived from user agent)
+- Device type (derived from user agent)
+- Operating system (derived from user agent)
+- Country (derived from time zone, not IP)
+- Screen size category
+- Language preference
+
+**Events:**
+- Event name (e.g., "Purchase", "Signup")
+- Event timestamp
+- Associated page URL
+- Optional revenue value
+- Optional custom properties (you define these)
+
+**Sessions (GlobalTracker mode only):**
+- Temporary session ID (expires when browser closes)
+- Session start time
+- Pages viewed in that session only
+- Session duration
+
+**Nothing else.** This is the exhaustive list.
+
+### What We Can't Do (Technical Limitations)
+
+Because of our privacy-first architecture, Sealmetrics **cannot:**
+
+- Identify individual users across sessions
+- Rebuild complete user journeys over time
+- Track users across different websites
+- Create behavioral profiles
+- Correlate visits from the same person
+- Identify returning visitors (across sessions)
+- Determine demographic information
+- Infer sensitive personal attributes
+- Share data with third parties (we don't have data to share)
+- Sell user data (legally impossible—no user data exists)
+
+These aren't policy choices. They're architectural constraints. The system is fundamentally incapable of these actions.
+
+## Why Ad Blockers Don't Block Sealmetrics
+
+Ad blockers target tools that:
+- Build user profiles
+- Track users across websites
+- Serve advertisements
+- Implement behavioral targeting
+- Use known tracking domains
+
+**Sealmetrics doesn't do any of these things:**
+- First-party analytics only (measures your site, not users across sites)
+- No user profiling
+- No advertisements
+- No behavioral targeting
+- Unique domain (app.sealmetrics.com)
+- Doesn't match ad blocker filter patterns
+
+**Result:** Your analytics work for 100% of visitors, even those using privacy tools.
+
+## Privacy Philosophy
+
+### Our Commitment
+
+We believe website owners deserve accurate analytics. We also believe internet users deserve privacy. These goals are not in conflict.
+
+**Our principles:**
+1. **Privacy is non-negotiable** - We will never compromise user privacy for features
+2. **Transparency is mandatory** - We fully disclose what we collect and how it works
+3. **Compliance is inherent** - Privacy compliance is built in, not bolted on
+4. **Security is foundational** - Data security is a system-wide priority
+5. **Users come first** - When in doubt, we choose the more private approach
+
+### Independent Verification
+
+Don't take our word for it:
+
+- **Open documentation** - Our four-variable system is fully documented
+- **Transparent jurisdiction** - European company under strict EU privacy law
+- **Public architecture** - No hidden tracking mechanisms
+- **Legal compliance** - Independently verified GDPR compliance
+- **Source code transparency** - Tracking script is inspectable
+
+### The Sealmetrics Guarantee
+
+We guarantee:
+- We will never collect personal data
+- We will never sell or share your analytics data
+- We will never introduce user-level tracking
+- We will never move infrastructure outside the EU
+- We will always prioritize privacy over features
+
+This isn't just policy. It's who we are.
+
+## Data Governance
+
+### Data ownership
+
+**You own your data.** Period.
+
+- Full access via dashboard and API
+- Export to CSV anytime
+- Delete your account and all data instantly
+- No lock-in, no proprietary formats
+- Complete control over retention
+
+### Data retention
+
+**Default retention:** 25 months
+
+**Your control:**
+- Delete specific date ranges
+- Export before deletion
+- Account deletion removes all data permanently
+- No backups retained after deletion
+
+### Data portability
+
+Export your complete dataset at any time:
+- CSV export for all reports
+- API access for programmatic extraction
+- Standard formats for easy migration
+- No export fees, no restrictions
+
+## Compliance Support
+
+### For Your Legal Team
+
+Sealmetrics simplifies compliance:
+
+- **No DPA required** - No personal data processing = no Data Processing Agreement needed
+- **No privacy policy updates** - No personal data collection to disclose
+- **No consent management** - No consent required for cookieless, anonymous analytics
+- **No DPIA required** - Low privacy risk = no Data Protection Impact Assessment needed
+- **Simple vendor assessment** - Minimal third-party risk to evaluate
+
+### Documentation Available
+
+- Privacy architecture documentation
+- Legal compliance white papers
+- GDPR compliance analysis
+- Security infrastructure overview
+- Audit support materials
+
+---
+
+**Privacy-first analytics isn't a compromise. It's an upgrade.**
+
+Sealmetrics proves you can have complete analytics data, powerful insights, and uncompromising privacy—all at the same time.
+
+**Questions about our privacy or security practices?** Contact our team or review our comprehensive privacy documentation.
+
+Ready to measure your traffic the right way? Start your free trial today.
