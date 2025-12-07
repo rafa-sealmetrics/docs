@@ -29,16 +29,18 @@ The Pages endpoint provides detailed analytics about page views and traffic to y
 
 ### Query Parameters
 
-| Parameter    | Type    | Required | Description |
-|-------------|---------|----------|-------------|
-| account_id  | string  | Yes      | Your account identifier |
-| date_range  | string  | Yes      | Date range (YYYYMMDD,YYYYMMDD or predefined values) |
-| skip        | integer | No       | Records to skip (default: 0) |
-| limit       | integer | No       | Max number of records (default: 100, max: 100) |
-| country     | string  | No       | ISO country code |
-| utm_medium  | string  | No       | Filter by medium |
-| utm_source  | string  | No       | Filter by source |
-| show_utms   | boolean | No       | Display UTM parameters (default: false) |
+| Parameter         | Type    | Required | Description |
+|------------------|---------|----------|-------------|
+| account_id       | string  | Yes      | Your account identifier |
+| date_range       | string  | Yes      | Date range (YYYYMMDD,YYYYMMDD or predefined values like `this_month`, `yesterday`, `last_7_days`, `last_14_days`, `last_30_days`, `last_60_days`, `last_90_days`, `last_month`, `this_week_monday_sunday`, `this_week_sunday_saturday`, `this_year`, `last_year`) |
+| skip             | integer | No       | Records to skip for pagination (default: 0) |
+| limit            | integer | No       | Max number of records to return (default: 1,000, max: 10,000) |
+| country          | string  | No       | Filter by country using ISO 3166-1 alpha-2 code (e.g., "es", "us") |
+| utm_medium       | string  | No       | Filter by medium (e.g., "cpc", "email", "banner") |
+| utm_source       | string  | No       | Filter by traffic source (e.g., "google", "newsletter") |
+| show_utms        | boolean | No       | Display UTM parameters and content grouping in results (default: false) |
+| content_grouping | string  | No       | Filter results by content group name (e.g., "Blog Content", "Product Catalog", "Support Pages", "Purchase Flow") |
+| exclude_countries| string  | No       | Exclude countries using comma-separated ISO 3166-1 alpha-2 codes (e.g., "pt,es") |
 
 ## Example Request
 
@@ -136,9 +138,50 @@ fetch("https://app.sealmetrics.com/api/report/pages?account_id=00000000000000000
 }
 ```
 
+## Filtering by Content Grouping
+
+The `content_grouping` parameter allows you to filter page analytics by content categories. This is useful when you want to analyze specific sections of your website that have been grouped together.
+
+### How Content Grouping Works
+
+When implementing the SealMetrics tracking pixel, you can assign pages to content groups using the `content_grouping` parameter:
+
+```javascript
+var options = {
+  account: '68a4a04603963e02af56487f',
+  event: 'pageview',
+  content_grouping: 'Blog Content',  // Group name
+  use_session: 1,
+};
+```
+
+Once pages are tagged with content groups, you can filter API results to show only pages from specific groups.
+
+### Example: Filter by Content Group
+
+```bash
+curl --location 'https://app.sealmetrics.com/api/report/pages?account_id=000000000000000000001234&date_range=this_month&content_grouping=Blog%20Content&limit=100' \
+--header 'Authorization: Bearer YOUR_TOKEN' \
+--header 'Accept: application/json'
+```
+
+### Common Content Group Examples
+
+- **"Blog Content"** - All blog posts and articles
+- **"Product Catalog"** - Product listing and detail pages
+- **"Support Pages"** - Help documentation and FAQs
+- **"Purchase Flow"** - Checkout and cart pages
+- **"Landing Pages"** - Marketing campaign landing pages
+
+### Using with show_utms Parameter
+
+Set `show_utms=true` to include UTM parameters and content grouping information in the response data, which provides additional context about traffic sources for each page.
+
 ## Notes
 
 - Results are usually sorted by views (descending)
 - Use UTM filters for campaign-specific page insights
-- `show_utms=true` returns detailed UTM breakdown
+- `show_utms=true` returns detailed UTM breakdown including content grouping data
 - Pagination (`skip`, `limit`) is recommended for large sites
+- Content grouping must be configured in your tracking pixel before it can be used as a filter
+- See the [Content Grouping Implementation Guide](/docs/implementation/content-site-structure/content-grouping) for setup instructions
