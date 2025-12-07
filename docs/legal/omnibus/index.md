@@ -288,11 +288,19 @@ The Data Act absorbs provisions from:
 
 - **[Cookie Consent Reform](./cookies-eprivacy.md)** - Detailed analysis of Articles 88a and 88b, cookie banner elimination, and browser signals
 - **[GDPR Amendments](./gdpr-changes.md)** - Personal data definition, AI processing, breach notifications, research exemptions
+- **[Data Law Consolidation](./data-consolidation.md)** - How 5 separate data laws are merged into 2
+- **[Data Intermediation Services](./data-intermediation.md)** - Voluntary regime for trusted data sharing platforms
+
+### Implementation & Compliance
+
+- **[Timeline and Implementation](./timeline-implementation.md)** - Key dates, deadlines, and preparation phases
+- **[SME and Small Mid-Cap Exemptions](./smes-small-midcaps.md)** - Extended protections for companies with up to 749 employees
+- **[Single Entry Point for Incident Reporting](./incident-reporting.md)** - Unified cybersecurity and data breach reporting via ENISA
+
+### Industry Impact
+
 - **[Impact on Web Analytics](./impact-analytics.md)** - How the Omnibus affects analytics providers and website tracking
-
-### Additional Resources
-
-More documents covering other aspects of the Digital Omnibus will be available soon.
+- **[AI Act Amendments](./ai-act-amendments.md)** - GDPR-AI intersection and Article 88c legitimate interest
 
 ## Key Differences from Current Law
 
