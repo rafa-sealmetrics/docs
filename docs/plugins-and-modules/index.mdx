@@ -1,0 +1,182 @@
+---
+sidebar_position: 1
+title: Plugins & Modules Overview
+description: Official SealMetrics integrations for popular platforms
+---
+
+# Plugins & Modules
+
+Official SealMetrics tracking integrations for popular e-commerce and content management platforms. All integrations are free, open-source, and designed with privacy in mind.
+
+## Quick Links
+
+| Platform | Type | Download |
+|----------|------|----------|
+| [WooCommerce](./woocommerce) | E-commerce | [Download Plugin](https://github.com/sealmetrics/docs/tree/main/integrations/ecommerce/woocommerce) |
+| [PrestaShop](./prestashop) | E-commerce | [Download Module](https://github.com/sealmetrics/docs/tree/main/integrations/ecommerce/prestashop) |
+| [Magento 2](./magento2) | E-commerce | [Download Module](https://github.com/sealmetrics/docs/tree/main/integrations/ecommerce/magento2) |
+| [BigCommerce](./bigcommerce) | E-commerce | [Download Script](https://github.com/sealmetrics/docs/tree/main/integrations/ecommerce/bigcommerce) |
+| [WordPress](./wordpress) | Lead Tracking | [Download Plugin](https://github.com/sealmetrics/docs/tree/main/integrations/leads/wordpress) |
+| [Webflow](./webflow) | Lead Tracking | [Download Script](https://github.com/sealmetrics/docs/tree/main/integrations/leads/webflow) |
+
+## E-commerce Integrations
+
+Complete e-commerce tracking for online stores. Track the entire customer journey from product discovery to purchase.
+
+### What's Tracked
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `pageview` | Pageview | Every page load |
+| `product_view` | Microconversion | Product detail page visits |
+| `add-to-cart` | Microconversion | Items added to shopping cart |
+| `checkout1` | Microconversion | Checkout initiated |
+| `checkout2` | Microconversion | Customer info entered |
+| `checkout3` | Microconversion | Payment method selected |
+| `purchase` | Conversion | Order completed |
+
+### Supported Platforms
+
+<div className="row">
+  <div className="col col--6">
+    <div className="card margin-bottom--md">
+      <div className="card__header">
+        <h3>🛒 WooCommerce</h3>
+      </div>
+      <div className="card__body">
+        <p>WordPress plugin for WooCommerce stores. Full support for simple and variable products.</p>
+      </div>
+      <div className="card__footer">
+        <a className="button button--primary button--block" href="./woocommerce">View Documentation</a>
+      </div>
+    </div>
+  </div>
+  <div className="col col--6">
+    <div className="card margin-bottom--md">
+      <div className="card__header">
+        <h3>🛍️ PrestaShop</h3>
+      </div>
+      <div className="card__body">
+        <p>Native PrestaShop module compatible with versions 1.7 and 8.x.</p>
+      </div>
+      <div className="card__footer">
+        <a className="button button--primary button--block" href="./prestashop">View Documentation</a>
+      </div>
+    </div>
+  </div>
+  <div className="col col--6">
+    <div className="card margin-bottom--md">
+      <div className="card__header">
+        <h3>🧱 Magento 2</h3>
+      </div>
+      <div className="card__body">
+        <p>Full Magento 2 module with observer-based tracking and Knockout.js integration.</p>
+      </div>
+      <div className="card__footer">
+        <a className="button button--primary button--block" href="./magento2">View Documentation</a>
+      </div>
+    </div>
+  </div>
+  <div className="col col--6">
+    <div className="card margin-bottom--md">
+      <div className="card__header">
+        <h3>🏪 BigCommerce</h3>
+      </div>
+      <div className="card__body">
+        <p>JavaScript-based integration via Script Manager. Works with Stencil themes.</p>
+      </div>
+      <div className="card__footer">
+        <a className="button button--primary button--block" href="./bigcommerce">View Documentation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Lead Tracking Integrations
+
+Track form submissions and lead conversions on content sites, landing pages, and blogs.
+
+### What's Tracked
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `pageview` | Pageview | Every page load |
+| `lead` | Conversion | Form submission |
+
+### Supported Platforms
+
+<div className="row">
+  <div className="col col--6">
+    <div className="card margin-bottom--md">
+      <div className="card__header">
+        <h3>📝 WordPress</h3>
+      </div>
+      <div className="card__body">
+        <p>Track form submissions from Contact Form 7, WPForms, Gravity Forms, Ninja Forms, and native HTML forms.</p>
+      </div>
+      <div className="card__footer">
+        <a className="button button--primary button--block" href="./wordpress">View Documentation</a>
+      </div>
+    </div>
+  </div>
+  <div className="col col--6">
+    <div className="card margin-bottom--md">
+      <div className="card__header">
+        <h3>🎨 Webflow</h3>
+      </div>
+      <div className="card__body">
+        <p>JavaScript snippet for Webflow sites. Automatically detects Webflow form submissions.</p>
+      </div>
+      <div className="card__footer">
+        <a className="button button--primary button--block" href="./webflow">View Documentation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Common Features
+
+All integrations share these features:
+
+### Privacy First
+
+- ❌ No order IDs or transaction IDs stored
+- ❌ No email addresses collected
+- ❌ No personal identifiable information (PII)
+- ✅ GDPR compliant by design
+- ✅ No cookies required
+
+### Consistent Architecture
+
+- **Single script load** - SealMetrics JS loaded once (async)
+- **Global event queue** - `window.sealmetricsTrack` array
+- **Pageview first** - Always fires before other events
+- **Debug mode** - Console logging for troubleshooting
+
+### Attribute Normalization
+
+Product attributes are automatically normalized for cross-platform analytics:
+
+| Original Values | Normalized To |
+|----------------|---------------|
+| color, colour, colore, couleur, farbe | `colour` |
+| size, talla, taille, größe, grosse | `size` |
+| material, materiale, matière | `material` |
+| weight, peso, poids | `weight` |
+
+## Installation Requirements
+
+| Platform | Requirements |
+|----------|-------------|
+| WooCommerce | WordPress 5.0+, WooCommerce 5.0+, PHP 7.4+ |
+| PrestaShop | PrestaShop 1.7.0 - 8.x, PHP 7.4+ |
+| Magento 2 | Magento 2.4+, PHP 7.4+ |
+| BigCommerce | Stencil theme, Script Manager access |
+| WordPress | WordPress 5.0+, PHP 7.4+ |
+| Webflow | Custom Code access (paid plan) |
+
+## Getting Help
+
+- **Documentation**: Browse the platform-specific guides above
+- **Email Support**: support@sealmetrics.com
+- **GitHub**: [Report issues](https://github.com/sealmetrics/docs/issues)

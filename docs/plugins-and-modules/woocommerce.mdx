@@ -1,0 +1,287 @@
+---
+sidebar_position: 2
+title: WooCommerce
+description: Track e-commerce events on your WooCommerce store
+---
+
+# WooCommerce Plugin
+
+The SealMetrics WooCommerce plugin provides complete e-commerce tracking for your WordPress + WooCommerce store. Track every step of the customer journey from product views to completed purchases with full privacy compliance.
+
+:::tip Download Plugin
+**[Download WooCommerce Plugin](https://github.com/sealmetrics/docs/tree/main/integrations/ecommerce/woocommerce)** • Version 1.0.0
+
+**Requirements:** WordPress 5.0+, WooCommerce 5.0+, PHP 7.4+
+:::
+
+## Installation
+
+1. Download the plugin file `sealmetrics-tracking.php`
+2. Upload to `/wp-content/plugins/sealmetrics-tracking/`
+3. Log in to your **WordPress Admin Dashboard**
+4. Navigate to **Plugins** > **Installed Plugins**
+5. Find "SealMetrics Tracking for WooCommerce"
+6. Click **Activate**
+7. Go to **Settings** > **SealMetrics**
+8. Enter your **SealMetrics Account ID**
+9. Save settings
+
+## Configuration
+
+After installation:
+
+1. Go to **Settings** > **SealMetrics** in WordPress admin
+2. Enter your **SealMetrics Account ID** (required)
+3. Optionally enable **Debug Mode** for testing
+4. Click **Save Changes**
+
+## Events Tracked
+
+### Pageview
+
+Automatically tracked on every page load across your store.
+
+**Data collected:**
+- Session tracking enabled
+
+### Product View
+
+Fired when a customer views a single product page, including variable products with selected options.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Product SKU
+- Product price (excluding tax)
+- Selected variation attributes (colour, size, material, weight)
+
+### Add to Cart
+
+Tracked when a customer adds a product to their cart. Supports multiple scenarios:
+
+**Event type:** Microconversion
+
+**Tracking methods:**
+- Product page form submissions
+- AJAX add-to-cart from shop/archive pages
+- Variable product selections
+- Quick view add-to-cart
+
+**Data collected:**
+- Product SKU
+- Product price (excluding tax)
+- Quantity added
+- Selected variation attributes (colour, size, material, weight)
+
+### Checkout Funnel
+
+The module tracks three distinct checkout steps:
+
+#### Checkout Step 1 - Checkout Page Load
+Fired when a customer lands on the checkout page.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Total cart value (excluding tax)
+- All product SKUs in cart
+- Total item count
+- Product attributes for all items
+
+#### Checkout Step 2 - Billing Details
+Fired when customer fills out billing information.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Total cart value (excluding tax)
+- All product SKUs in cart
+- Total item count
+- Product attributes for all items
+
+#### Checkout Step 3 - Payment Method
+Fired when a customer selects a payment method or clicks place order.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Total cart value (excluding tax)
+- All product SKUs in cart
+- Total item count
+- Product attributes for all items
+
+### Purchase
+
+Tracked on the order thank you page after a successful purchase.
+
+**Event type:** Conversion
+
+**Data collected:**
+- Order total (excluding tax)
+- All product SKUs purchased
+- Order currency
+- Total item count
+- Product attributes (colour, size, etc.) for all items
+
+## Information Stored
+
+The WooCommerce module collects and sends the following information to SealMetrics:
+
+### Product Information
+- **SKU**: Product identifier
+- **Price**: Always excluding tax using `wc_get_price_excluding_tax()`
+- **Attributes**: Product attributes and variation attributes (colour, size, material, weight)
+- **Quantity**: Number of items added or purchased
+- **Variation Data**: Selected variation attributes for variable products
+
+### Order Information
+- **Total Amount**: Order or cart total (excluding tax)
+- **Currency**: Currency code (USD, EUR, GBP, etc.)
+- **Item Count**: Total quantity of products
+- **Product List**: Comma-separated list of all SKUs
+
+### Privacy & Compliance
+
+The plugin does **NOT** collect or store:
+- Order IDs or order numbers
+- Customer names or email addresses
+- Shipping or billing addresses
+- Payment information
+- Customer IDs
+- Any personally identifiable information (PII)
+
+All tracking is completely anonymous and privacy-compliant.
+
+## Technical Features
+
+### Product Support
+- Simple products
+- Variable products with all attribute combinations
+- Variation products
+- Grouped products
+- External/affiliate products
+- Proper attribute normalization across all product types
+
+### WooCommerce Hooks Used
+- `wp_footer` - Loads tracking script
+- `woocommerce_after_single_product` - Tracks product views
+- `woocommerce_add_to_cart` - Tracks add-to-cart (server-side)
+- `woocommerce_ajax_added_to_cart` - Tracks AJAX add-to-cart
+- `woocommerce_thankyou` - Tracks purchases
+
+### Compatibility
+- WooCommerce 5.0+
+- WordPress 5.0+
+- Compatible with HPOS (High-Performance Order Storage)
+- Works with most WooCommerce themes
+- Compatible with popular page builders
+
+### Attribute Normalization
+Automatically normalizes WooCommerce product attributes:
+- `pa_color` → `colour`
+- `pa_colour` → `colour`
+- `pa_size` → `size`
+- `pa_material` → `material`
+- `pa_weight` → `weight`
+
+Custom attributes are also supported and normalized.
+
+### AJAX Cart Support
+Full support for AJAX add-to-cart functionality:
+- Shop page quick add buttons
+- Archive page add-to-cart
+- Custom theme AJAX implementations
+
+## Use Cases
+
+### E-commerce Stores
+Track the complete shopping journey:
+- Product browsing behavior
+- Add-to-cart conversion rates
+- Checkout abandonment points
+- Purchase completion
+
+### Conversion Funnel Analysis
+Identify where customers drop off:
+- Product view → Add to cart rate
+- Add to cart → Checkout rate
+- Checkout → Purchase rate
+
+### Product Performance
+Measure individual product success:
+- Most viewed products
+- Products added to cart
+- Products purchased
+- Average order values by product
+
+## Troubleshooting
+
+### Events not appearing in dashboard
+
+1. Verify plugin is activated in **Plugins** page
+2. Check that Account ID is saved in **Settings** > **SealMetrics**
+3. Clear WordPress cache (if using caching plugin)
+4. Enable Debug Mode and check browser console for errors
+5. Test with default WooCommerce theme (Storefront) to rule out theme conflicts
+
+### Add-to-cart not tracking
+
+1. Check if theme overrides WooCommerce templates
+2. Test AJAX vs non-AJAX add-to-cart separately
+3. Look for JavaScript errors in browser console
+4. Verify WooCommerce hooks are firing (use Query Monitor plugin)
+
+### Variable product attributes not captured
+
+1. Ensure product variations are properly configured
+2. Check that attributes are set as "Visible on the product page"
+3. Verify variation has a SKU assigned
+4. Test with a simple product first to isolate the issue
+
+### Checkout steps missing
+
+1. Verify checkout page is using standard WooCommerce checkout
+2. Check if theme or plugin customizes checkout process
+3. Test with default WooCommerce checkout flow
+4. Look for JavaScript errors during checkout
+
+### Duplicate purchases
+
+The plugin prevents duplicates using order meta data. If you see duplicates:
+1. Clear browser cache and test in incognito mode
+2. Verify the plugin is only installed once
+3. Check that no other SealMetrics scripts are present
+4. Look for order meta `_sealmetrics_tracked` in order details
+
+### HPOS Compatibility
+
+If using WooCommerce's High-Performance Order Storage:
+1. The plugin is fully compatible with HPOS
+2. No special configuration needed
+3. Order meta is properly stored in HPOS tables
+
+## Best Practices
+
+### Testing
+1. Enable Debug Mode during initial setup
+2. Test each event type (product view, add-to-cart, checkout, purchase)
+3. Test with both simple and variable products
+4. Verify events appear in SealMetrics dashboard
+5. Disable Debug Mode for production
+
+### Performance
+The plugin is optimized for performance:
+- Lightweight code with minimal overhead
+- Asynchronous script loading
+- No impact on page load times
+- Efficient database queries
+
+### Variable Products
+For best results with variable products:
+- Always assign SKUs to variations
+- Use consistent attribute naming
+- Keep attribute names simple (colour, size, etc.)
+
+## Support
+
+For installation help or technical issues, contact support@sealmetrics.com

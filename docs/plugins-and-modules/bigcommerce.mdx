@@ -1,0 +1,178 @@
+---
+sidebar_position: 5
+title: BigCommerce
+description: Track e-commerce events on your BigCommerce store
+---
+
+# BigCommerce Integration
+
+The SealMetrics BigCommerce integration provides comprehensive e-commerce tracking for your BigCommerce store. Track customer behavior from product views through to completed purchases, all while maintaining complete privacy compliance.
+
+:::tip Download Script
+**[Download BigCommerce Script](https://github.com/sealmetrics/docs/tree/main/integrations/ecommerce/bigcommerce)** • Version 1.0.0
+
+**Requirements:** BigCommerce Stencil theme, Script Manager access
+:::
+
+## Installation
+
+### Method 1: Script Manager (Recommended)
+
+1. Log in to your **BigCommerce Admin Panel**
+2. Navigate to **Storefront** > **Script Manager**
+3. Click **Create a Script**
+4. Configure the script:
+   - **Name**: SealMetrics Tracking
+   - **Location**: Head
+   - **Pages**: All Pages
+   - **Script type**: Script
+5. Paste the embed snippet code
+6. Replace `YOUR_ACCOUNT_ID` with your SealMetrics Account ID
+7. Click **Save**
+
+### Method 2: Theme Files (Advanced)
+
+1. Go to **Storefront** > **My Themes**
+2. Click **Advanced** > **Edit Theme Files**
+3. Navigate to `templates/layout/base.html`
+4. Add the tracking script before the closing `</head>` tag
+5. Save and publish your theme
+
+## Events Tracked
+
+### Pageview
+
+Automatically tracked on every page load across your store.
+
+**Data collected:**
+- Session tracking enabled
+
+### Product View
+
+Fired when a customer views a product detail page.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Product SKU
+- Product price (excluding tax)
+- Selected product attributes (colour, size, material, weight)
+
+### Add to Cart
+
+Tracked when a customer adds a product to their shopping cart.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Product SKU
+- Product price (excluding tax)
+- Quantity added
+- Selected product attributes (colour, size, material, weight)
+
+### Checkout Funnel
+
+The module tracks three distinct checkout steps:
+
+#### Checkout Step 1 - Cart Page
+Fired when a customer views their shopping cart.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Total cart value (excluding tax)
+- All product SKUs in cart
+- Total item count
+
+#### Checkout Step 2 - Customer Information
+Fired when customer proceeds to checkout and begins entering their information.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Total cart value (excluding tax)
+- All product SKUs in cart
+- Total item count
+
+#### Checkout Step 3 - Payment Selection
+Fired when a customer selects a payment method or clicks place order.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Total cart value (excluding tax)
+- All product SKUs in cart
+- Total item count
+
+### Purchase
+
+Tracked on the order confirmation page after a successful purchase.
+
+**Event type:** Conversion
+
+**Data collected:**
+- Order total (excluding tax)
+- All product SKUs purchased
+- Order currency
+- Total item count
+- Product attributes (colour, size, etc.) for all items
+
+## Information Stored
+
+The BigCommerce module collects and sends the following information to SealMetrics:
+
+### Product Information
+- **SKU**: Product identifier or reference code
+- **Price**: Always excluding tax for accurate reporting
+- **Attributes**: Product options like colour, size, material, and weight
+- **Quantity**: Number of items added or purchased
+
+### Order Information
+- **Total Amount**: Order or cart total (excluding tax)
+- **Currency**: Currency code (USD, EUR, GBP, etc.)
+- **Item Count**: Total number of products in cart or order
+- **Product List**: Comma-separated list of all SKUs
+
+### Privacy & Compliance
+
+The module does **NOT** collect or store:
+- Order IDs or transaction numbers
+- Customer names or email addresses
+- Shipping or billing addresses
+- Payment information
+- Any personally identifiable information (PII)
+
+All tracking is completely anonymous and privacy-compliant.
+
+## Compatibility
+
+- **BigCommerce Stencil themes**: Full support
+- **BigCommerce Blueprint themes**: Limited support
+- **Optimized checkout**: Supported
+- **Custom checkouts**: May require additional configuration
+
+## Troubleshooting
+
+### Events not appearing in dashboard
+
+1. Enable debug mode in the script configuration
+2. Open your browser console (F12)
+3. Look for `[SealMetrics]` log messages
+4. Verify your Account ID is correctly configured
+
+### Product data not captured
+
+1. Verify the product has a SKU assigned in BigCommerce admin
+2. Check if JSON-LD structured data exists on product pages
+3. Look for JavaScript errors in the browser console
+
+### Duplicate purchases showing
+
+The module automatically prevents duplicate purchase tracking. If you see duplicates:
+1. Check localStorage for the `sm_purch` key
+2. Clear browser cache and test again
+3. Ensure the tracking script is only loaded once
+
+## Support
+
+For installation help or technical issues, contact support@sealmetrics.com

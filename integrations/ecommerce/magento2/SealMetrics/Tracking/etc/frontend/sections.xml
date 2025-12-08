@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SealMetrics Tracking Module for Magento 2
+ * Customer Data Sections Configuration
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
+    <!-- Invalidate sealmetrics section on cart actions -->
+    <action name="checkout/cart/add">
+        <section name="sealmetrics"/>
+    </action>
+    <action name="checkout/cart/delete">
+        <section name="sealmetrics"/>
+    </action>
+    <action name="checkout/cart/updatePost">
+        <section name="sealmetrics"/>
+    </action>
+</config>

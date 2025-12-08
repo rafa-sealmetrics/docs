@@ -1,0 +1,63 @@
+<?php
+/**
+ * SealMetrics Tracking Module for Magento 2
+ * Head Template - Script loader and queue initialization
+ *
+ * @var \SealMetrics\Tracking\Block\Tracking $block
+ */
+
+if (!$block->isEnabled() || !$block->getAccountId()) {
+    return;
+}
+
+$accountId = $block->escapeJs($block->getAccountId());
+$debug = $block->isDebugMode() ? 'true' : 'false';
+?>
+<script>
+(function() {
+    window.sealmetricsTrack = window.sealmetricsTrack || [];
+    window.sealmetricsDebug = <?= /* @noEscape */ $debug ?>;
+    window.sealmetricsLoaded = false;
+    window.sealmetricsPageviewSent = false;
+
+    function smLog(message, data) {
+        if (window.sealmetricsDebug && console && console.log) {
+            console.log('[SealMetrics]', message, data || '');
+        }
+    }
+
+    window.smLog = smLog;
+
+    function processQueue() {
+        if (typeof sealmetrics !== 'undefined' && typeof sealmetrics.track === 'function') {
+            while (window.sealmetricsTrack.length > 0) {
+                var event = window.sealmetricsTrack.shift();
+                smLog('Processing event:', event);
+                sealmetrics.track(event);
+            }
+        }
+    }
+
+    var originalPush = window.sealmetricsTrack.push;
+    window.sealmetricsTrack.push = function() {
+        var result = originalPush.apply(this, arguments);
+        if (window.sealmetricsLoaded) {
+            processQueue();
+        }
+        return result;
+    };
+
+    var script = document.createElement('script');
+    script.src = 'https://cdn.sealmetrics.com/<?= /* @noEscape */ $accountId ?>/sm.js';
+    script.async = true;
+    script.onload = function() {
+        window.sealmetricsLoaded = true;
+        smLog('Script loaded');
+        processQueue();
+    };
+    script.onerror = function() {
+        smLog('Failed to load SealMetrics script');
+    };
+    document.head.appendChild(script);
+})();
+</script>

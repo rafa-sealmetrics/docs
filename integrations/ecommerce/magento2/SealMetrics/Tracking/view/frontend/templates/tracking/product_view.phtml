@@ -1,0 +1,112 @@
+<?php
+/**
+ * SealMetrics Tracking Module for Magento 2
+ * Product View Template - product_view microconversion event
+ *
+ * @var \SealMetrics\Tracking\Block\ProductView $block
+ */
+
+if (!$block->isEnabled()) {
+    return;
+}
+
+$productData = $block->getProductDataJson();
+$attributeMap = $block->getAttributeMapJson();
+
+if ($productData === '{}') {
+    return;
+}
+?>
+<script>
+(function() {
+    var productData = <?= /* @noEscape */ $productData ?>;
+    var attributeMap = <?= /* @noEscape */ $attributeMap ?>;
+
+    // Fire product_view event
+    var event = {
+        event: 'microconversion',
+        label: 'product_view',
+        amount: productData.price,
+        properties: productData.properties
+    };
+
+    window.smLog('Queueing product_view:', event);
+    window.sealmetricsTrack.push(event);
+
+    // Store product data for add-to-cart tracking
+    window.sealmetricsProductData = productData;
+
+    // Normalize attribute name helper
+    function normalizeAttrName(name) {
+        name = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (attributeMap[name]) {
+            return attributeMap[name];
+        }
+        return name;
+    }
+
+    // Listen for swatch/option changes to update product data
+    require(['jquery'], function($) {
+        $(document).on('change', '[data-role="swatch-options"] select, .swatch-attribute select', function() {
+            var attrs = {};
+            $('[data-role="swatch-options"] select, .swatch-attribute select').each(function() {
+                var label = $(this).closest('.swatch-attribute').find('.swatch-attribute-label').text() ||
+                           $(this).attr('data-attribute-code') || '';
+                var value = $(this).find('option:selected').text() || '';
+
+                if (label && value) {
+                    var normalizedName = normalizeAttrName(label.trim());
+                    attrs[normalizedName] = value.trim();
+                }
+            });
+
+            // Also check radio/swatch inputs
+            $('.swatch-attribute input:checked').each(function() {
+                var label = $(this).closest('.swatch-attribute').find('.swatch-attribute-label').text() || '';
+                var value = $(this).attr('data-option-label') || $(this).val() || '';
+
+                if (label && value) {
+                    var normalizedName = normalizeAttrName(label.trim());
+                    attrs[normalizedName] = value.trim();
+                }
+            });
+
+            // Update stored product data
+            if (window.sealmetricsProductData) {
+                window.sealmetricsProductData.properties = Object.assign(
+                    {},
+                    window.sealmetricsProductData.properties,
+                    attrs
+                );
+            }
+        });
+
+        // Handle swatch clicks
+        $(document).on('click', '.swatch-option', function() {
+            setTimeout(function() {
+                var attrs = {};
+                $('.swatch-attribute').each(function() {
+                    var label = $(this).find('.swatch-attribute-label').text() || '';
+                    var selected = $(this).find('.swatch-option.selected');
+                    var value = selected.attr('data-option-label') ||
+                               selected.attr('aria-label') ||
+                               selected.attr('title') || '';
+
+                    if (label && value) {
+                        var normalizedName = normalizeAttrName(label.trim());
+                        attrs[normalizedName] = value.trim();
+                    }
+                });
+
+                if (window.sealmetricsProductData) {
+                    window.sealmetricsProductData.properties = Object.assign(
+                        {},
+                        window.sealmetricsProductData.properties,
+                        attrs
+                    );
+                }
+            }, 100);
+        });
+    });
+})();
+</script>

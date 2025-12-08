@@ -1,0 +1,329 @@
+---
+sidebar_position: 6
+title: WordPress
+description: Track form submissions and lead conversions on your WordPress site
+---
+
+# WordPress Plugin (Lead Tracking)
+
+The SealMetrics WordPress plugin tracks form submissions and lead conversions on your WordPress site. Perfect for blogs, business websites, landing pages, and any WordPress site that uses forms to generate leads.
+
+:::tip Download Plugin
+**[Download WordPress Plugin](https://github.com/sealmetrics/docs/tree/main/integrations/leads/wordpress)** • Version 1.0.0
+
+**Requirements:** WordPress 5.0+, PHP 7.4+
+:::
+
+## Installation
+
+1. Download the plugin file `sealmetrics-tracking.php`
+2. Upload to `/wp-content/plugins/sealmetrics-tracking/`
+3. Log in to your **WordPress Admin Dashboard**
+4. Navigate to **Plugins** > **Installed Plugins**
+5. Find "SealMetrics Tracking"
+6. Click **Activate**
+7. Go to **Settings** > **SealMetrics**
+8. Enter your **SealMetrics Account ID**
+9. Configure your conversion label (default: "lead")
+10. Save settings
+
+## Configuration
+
+After installation, configure the plugin:
+
+1. Go to **Settings** > **SealMetrics** in WordPress admin
+2. Enter your **SealMetrics Account ID** (required)
+3. Set your **Conversion Label** (default: "lead")
+4. Optionally enable tracking of:
+   - Page path
+   - Page title
+   - Page type
+5. Click **Save Changes**
+
+The settings page will show which form plugins are detected on your site.
+
+## Events Tracked
+
+### Pageview
+
+Automatically tracked on every page load across your site.
+
+**Data collected:**
+- Session tracking enabled
+
+### Lead Conversion
+
+Fired when a visitor successfully submits a form through any of the supported form plugins.
+
+**Event type:** Conversion
+
+**Data collected:**
+- Form identifier (e.g., `cf7_123`, `wpforms_456`)
+- Page type (optional: home, landing_page, page, post, archive, search, other)
+- Page slug (optional)
+- Page path (optional)
+- Page title (optional)
+
+## Supported Form Plugins
+
+The WordPress module automatically detects and tracks submissions from these popular form plugins:
+
+### Contact Form 7
+- **Detection method**: JavaScript event `wpcf7mailsent`
+- **Form ID format**: `cf7_{form_id}`
+- **Support**: Full support for all form types
+
+### WPForms
+- **Detection method**: JavaScript event `wpformsAjaxSubmitSuccess`
+- **Form ID format**: `wpforms_{form_id}`
+- **Support**: All form types including Lite and Pro
+
+### Gravity Forms
+- **Detection method**: JavaScript event `gform_confirmation_loaded`
+- **Form ID format**: `gf_{form_id}`
+- **Support**: All form types and confirmation types
+
+### Ninja Forms
+- **Detection method**: JavaScript events and Marionette radio
+- **Form ID format**: `nf_{form_id}`
+- **Support**: All form types including multi-step forms
+
+### Formidable Forms
+- **Detection method**: JavaScript event `frmFormComplete`
+- **Form ID format**: `frm_{form_id}`
+- **Support**: All form types and submission methods
+
+### Elementor Forms
+- **Detection method**: Submit success class detection
+- **Form ID format**: `elementor_{form_name}`
+- **Support**: All Elementor form widgets
+
+### Native HTML Forms
+- **Detection method**: Automatic form detection
+- **Form ID format**: `html_{form_name or index}`
+- **Support**: Forms with email, name, or message fields
+
+## Information Stored
+
+The WordPress module collects and sends the following information to SealMetrics:
+
+### Form Information
+- **Form Name**: Identifier for the form (plugin type + form ID)
+- **Form Plugin**: Which form plugin was used (Contact Form 7, WPForms, etc.)
+
+### Page Context (Optional)
+- **Page Type**: Type of page where form was submitted (configurable in settings)
+  - `home` - Homepage
+  - `landing_page` - Landing pages
+  - `page` - Standard pages
+  - `post` - Blog posts
+  - `archive` - Archive pages
+  - `search` - Search results
+  - `other` - Other page types
+- **Page Slug**: Current page or post slug
+- **Page Path**: URL pathname
+- **Page Title**: Document title
+
+### Privacy & Compliance
+
+The plugin does **NOT** collect or store:
+- Form field values or user input
+- Email addresses
+- Names
+- Phone numbers
+- Messages or comments
+- Any personally identifiable information (PII)
+
+Only form identifiers and page context are tracked. All form data remains private and is handled by the form plugin.
+
+## Technical Features
+
+### Automatic Form Detection
+
+The plugin uses multiple detection methods:
+1. **JavaScript Event Listeners**: Hooks into form plugin success events
+2. **Server-Side Backup**: Tracks AJAX form submissions as fallback
+3. **HTML Form Detection**: Automatically identifies native HTML forms
+
+### Tracking Methods
+
+#### AJAX Forms
+Most modern form plugins use AJAX:
+- Contact Form 7: `wpcf7mailsent` event
+- WPForms: `wpformsAjaxSubmitSuccess` event
+- Gravity Forms: `gform_confirmation_loaded` event
+- Ninja Forms: `nfFormSubmitResponse` event
+- Formidable Forms: `frmFormComplete` event
+- Elementor Forms: Success class detection
+
+#### Non-AJAX Forms
+Traditional form submissions are also tracked:
+- Server-side detection using WordPress hooks
+- Action parameter detection
+- Success redirect tracking
+
+### Compatibility
+- WordPress 5.0+
+- All major form plugins (see list above)
+- Compatible with page builders (Elementor, Divi, Beaver Builder, etc.)
+- Works with caching plugins
+- Multisite compatible
+
+## Use Cases
+
+### Lead Generation
+Track form submissions to measure lead generation:
+- Contact forms
+- Request a quote forms
+- Newsletter signups
+- Demo requests
+- Free trial registrations
+
+### Content Performance
+Measure which content generates leads:
+- Blog posts with embedded forms
+- Landing pages
+- Service pages
+- Product pages with inquiry forms
+
+### Campaign Tracking
+Track effectiveness of marketing campaigns:
+- PPC landing page forms
+- Email campaign forms
+- Social media campaign forms
+- Content marketing lead magnets
+
+### Multi-Step Forms
+Track completion of complex forms:
+- Multi-page contact forms
+- Application forms
+- Survey forms with lead capture
+
+## Troubleshooting
+
+### Forms not tracking
+
+1. Check that the plugin is activated
+2. Verify Account ID is saved in settings
+3. Check the Settings page to see which form plugins are detected
+4. Open browser console (F12) and submit a test form
+5. Look for SealMetrics event messages
+6. Clear cache if using a caching plugin
+
+### Specific form plugin not working
+
+1. Verify the form plugin is active and updated
+2. Check if form plugin appears in **Settings** > **SealMetrics** detected plugins list
+3. Test with a simple form first
+4. Look for JavaScript errors in console
+5. Try disabling other plugins to identify conflicts
+
+### Page context not capturing
+
+1. Enable page tracking options in **Settings** > **SealMetrics**
+2. Verify page has proper WordPress post type
+3. Check that permalink structure is set (not default `?p=123`)
+4. Test with a standard post or page first
+
+### Duplicate conversions
+
+The plugin includes JavaScript-side deduplication. If you see duplicates:
+1. Clear browser cache and test in incognito mode
+2. Verify the plugin is only installed once
+3. Check that no other SealMetrics scripts are present on the site
+4. Disable any form submission tracking in theme or other plugins
+
+### Multi-Step Forms
+
+For multi-step forms:
+1. The plugin tracks final submission only (not intermediate steps)
+2. Ensure form plugin fires success event on completion
+3. Some multi-step forms may need custom tracking implementation
+
+### AJAX vs Non-AJAX Submissions
+
+If forms use both AJAX and traditional submissions:
+1. The plugin handles both methods automatically
+2. Check which method your form uses in form plugin settings
+3. Test both submission methods if available
+
+## Advanced Configuration
+
+### Custom Conversion Labels
+
+Use different conversion labels for different purposes:
+- `lead` - General lead forms
+- `contact` - Contact forms
+- `quote` - Quote request forms
+- `demo` - Demo request forms
+- `newsletter` - Newsletter signups
+
+Change this in **Settings** > **SealMetrics** > **Conversion Label**
+
+### Page Type Customization
+
+Control which page types to track:
+1. Enable "Track page type" in settings
+2. Use WordPress conditional tags
+3. Forms on any page type will be tracked with appropriate context
+
+### Multiple Forms Per Page
+
+If you have multiple forms on one page:
+- Each form is tracked separately
+- Form IDs differentiate between forms
+- All forms on the page will be tracked
+
+## Best Practices
+
+### Form Naming
+Give your forms descriptive names in the form builder:
+- "Contact Form - Homepage"
+- "Quote Request - Services Page"
+- "Newsletter Signup - Footer"
+
+This makes identification easier in your SealMetrics dashboard.
+
+### Testing
+Before going live:
+1. Submit test forms on different pages
+2. Check that conversions appear in SealMetrics dashboard
+3. Test each form plugin separately
+4. Verify mobile forms work correctly
+5. Test with caching enabled
+
+### Performance
+The tracking script is optimized:
+- Asynchronous loading
+- No impact on form submission
+- Lightweight code
+- No external dependencies
+
+## Compatibility with Other Plugins
+
+### Caching Plugins
+Compatible with:
+- WP Super Cache
+- W3 Total Cache
+- WP Rocket
+- LiteSpeed Cache
+
+The JavaScript tracking works even with page caching enabled.
+
+### Page Builders
+Works seamlessly with:
+- Elementor (including Elementor forms)
+- Divi Builder
+- Beaver Builder
+- WPBakery
+- Gutenberg
+
+### Security Plugins
+Compatible with security plugins:
+- Wordfence
+- Sucuri Security
+- iThemes Security
+
+## Support
+
+For installation help or technical issues, contact support@sealmetrics.com

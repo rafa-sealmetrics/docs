@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SealMetrics Tracking Module for Magento 2
+ * Event Observers Configuration
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- Add to cart event -->
+    <event name="checkout_cart_add_product_complete">
+        <observer name="sealmetrics_add_to_cart" instance="SealMetrics\Tracking\Observer\AddToCartObserver"/>
+    </event>
+
+    <!-- Purchase event -->
+    <event name="sales_order_place_after">
+        <observer name="sealmetrics_purchase" instance="SealMetrics\Tracking\Observer\PurchaseObserver"/>
+    </event>
+</config>

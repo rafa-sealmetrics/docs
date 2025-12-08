@@ -1,0 +1,211 @@
+---
+sidebar_position: 4
+title: Magento 2
+description: Track e-commerce events on your Magento 2 store
+---
+
+# Magento 2 Module
+
+The SealMetrics Magento 2 module is a fully integrated extension that tracks customer behavior throughout your store. From browsing products to completing purchases, get comprehensive insights while maintaining privacy compliance.
+
+:::tip Download Module
+**[Download Magento 2 Module](https://github.com/sealmetrics/docs/tree/main/integrations/ecommerce/magento2)** • Version 1.0.0
+
+**Requirements:** Magento 2.4+, PHP 7.4+
+:::
+
+## Installation
+
+### Method 1: Composer (Recommended)
+
+```bash
+composer require sealmetrics/module-tracking
+php bin/magento module:enable SealMetrics_Tracking
+php bin/magento setup:upgrade
+php bin/magento cache:flush
+```
+
+### Method 2: Manual Installation
+
+1. Download the module files
+2. Create directory structure: `app/code/SealMetrics/Tracking/`
+3. Copy all module files into this directory
+4. Run the following commands:
+
+```bash
+php bin/magento module:enable SealMetrics_Tracking
+php bin/magento setup:upgrade
+php bin/magento cache:flush
+```
+
+## Configuration
+
+1. Log in to your **Magento Admin Panel**
+2. Navigate to **Stores** > **Configuration**
+3. Find **SealMetrics** in the left sidebar
+4. Enter your **SealMetrics Account ID**
+5. Enable the module
+6. Save configuration
+
+## Events Tracked
+
+### Pageview
+
+Automatically tracked on every page load across your store.
+
+**Data collected:**
+- Session tracking enabled
+
+### Product View
+
+Fired when a customer views a product detail page, including configurable products with selected options.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Product SKU
+- Product price (excluding tax)
+- Selected configurable attributes (colour, size, material, weight)
+
+### Add to Cart
+
+Tracked when a customer adds any product type to their shopping cart. Uses both server-side observers and JavaScript tracking for reliability.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Product SKU (or `PROD-{id}` if SKU unavailable)
+- Product price (excluding tax)
+- Quantity added
+- Selected product attributes (colour, size, material, weight)
+- Product options for configurable products
+
+### Checkout Funnel
+
+The module tracks three distinct checkout steps:
+
+#### Checkout Step 1 - Cart Page
+Fired when a customer views their shopping cart.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Total cart value (excluding tax)
+- All product SKUs in cart
+- Total item count
+- Product attributes for all items
+
+#### Checkout Step 2 - Checkout Page
+Fired when customer proceeds to checkout.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Total cart value (excluding tax)
+- All product SKUs in cart
+- Total item count
+- Product attributes for all items
+
+#### Checkout Step 3 - Payment Method Selection
+Fired when a customer selects a payment method.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Total cart value (excluding tax)
+- All product SKUs in cart
+- Total item count
+- Product attributes for all items
+
+### Purchase
+
+Tracked after successful order placement using server-side observers.
+
+**Event type:** Conversion
+
+**Data collected:**
+- Order total (excluding tax)
+- All product SKUs purchased
+- Order currency
+- Total item count
+- Product attributes (colour, size, etc.) for all items
+
+## Information Stored
+
+The Magento 2 module collects and sends the following information to SealMetrics:
+
+### Product Information
+- **SKU**: Product identifier (or `PROD-{id}` format for products without SKUs)
+- **Price**: Always excluding tax using Magento's tax calculation
+- **Attributes**: Configurable product attributes like colour, size, material, and weight
+- **Quantity**: Number of items added or purchased
+- **Product Options**: Super attributes from configurable products
+
+### Order Information
+- **Total Amount**: Order or cart total (excluding tax)
+- **Currency**: Currency code (USD, EUR, GBP, etc.)
+- **Item Count**: Total quantity of products
+- **Product List**: Comma-separated list of all SKUs
+
+### Privacy & Compliance
+
+The module does **NOT** collect or store:
+- Order IDs or increment IDs
+- Customer names or email addresses
+- Shipping or billing addresses
+- Payment information
+- Customer IDs
+- Any personally identifiable information (PII)
+
+All tracking is completely anonymous and privacy-compliant.
+
+## Technical Features
+
+### Server-Side Tracking
+- **Event Observers**: Add-to-cart and purchase events use Magento's observer pattern
+- **Customer Data Sections**: Session-based tracking using Magento's customer data system
+- **RequireJS Modules**: Frontend tracking integrates with Magento's JavaScript framework
+
+### Product Support
+- Simple products
+- Configurable products with all attribute combinations
+- Variation products
+- Proper attribute normalization across all product types
+
+### Compatibility
+- Magento 2.3+
+- Magento 2.4+
+- Compatible with HPOS (High-Performance Order Storage)
+- Works with all standard Magento themes
+- Compatible with most third-party themes
+
+## Troubleshooting
+
+### Events not appearing in dashboard
+
+1. Clear Magento cache: `php bin/magento cache:flush`
+2. Check module is enabled: `php bin/magento module:status`
+3. Verify Account ID in **Stores** > **Configuration** > **SealMetrics**
+4. Check browser console for JavaScript errors
+
+### Module not showing in configuration
+
+1. Ensure module is enabled: `php bin/magento module:enable SealMetrics_Tracking`
+2. Run setup upgrade: `php bin/magento setup:upgrade`
+3. Clear cache and recompile if needed
+
+### Product attributes not captured
+
+1. Verify product has configurable attributes assigned
+2. Check that attributes are set as "Visible on Product View Page"
+3. Ensure attributes have proper labels configured
+
+### Add-to-cart events missing
+
+1. Check if JavaScript errors are present in console
+2. Verify RequireJS configuration is not overridden by custom theme
+3. Test with default Luma theme to isolate theme conflicts
+
+## Support
+
+For installation help or technical issues, contact support@sealmetrics.com

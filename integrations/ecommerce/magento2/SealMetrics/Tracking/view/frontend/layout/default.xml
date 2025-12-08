@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SealMetrics Tracking Module for Magento 2
+ * Default Layout - Loads main tracking script on all pages
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!-- Load tracking script in head for early initialization -->
+        <block class="SealMetrics\Tracking\Block\Tracking"
+               name="sealmetrics.tracking.head"
+               template="SealMetrics_Tracking::tracking/head.phtml"/>
+    </head>
+    <body>
+        <!-- Main tracking initialization in footer -->
+        <referenceContainer name="before.body.end">
+            <block class="SealMetrics\Tracking\Block\Tracking"
+                   name="sealmetrics.tracking.init"
+                   template="SealMetrics_Tracking::tracking/init.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
