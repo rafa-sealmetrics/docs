@@ -1,0 +1,24 @@
+<?php
+/**
+ * SealMetrics Tracking Module for Magento 2
+ * Success Page Template - purchase conversion event
+ *
+ * @var \SealMetrics\Tracking\Block\Success $block
+ */
+
+if (!$block->isEnabled()) {
+    return;
+}
+
+$purchaseEvent = $block->getPurchaseEventJson();
+?>
+<script>
+(function() {
+    var purchaseEvent = <?= /* @noEscape */ $purchaseEvent ?>;
+
+    if (purchaseEvent) {
+        window.smLog('Queueing purchase:', purchaseEvent);
+        window.sealmetricsTrack.push(purchaseEvent);
+    }
+})();
+</script>

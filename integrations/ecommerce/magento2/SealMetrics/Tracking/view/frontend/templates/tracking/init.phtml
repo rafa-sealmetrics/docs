@@ -1,0 +1,54 @@
+<?php
+/**
+ * SealMetrics Tracking Module for Magento 2
+ * Init Template - Pageview event and CustomerData handler
+ *
+ * @var \SealMetrics\Tracking\Block\Tracking $block
+ */
+
+if (!$block->isEnabled() || !$block->getAccountId()) {
+    return;
+}
+
+$attributeMap = $block->getAttributeMapJson();
+?>
+<script>
+(function() {
+    // Store attribute map globally
+    window.sealmetricsAttributeMap = <?= /* @noEscape */ $attributeMap ?>;
+
+    // Fire pageview (always first)
+    if (!window.sealmetricsPageviewSent) {
+        window.sealmetricsPageviewSent = true;
+        var event = {
+            event: 'pageview',
+            use_session: 1
+        };
+        window.smLog('Queueing pageview:', event);
+        window.sealmetricsTrack.push(event);
+    }
+
+    // Listen for CustomerData updates (for add-to-cart events)
+    require(['Magento_Customer/js/customer-data'], function(customerData) {
+        var sealmetricsSection = customerData.get('sealmetrics');
+
+        sealmetricsSection.subscribe(function(data) {
+            if (data && data.events && data.events.length > 0) {
+                data.events.forEach(function(eventData) {
+                    window.smLog('Queueing event from CustomerData:', eventData);
+                    window.sealmetricsTrack.push(eventData);
+                });
+            }
+        });
+
+        // Process any existing data
+        var initialData = sealmetricsSection();
+        if (initialData && initialData.events && initialData.events.length > 0) {
+            initialData.events.forEach(function(eventData) {
+                window.smLog('Queueing event from initial CustomerData:', eventData);
+                window.sealmetricsTrack.push(eventData);
+            });
+        }
+    });
+})();
+</script>

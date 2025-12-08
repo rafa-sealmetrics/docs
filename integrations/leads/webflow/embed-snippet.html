@@ -1,0 +1,150 @@
+<!--
+  SealMetrics Tracking for Webflow
+
+  INSTRUCTIONS:
+  1. Copy this entire script block
+  2. Go to Webflow Project Settings > Custom Code > Head Code
+  3. Paste this code
+  4. Replace YOUR_ACCOUNT_ID with your SealMetrics Account ID
+  5. Publish your site
+-->
+
+<script>
+/**
+ * SealMetrics Tracking for Webflow v1.0.0
+ * https://sealmetrics.com
+ */
+(function() {
+    'use strict';
+
+    // ========== CONFIGURATION ==========
+    var CONFIG = {
+        // REQUIRED: Replace with your SealMetrics Account ID
+        accountId: 'YOUR_ACCOUNT_ID',
+
+        // Set to true to see debug logs in browser console
+        debugMode: false,
+
+        // Label for form submission conversions
+        conversionLabel: 'lead',
+
+        // Include page path in conversion data
+        trackPagePath: true,
+
+        // Include page title in conversion data
+        trackPageTitle: true
+    };
+    // ===================================
+
+    if (!CONFIG.accountId || CONFIG.accountId === 'YOUR_ACCOUNT_ID') {
+        console.warn('[SealMetrics] Please configure your Account ID');
+        return;
+    }
+
+    window.sealmetricsTrack = window.sealmetricsTrack || [];
+    window.sealmetricsDebug = CONFIG.debugMode;
+    window.sealmetricsLoaded = false;
+    window.sealmetricsPageviewSent = false;
+
+    function smLog(msg, data) {
+        if (window.sealmetricsDebug) console.log('[SealMetrics]', msg, data || '');
+    }
+    window.smLog = smLog;
+
+    function processQueue() {
+        if (typeof sealmetrics !== 'undefined' && sealmetrics.track) {
+            while (window.sealmetricsTrack.length > 0) {
+                var e = window.sealmetricsTrack.shift();
+                smLog('Processing:', e);
+                sealmetrics.track(e);
+            }
+        }
+    }
+
+    var origPush = window.sealmetricsTrack.push;
+    window.sealmetricsTrack.push = function() {
+        var r = origPush.apply(this, arguments);
+        if (window.sealmetricsLoaded) processQueue();
+        return r;
+    };
+
+    // Load script
+    var s = document.createElement('script');
+    s.src = 'https://cdn.sealmetrics.com/' + CONFIG.accountId + '/sm.js';
+    s.async = true;
+    s.onload = function() {
+        window.sealmetricsLoaded = true;
+        smLog('Loaded');
+        processQueue();
+    };
+    document.head.appendChild(s);
+
+    // Pageview
+    if (!window.sealmetricsPageviewSent) {
+        window.sealmetricsPageviewSent = true;
+        window.sealmetricsTrack.push({ event: 'pageview', use_session: 1 });
+        smLog('Pageview queued');
+    }
+
+    // Track lead conversion
+    function trackLead(formName) {
+        var props = { form_name: formName || 'webflow_form' };
+        if (CONFIG.trackPagePath) props.page_path = location.pathname;
+        if (CONFIG.trackPageTitle) props.page_title = document.title;
+
+        var evt = { event: 'conversion', label: CONFIG.conversionLabel, properties: props };
+        smLog('Lead conversion:', evt);
+        window.sealmetricsTrack.push(evt);
+    }
+    window.sealmetricsTrackLead = trackLead;
+
+    // Get form name
+    function getFormName(form) {
+        return form.getAttribute('data-name') ||
+               form.getAttribute('name') ||
+               form.getAttribute('id') ||
+               'webflow_form';
+    }
+
+    // Watch for Webflow form success
+    function initTracking() {
+        // MutationObserver for Webflow AJAX forms
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(m) {
+                if (m.type === 'attributes' &&
+                    m.attributeName === 'style' &&
+                    m.target.classList.contains('w-form-done')) {
+                    var wrapper = m.target.closest('.w-form');
+                    if (wrapper) {
+                        var form = wrapper.querySelector('form');
+                        if (form && !form.hasAttribute('data-sealmetrics-exclude')) {
+                            trackLead(getFormName(form));
+                        }
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.w-form-done').forEach(function(el) {
+            observer.observe(el, { attributes: true });
+        });
+
+        // Fallback: form submit event
+        document.addEventListener('submit', function(e) {
+            var form = e.target;
+            if (form.hasAttribute('data-sealmetrics-exclude')) return;
+            if (!form.closest('.w-form')) {
+                trackLead(getFormName(form));
+            }
+        });
+
+        smLog('Tracking initialized');
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTracking);
+    } else {
+        initTracking();
+    }
+})();
+</script>

@@ -1,0 +1,206 @@
+---
+sidebar_position: 7
+title: Webflow
+description: Track form submissions and conversions on your Webflow site
+---
+
+# Webflow Integration (Lead Tracking)
+
+The SealMetrics Webflow integration tracks form submissions on your Webflow site, converting leads into measurable conversions. Perfect for landing pages, contact forms, and lead generation campaigns.
+
+:::tip Download Script
+**[Download Webflow Script](https://github.com/sealmetrics/docs/tree/main/integrations/leads/webflow)** • Version 1.0.0
+
+**Requirements:** Webflow paid plan (Custom Code access required)
+:::
+
+## Installation
+
+1. Log in to your **Webflow Designer**
+2. Open your project
+3. Click on **Project Settings** (gear icon in the left sidebar)
+4. Navigate to the **Custom Code** tab
+5. Scroll to the **Head Code** section
+6. Paste the SealMetrics tracking code
+7. Replace `YOUR_ACCOUNT_ID` with your SealMetrics Account ID
+8. Click **Save Changes**
+9. **Publish** your site for changes to take effect
+
+## Events Tracked
+
+### Pageview
+
+Automatically tracked on every page load across your site.
+
+**Data collected:**
+- Session tracking enabled
+
+### Lead Conversion
+
+Fired when a visitor successfully submits a Webflow form.
+
+**Event type:** Conversion
+
+**Data collected:**
+- Form name (from `data-name` attribute)
+- Page path (URL pathname)
+- Page title (document title)
+
+## Information Stored
+
+The Webflow module collects and sends the following information to SealMetrics:
+
+### Form Information
+- **Form Name**: The name assigned to the form in Webflow (from `data-name` attribute)
+- **Page Path**: Current URL pathname where the form was submitted (optional)
+- **Page Title**: Document title of the page (optional)
+
+### Privacy & Compliance
+
+The module does **NOT** collect or store:
+- Form field values
+- User input or responses
+- Email addresses or names
+- Phone numbers
+- Any personally identifiable information (PII)
+
+Only the form name and page context are tracked. All form data remains private and is handled by Webflow.
+
+## Technical Features
+
+### Multiple Detection Methods
+
+The module uses three layers of detection for maximum reliability:
+
+1. **MutationObserver**: Monitors DOM changes to detect when `.w-form-done` success message becomes visible
+2. **Submit Event Listener**: Fallback for non-AJAX form submissions
+3. **Fetch Interception**: Monitors AJAX requests to Webflow's form endpoints
+
+### Form Support
+- Native Webflow forms
+- Both AJAX and standard form submissions
+- Multi-step forms
+- Custom-styled forms
+
+### Exclusions
+- Commerce checkout forms (automatically excluded)
+- Forms with `data-sealmetrics-exclude` attribute
+
+### Customization
+Configure the conversion label and tracking behavior:
+- Default conversion label: "lead"
+- Optional page path tracking
+- Optional page title tracking
+- Custom form selectors support
+
+## Configuration Options
+
+The tracking script can be customized by editing the configuration object:
+
+```javascript
+var CONFIG = {
+    accountId: 'YOUR_ACCOUNT_ID',
+    conversionLabel: 'lead',      // Customize the conversion label
+    trackPagePath: true,           // Include page URL path
+    trackPageTitle: true           // Include page title
+};
+```
+
+## Use Cases
+
+### Lead Generation
+Track form submissions on landing pages to measure campaign effectiveness:
+- Contact forms
+- Request a quote forms
+- Newsletter signups
+- Free trial registrations
+
+### Multi-Page Funnels
+Track conversions across different pages:
+- Landing page → Contact form
+- Product page → Demo request
+- Pricing page → Sign up form
+
+### Campaign Tracking
+Measure the success of marketing campaigns:
+- PPC landing pages
+- Email campaign landing pages
+- Social media campaign forms
+
+## Troubleshooting
+
+### Forms not tracking
+
+1. Check that the script is in the **Head Code** section (not Footer)
+2. Verify your Account ID is correctly entered
+3. Ensure the site is **published** after adding the code
+4. Open browser console (F12) and submit a test form
+5. Look for SealMetrics event messages
+
+### Some forms tracking, others not
+
+1. Check if the non-tracking form has `data-sealmetrics-exclude` attribute
+2. Verify the form has a `data-name` attribute in Webflow
+3. Check for JavaScript errors in console
+4. Ensure the form shows the success message (`.w-form-done`)
+
+### Duplicate conversions
+
+1. Check that tracking code is only added once (in Head Code, not in page-specific embeds)
+2. Verify no other SealMetrics scripts are present
+3. Test in incognito mode to rule out caching issues
+
+### Commerce forms triggering conversions
+
+By default, commerce checkout forms are excluded. If they're still tracking:
+1. Add `data-sealmetrics-exclude` to the form element
+2. Or customize the exclusion rules in the configuration
+
+## Manual Tracking
+
+You can manually trigger lead tracking from your custom JavaScript:
+
+```javascript
+// Track a lead conversion manually
+window.sealmetricsTrackLead('Custom Form Name');
+```
+
+This is useful for:
+- Custom form implementations
+- Third-party form widgets
+- Multi-step form completions
+- AJAX-based interactions
+
+## Best Practices
+
+### Form Naming
+Give your forms descriptive names in Webflow:
+- "Contact Form - Homepage"
+- "Demo Request - Pricing Page"
+- "Newsletter Signup - Footer"
+
+This makes it easier to identify which forms are converting in your SealMetrics dashboard.
+
+### Testing
+Before launching:
+1. Submit test forms on your published site
+2. Check that conversions appear in SealMetrics dashboard
+3. Test on multiple browsers and devices
+4. Verify mobile forms work correctly
+
+### Performance
+The tracking script is:
+- Asynchronous and non-blocking
+- Minified for production use
+- Lightweight with no dependencies
+
+## Compatibility
+
+- All Webflow plans (Basic, CMS, Business, Enterprise)
+- All Webflow templates and themes
+- Webflow forms (not compatible with third-party form services)
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+
+## Support
+
+For installation help or technical issues, contact support@sealmetrics.com

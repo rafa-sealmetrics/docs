@@ -1,0 +1,208 @@
+---
+sidebar_position: 3
+title: PrestaShop
+description: Track e-commerce events on your PrestaShop store
+---
+
+# PrestaShop Module
+
+The SealMetrics PrestaShop module seamlessly integrates with your PrestaShop store to track customer behavior from initial product views through to completed purchases. Full privacy compliance with no personal data collection.
+
+:::tip Download Module
+**[Download PrestaShop Module](https://github.com/sealmetrics/docs/tree/main/integrations/ecommerce/prestashop)** • Version 1.0.0
+
+**Requirements:** PrestaShop 1.7.0 - 8.x, PHP 7.4+
+:::
+
+## Installation
+
+1. Download the `sealmetrics` module folder
+2. Upload to your PrestaShop installation: `/modules/sealmetrics/`
+3. Log in to your **PrestaShop Admin Panel**
+4. Navigate to **Modules** > **Module Manager**
+5. Search for "SealMetrics Tracking"
+6. Click **Install**
+7. Click **Configure**
+8. Enter your **SealMetrics Account ID**
+9. Save configuration
+
+## Configuration
+
+After installation, configure the module:
+
+1. Go to **Modules** > **Module Manager**
+2. Find "SealMetrics Tracking"
+3. Click **Configure**
+4. Enter your **SealMetrics Account ID**
+5. Optionally enable **Debug Mode** for testing
+6. Click **Save**
+
+## Events Tracked
+
+### Pageview
+
+Automatically tracked on every page load across your store.
+
+**Data collected:**
+- Session tracking enabled
+
+### Product View
+
+Fired when a customer views a product detail page, including products with combinations.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Product reference (SKU)
+- Product price (excluding tax)
+- Selected combination attributes (colour, size, material, weight)
+
+### Add to Cart
+
+Tracked when a customer adds a product to their shopping cart via JavaScript tracking and PrestaShop hooks.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Product reference (or combination reference)
+- Product price (excluding tax)
+- Quantity added
+- Selected combination attributes (colour, size, material, weight)
+
+### Checkout Funnel
+
+The module tracks two main checkout steps:
+
+#### Checkout Step 1 - Cart Page
+Fired when a customer views their shopping cart.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Total cart value (excluding tax)
+- All product references in cart
+- Total item count
+- Product attributes for all items
+
+#### Checkout Step 2 - Checkout/Payment
+Fired when customer proceeds to checkout and payment selection.
+
+**Event type:** Microconversion
+
+**Data collected:**
+- Total cart value (excluding tax)
+- All product references in cart
+- Total item count
+- Product attributes for all items
+
+### Purchase
+
+Tracked on the order confirmation page after a successful purchase.
+
+**Event type:** Conversion
+
+**Data collected:**
+- Order total (excluding tax)
+- All product references purchased
+- Order currency (ISO code)
+- Total item count
+- Product attributes (colour, size, etc.) for all items
+
+## Information Stored
+
+The PrestaShop module collects and sends the following information to SealMetrics:
+
+### Product Information
+- **Product Reference**: Product SKU or combination reference
+- **Price**: Always excluding tax using PrestaShop's `Product::getPriceStatic()`
+- **Attributes**: Product combination attributes like colour, size, material, and weight
+- **Quantity**: Number of items added or purchased
+- **Combination Data**: Attribute groups and values for product variants
+
+### Order Information
+- **Total Amount**: Order or cart total (excluding tax)
+- **Currency**: ISO currency code (USD, EUR, GBP, etc.)
+- **Item Count**: Total quantity of products
+- **Product List**: Comma-separated list of all product references
+
+### Privacy & Compliance
+
+The module does **NOT** collect or store:
+- Order IDs or order references
+- Customer names or email addresses
+- Shipping or billing addresses
+- Payment information
+- Customer IDs
+- Any personally identifiable information (PII)
+
+All tracking is completely anonymous and privacy-compliant.
+
+## Technical Features
+
+### PrestaShop Hooks Used
+- `displayHeader` - Loads tracking script on all pages
+- `displayFooterProduct` - Tracks product views
+- `actionCartSave` - Tracks add-to-cart events
+- `displayCheckoutProcess` - Tracks checkout steps
+- `displayPaymentTop` - Tracks payment selection
+- `displayOrderConfirmation` - Tracks purchases
+
+### Product Support
+- Simple products
+- Products with combinations (color, size, etc.)
+- Multi-attribute products
+- Proper attribute normalization with multi-language support
+
+### Compatibility
+- PrestaShop 1.7.x
+- PrestaShop 8.x
+- Works with default PrestaShop themes
+- Compatible with most third-party themes
+
+### Attribute Normalization
+Supports multiple languages for attribute names:
+- **Color**: color, colour, colore, couleur, farbe → `colour`
+- **Size**: size, talla, taille, größe → `size`
+- **Material**: material, materiale, matière → `material`
+- **Weight**: weight, peso, poids → `weight`
+
+## Troubleshooting
+
+### Events not appearing in dashboard
+
+1. Enable **Debug Mode** in module configuration
+2. Open browser console (F12) and look for SealMetrics messages
+3. Verify your Account ID is correctly entered
+4. Check that the module is enabled and installed
+
+### Module not appearing after upload
+
+1. Verify files are in `/modules/sealmetrics/` directory
+2. Check file permissions (folders: 755, files: 644)
+3. Clear PrestaShop cache in **Advanced Parameters** > **Performance**
+4. Refresh the Module Manager page
+
+### Product attributes not captured
+
+1. Verify product has combinations configured
+2. Check that attribute groups are properly created
+3. Ensure attributes have values assigned to combinations
+4. Test with a simple product first to isolate the issue
+
+### Checkout events missing
+
+1. Verify the checkout template includes PrestaShop hooks
+2. Check for JavaScript errors in browser console
+3. Test with default theme to identify theme conflicts
+4. Ensure cache is cleared after configuration changes
+
+### Duplicate purchases showing
+
+The module prevents duplicates using PrestaShop's Configuration storage. If you see duplicates:
+1. Clear browser cache and test in incognito mode
+2. Verify the module is only installed once
+3. Check that tracking code isn't added manually in theme files
+
+## Support
+
+For installation help or technical issues, contact support@sealmetrics.com

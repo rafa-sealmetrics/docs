@@ -1,0 +1,154 @@
+<?php
+/**
+ * SealMetrics Tracking Module for Magento 2
+ * Checkout Template - checkout funnel microconversion events
+ *
+ * @var \SealMetrics\Tracking\Block\Checkout $block
+ */
+
+if (!$block->isEnabled()) {
+    return;
+}
+
+$cartData = $block->getCartDataJson();
+?>
+<script>
+(function() {
+    var cartData = <?= /* @noEscape */ $cartData ?>;
+    var checkout1Sent = false;
+    var checkout2Sent = false;
+    var checkout3Sent = false;
+
+    var properties = {
+        sku: cartData.skus,
+        item_count: cartData.item_count
+    };
+
+    // Track checkout1 immediately (entering checkout)
+    function trackCheckout1() {
+        if (checkout1Sent) return;
+        checkout1Sent = true;
+
+        var event = {
+            event: 'microconversion',
+            label: 'checkout1',
+            amount: cartData.amount,
+            properties: properties
+        };
+
+        window.smLog('Queueing checkout1:', event);
+        window.sealmetricsTrack.push(event);
+    }
+
+    // Track checkout2 (shipping/billing info)
+    function trackCheckout2() {
+        if (checkout2Sent) return;
+        checkout2Sent = true;
+
+        var event = {
+            event: 'microconversion',
+            label: 'checkout2',
+            amount: cartData.amount,
+            properties: properties
+        };
+
+        window.smLog('Queueing checkout2:', event);
+        window.sealmetricsTrack.push(event);
+    }
+
+    // Track checkout3 (payment selection)
+    function trackCheckout3() {
+        if (checkout3Sent) return;
+        checkout3Sent = true;
+
+        var event = {
+            event: 'microconversion',
+            label: 'checkout3',
+            amount: cartData.amount,
+            properties: properties
+        };
+
+        window.smLog('Queueing checkout3:', event);
+        window.sealmetricsTrack.push(event);
+    }
+
+    // Fire checkout1 on page load
+    trackCheckout1();
+
+    require(['jquery', 'Magento_Checkout/js/model/step-navigator'], function($, stepNavigator) {
+        // Listen for step changes
+        if (stepNavigator && stepNavigator.steps) {
+            stepNavigator.steps.subscribe(function(steps) {
+                var currentStep = stepNavigator.getActiveItemIndex();
+
+                if (currentStep >= 1 && !checkout2Sent) {
+                    trackCheckout2();
+                }
+            });
+        }
+
+        // Listen for shipping step completion
+        $(document).on('click', '.button.action.continue.primary, #shipping-method-buttons-container .button', function() {
+            setTimeout(function() {
+                if (!checkout2Sent) {
+                    trackCheckout2();
+                }
+            }, 500);
+        });
+
+        // Listen for payment method selection
+        $(document).on('click', '.payment-method-title, .payment-method input[type="radio"]', function() {
+            setTimeout(function() {
+                if (!checkout3Sent) {
+                    trackCheckout3();
+                }
+            }, 100);
+        });
+
+        // Listen for place order button
+        $(document).on('click', '.action.primary.checkout, #place-order, .action.checkout', function() {
+            if (!checkout3Sent) {
+                trackCheckout3();
+            }
+        });
+
+        // Alternative: Listen for Magento checkout step events
+        $(document).on('checkout:shipping:save', function() {
+            if (!checkout2Sent) {
+                trackCheckout2();
+            }
+        });
+
+        // Knockout-based detection for step navigation
+        require(['ko'], function(ko) {
+            try {
+                var checkoutData = require('Magento_Checkout/js/model/checkout-data-resolver');
+                if (checkoutData) {
+                    // Step resolved, likely on shipping or payment
+                    setTimeout(function() {
+                        var hash = window.location.hash;
+                        if (hash.indexOf('payment') !== -1 && !checkout2Sent) {
+                            trackCheckout2();
+                        }
+                    }, 1000);
+                }
+            } catch (e) {
+                // Module not available, ignore
+            }
+        });
+    });
+
+    // Fallback: Hash change detection
+    window.addEventListener('hashchange', function() {
+        var hash = window.location.hash;
+        if (hash.indexOf('shipping') !== -1 && !checkout1Sent) {
+            trackCheckout1();
+        }
+        if (hash.indexOf('payment') !== -1) {
+            if (!checkout2Sent) {
+                trackCheckout2();
+            }
+        }
+    });
+})();
+</script>
