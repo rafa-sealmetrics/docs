@@ -1,0 +1,195 @@
+---
+sidebar_position: 1
+title: MCP Server for AI Assistants
+description: Connect Claude and other AI assistants to your SealMetrics analytics data using the Model Context Protocol (MCP) server.
+---
+
+# MCP Server for AI Assistants
+
+The **SealMetrics MCP Server** enables AI assistants like Claude to access your analytics data through natural language queries. Ask questions about your marketing performance, traffic, conversions, and more — directly from your AI assistant.
+
+## What is MCP?
+
+The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) is an open standard that allows AI assistants to securely connect to external data sources. The SealMetrics MCP server acts as a bridge between Claude (or other MCP-compatible assistants) and your SealMetrics analytics data.
+
+## Features
+
+Once connected, you can ask your AI assistant questions like:
+
+- *"How much traffic came from Google Ads yesterday?"*
+- *"What's my ROAS for the last 30 days?"*
+- *"Which landing pages are performing best?"*
+- *"Show me conversion data by campaign"*
+- *"Generate a conversion pixel for newsletter signups"*
+
+### Available Capabilities
+
+| Capability | Description |
+|------------|-------------|
+| **Traffic Analysis** | Data segmented by source, medium, campaign, or geography |
+| **Conversion Tracking** | Sales data with full attribution information |
+| **Microconversions** | Engagement events like add-to-cart, signups, etc. |
+| **Funnel Analysis** | Performance metrics across conversion stages |
+| **ROAS Evolution** | Return on ad spend measurements over time |
+| **Landing Page Metrics** | View counts and page effectiveness analysis |
+| **Pixel Generation** | Create conversion tracking code for Google Tag Manager |
+
+## Installation
+
+### Option 1: Using uvx (Recommended)
+
+```bash
+uvx sealmetrics-mcp
+```
+
+### Option 2: Using pip
+
+```bash
+pip install sealmetrics-mcp
+```
+
+## Configuration
+
+### Claude Desktop Setup
+
+To connect the MCP server to Claude Desktop, modify the configuration file:
+
+| Platform | Config File Location |
+|----------|---------------------|
+| **macOS** | `~/Library/Application Support/Claude/claude_desktop_config.json` |
+| **Windows** | `%APPDATA%\Claude\claude_desktop_config.json` |
+
+Add the following configuration block:
+
+```json
+{
+  "mcpServers": {
+    "sealmetrics": {
+      "command": "uvx",
+      "args": ["sealmetrics-mcp"],
+      "env": {
+        "SEALMETRICS_API_TOKEN": "your-api-token",
+        "SEALMETRICS_ACCOUNT_ID": "your-account-id"
+      }
+    }
+  }
+}
+```
+
+:::warning Important
+Replace `your-api-token` and `your-account-id` with your actual credentials. Never commit these values to version control.
+:::
+
+### Environment Variables
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `SEALMETRICS_API_TOKEN` | Yes | Your API authentication token |
+| `SEALMETRICS_ACCOUNT_ID` | No | Default account ID (can be specified per query) |
+
+**Alternative authentication:** Instead of `SEALMETRICS_API_TOKEN`, you can use `SEALMETRICS_EMAIL` and `SEALMETRICS_PASSWORD`, though the token method is preferred.
+
+## Getting Your Credentials
+
+### API Token
+
+Follow our guide to obtain your API token from the SealMetrics dashboard:
+
+1. Click on your **profile icon** in the top-right corner
+2. Select **"Tags & Connectors"**
+3. Navigate to the **"Connectors"** section
+4. Copy your **API Token**
+
+For detailed instructions, see [How to Obtain Your API Token](/api/authentication/how-to-obtain-api-token).
+
+### Account ID
+
+Your Account ID identifies which SealMetrics account to query. To find it:
+
+1. Use the [Account Endpoints API](/api/core-api-endpoints/account-endpoints) to list all accounts linked to your credentials
+2. The response will include your Account ID(s) in this format:
+
+```json
+{
+  "status": "ok",
+  "data": {
+    "000000000000000000001234": "Your Account Name"
+  }
+}
+```
+
+The key (e.g., `000000000000000000001234`) is your Account ID.
+
+## Usage Examples
+
+Once configured, restart Claude Desktop and start asking questions:
+
+### Traffic Analysis
+
+> "Show me traffic from organic search for the last week"
+
+### Conversion Analysis
+
+> "What were my top converting campaigns last month?"
+
+### ROAS Tracking
+
+> "Compare ROAS between Google Ads and Facebook Ads"
+
+### Funnel Performance
+
+> "How many users reached checkout step 2 yesterday?"
+
+### Generate Tracking Code
+
+> "Create a conversion pixel for tracking newsletter signups"
+
+## Available Tools
+
+The MCP server exposes eight main tools to the AI assistant:
+
+| Tool | Description |
+|------|-------------|
+| `list_accounts` | List all accounts linked to your credentials |
+| `get_traffic` | Retrieve traffic data with various filters |
+| `get_conversions` | Query conversion/sales data |
+| `get_microconversions` | Get engagement event data |
+| `get_funnel` | Retrieve funnel stage metrics |
+| `get_roas_evolution` | Track ROAS over time |
+| `get_pages` | Analyze landing page performance |
+| `generate_pixel` | Create conversion tracking code |
+
+## Troubleshooting
+
+### Claude doesn't see the MCP server
+
+1. Ensure the config file is in the correct location
+2. Verify JSON syntax is valid
+3. Restart Claude Desktop completely
+
+### Authentication errors
+
+1. Verify your API token is correct
+2. Check that the token hasn't expired
+3. Ensure your account has API access enabled
+
+### No data returned
+
+1. Confirm your Account ID is correct
+2. Check that the date range contains data
+3. Verify the account has tracking data
+
+## Resources
+
+- **GitHub Repository**: [github.com/sealmetrics/mcp-server](https://github.com/sealmetrics/mcp-server)
+- **PyPI Package**: [pypi.org/project/sealmetrics-mcp](https://pypi.org/project/sealmetrics-mcp/)
+- **MCP Protocol**: [modelcontextprotocol.io](https://modelcontextprotocol.io/)
+- **API Documentation**: [SealMetrics API Reference](/api)
+
+## Support
+
+Need help with the MCP server?
+
+- **GitHub Issues**: [Report bugs or request features](https://github.com/sealmetrics/mcp-server/issues)
+- **Email**: support@sealmetrics.com
+- **API Documentation**: [Full API reference](/api)
