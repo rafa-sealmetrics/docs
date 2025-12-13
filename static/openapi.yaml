@@ -1,0 +1,1388 @@
+openapi: 3.1.0
+info:
+  title: SealMetrics API
+  version: '1.0.0'
+  description: |
+    SealMetrics provides **first-party, cookie-free analytics** that deliver accurate marketing attribution and conversion tracking. Our powerful REST API gives you complete access to your analytics data:
+
+    - **Real-time analytics** with accurate traffic and conversion data
+    - **ROAS tracking** to measure return on ad spend across all channels
+    - **Conversion & microconversion tracking** for complete funnel visibility
+    - **UTM-based attribution** with multi-touch journey analysis
+    - **Offline conversion support** for phone calls, CRM events, and more
+    - **GDPR-compliant** first-party tracking without cookies
+
+    ## Getting Started
+
+    1. [Create a SealMetrics account](https://app.sealmetrics.com/register)
+    2. Obtain your API credentials from the dashboard
+    3. Authenticate using the `/auth/login` endpoint
+    4. Use the Bearer token for all subsequent requests
+
+    ## Developer Resources
+
+    - [API Documentation](https://docs.sealmetrics.com/api)
+    - [Implementation Guides](https://docs.sealmetrics.com/api/implementation-guide)
+    - [Rate Limits & Best Practices](https://docs.sealmetrics.com/api/appendix/understanding-rate-limits)
+
+    ## Support
+
+    Need help? Contact us at [support@sealmetrics.com](mailto:support@sealmetrics.com)
+  termsOfService: 'https://sealmetrics.com/terms'
+  contact:
+    name: SealMetrics API Support
+    email: support@sealmetrics.com
+    url: 'https://sealmetrics.com/contact'
+  license:
+    name: Proprietary
+    url: 'https://sealmetrics.com/terms'
+  x-logo:
+    url: 'https://docs.sealmetrics.com/img/logo.svg'
+    altText: SealMetrics Logo
+
+externalDocs:
+  description: Full SealMetrics Documentation
+  url: 'https://docs.sealmetrics.com'
+
+servers:
+  - url: 'https://app.sealmetrics.com/api'
+    description: Production server
+
+tags:
+  - name: Authentication
+    description: |
+      Authenticate with the SealMetrics API to obtain access tokens.
+
+      All API requests (except `/auth/login`) require a valid Bearer token in the `Authorization` header.
+      Tokens expire at the timestamp provided in `expires_at`. Implement automatic token renewal before expiration.
+  - name: Accounts
+    description: |
+      Manage and retrieve account information.
+
+      Use these endpoints to list accounts associated with your credentials and obtain account IDs required for data queries.
+  - name: Pages
+    description: |
+      Access page view analytics and traffic data.
+
+      Retrieve detailed information about page visits, entry pages, and traffic patterns across your website.
+  - name: Conversions
+    description: |
+      Track and retrieve conversion events.
+
+      Access conversion data including revenue, attribution, and campaign performance metrics.
+  - name: Microconversions
+    description: |
+      Track pre-conversion engagement events.
+
+      Monitor user engagement through events like add-to-cart, newsletter signups, form submissions, and other micro-goals.
+  - name: Funnel
+    description: |
+      Analyze conversion funnel performance.
+
+      Understand user drop-off points and optimize your conversion path with detailed funnel analytics.
+  - name: ROAS
+    description: |
+      Measure Return on Ad Spend over time.
+
+      Track revenue efficiency across paid channels with daily, weekly, or monthly granularity.
+  - name: Offline Conversions
+    description: |
+      Record conversions from offline sources.
+
+      Track phone calls, CRM events, in-store purchases, and other offline conversion sources.
+
+security:
+  - bearerAuth: []
+
+paths:
+  /auth/login:
+    post:
+      operationId: login
+      summary: Authenticate user
+      description: |
+        Authenticate with your SealMetrics credentials to obtain a Bearer token.
+
+        The returned token must be included in the `Authorization` header of all subsequent API requests.
+
+        **Token Lifecycle:**
+        - Tokens expire at the `expires_at` timestamp
+        - Implement automatic renewal before expiration
+        - Store tokens securely; never expose in client-side code
+      tags:
+        - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+            examples:
+              default:
+                summary: Standard login
+                value:
+                  email: 'user@example.com'
+                  password: 'your-secure-password'
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+              examples:
+                success:
+                  summary: Successful authentication
+                  value:
+                    access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+                    token_type: 'Bearer'
+                    expires_at: '2024-12-31T23:59:59Z'
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalid_credentials:
+                  summary: Wrong email or password
+                  value:
+                    status: 'error'
+                    message: 'Invalid email or password'
+        '400':
+          description: Bad request - missing required fields
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                missing_fields:
+                  summary: Missing required fields
+                  value:
+                    status: 'error'
+                    message: 'Email and password are required'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /auth/accounts:
+    get:
+      operationId: getAccounts
+      summary: List all accounts
+      description: |
+        Retrieve all accounts associated with your API credentials.
+
+        Use the returned account IDs in subsequent API calls to query data for specific accounts.
+
+        **Use Cases:**
+        - Discover available accounts after authentication
+        - Build account selection interfaces
+        - Validate account access permissions
+      tags:
+        - Accounts
+      responses:
+        '200':
+          description: Accounts retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountsResponse'
+              examples:
+                success:
+                  summary: Multiple accounts
+                  value:
+                    status: 'ok'
+                    data:
+                      '000000000000000000001234': 'My E-commerce Store'
+                      '000000000000000000005678': 'Marketing Agency Client'
+                      '000000000000000000009012': 'SaaS Product Analytics'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /report/pages:
+    get:
+      operationId: getPages
+      summary: Get page analytics
+      description: |
+        Retrieve detailed page view analytics for your website.
+
+        Returns traffic data including:
+        - Total page views per URL
+        - Entry page statistics
+        - UTM parameter breakdowns (when `show_utms=true`)
+
+        **Pagination:**
+        Use `skip` and `limit` parameters for large datasets. Maximum 10,000 records per request.
+
+        **Filtering:**
+        Combine multiple filters (country, UTM parameters, content grouping) to segment your data.
+      tags:
+        - Pages
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/DateRange'
+        - $ref: '#/components/parameters/Skip'
+        - $ref: '#/components/parameters/LimitPages'
+        - $ref: '#/components/parameters/Country'
+        - $ref: '#/components/parameters/UtmMedium'
+        - $ref: '#/components/parameters/UtmSource'
+        - $ref: '#/components/parameters/UtmCampaign'
+        - name: show_utms
+          in: query
+          description: Include UTM parameters in the response
+          schema:
+            type: boolean
+            default: false
+          example: true
+        - name: content_grouping
+          in: query
+          description: Filter by content group name
+          schema:
+            type: string
+          example: 'blog-posts'
+        - name: exclude_countries
+          in: query
+          description: Comma-separated ISO 3166-1 alpha-2 country codes to exclude
+          schema:
+            type: string
+          example: 'CN,RU,IN'
+      responses:
+        '200':
+          description: Page analytics retrieved successfully
+          headers:
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/X-RateLimit-Reset'
+            X-RateLimit-Used:
+              $ref: '#/components/headers/X-RateLimit-Used'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagesResponse'
+              examples:
+                basic:
+                  summary: Basic page analytics
+                  value:
+                    status: 'ok'
+                    data:
+                      - url: '/products/summer-collection'
+                        views: 15420
+                        entry_page: 3250
+                      - url: '/checkout'
+                        views: 8340
+                        entry_page: 120
+                      - url: '/blog/marketing-tips'
+                        views: 5670
+                        entry_page: 4890
+                with_utms:
+                  summary: With UTM parameters
+                  value:
+                    status: 'ok'
+                    data:
+                      - url: '/products/summer-collection'
+                        views: 15420
+                        entry_page: 3250
+                        utm_medium: 'cpc'
+                        utm_source: 'google'
+                        utm_campaign: 'summer-sale-2024'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /report/conversions:
+    get:
+      operationId: getConversions
+      summary: Get conversions
+      description: |
+        Retrieve conversion events with full attribution data.
+
+        Each conversion includes:
+        - Revenue amount
+        - Full UTM attribution chain
+        - Geographic data
+        - Conversion label/type
+
+        **Attribution:**
+        Conversions are attributed to the traffic source that initiated the customer journey, providing accurate first-touch attribution.
+
+        **Use Cases:**
+        - Calculate revenue by campaign
+        - Analyze conversion patterns by geography
+        - Build custom ROAS reports
+        - Export data for external BI tools
+      tags:
+        - Conversions
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/DateRange'
+        - $ref: '#/components/parameters/Skip'
+        - $ref: '#/components/parameters/LimitDefault'
+        - $ref: '#/components/parameters/Country'
+        - $ref: '#/components/parameters/UtmMedium'
+        - $ref: '#/components/parameters/UtmSource'
+        - $ref: '#/components/parameters/UtmCampaign'
+      responses:
+        '200':
+          description: Conversions retrieved successfully
+          headers:
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/X-RateLimit-Reset'
+            X-RateLimit-Used:
+              $ref: '#/components/headers/X-RateLimit-Used'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionsResponse'
+              examples:
+                success:
+                  summary: Conversion data
+                  value:
+                    status: 'ok'
+                    data:
+                      - _id: 'conv_abc123def456'
+                        amount: 149.99
+                        utm_medium: 'cpc'
+                        utm_source: 'google'
+                        utm_campaign: 'black-friday-2024'
+                        utm_term: 'running shoes sale'
+                        utm_matchtype: 'phrase'
+                        country: 'US'
+                        country_name: 'United States'
+                        date: '2024-11-29'
+                        label: 'purchase'
+                      - _id: 'conv_xyz789ghi012'
+                        amount: 89.50
+                        utm_medium: 'email'
+                        utm_source: 'newsletter'
+                        utm_campaign: 'weekly-deals'
+                        utm_term: '/promo/cyber-monday'
+                        utm_matchtype: null
+                        country: 'GB'
+                        country_name: 'United Kingdom'
+                        date: '2024-12-02'
+                        label: 'purchase'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /report/microconversions:
+    get:
+      operationId: getMicroconversions
+      summary: Get microconversions
+      description: |
+        Retrieve microconversion events that track user engagement before purchase.
+
+        **Common Microconversion Types:**
+        - `add-to-cart` - Product added to shopping cart
+        - `checkout` - Checkout process initiated
+        - `newsletter-signup` - Email subscription
+        - `form-submit` - Contact or lead form submission
+        - `video-play` - Video engagement
+        - Custom labels defined in your tracking setup
+
+        **Use Cases:**
+        - Analyze funnel drop-off points
+        - Measure engagement by traffic source
+        - Identify high-intent audiences
+        - Optimize conversion paths
+      tags:
+        - Microconversions
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/DateRange'
+        - $ref: '#/components/parameters/Skip'
+        - $ref: '#/components/parameters/LimitDefault'
+        - $ref: '#/components/parameters/Country'
+      responses:
+        '200':
+          description: Microconversions retrieved successfully
+          headers:
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/X-RateLimit-Reset'
+            X-RateLimit-Used:
+              $ref: '#/components/headers/X-RateLimit-Used'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicroconversionsResponse'
+              examples:
+                success:
+                  summary: Microconversion data
+                  value:
+                    status: 'ok'
+                    data:
+                      - _id: 'mc_abc123'
+                        date: '2024-11-29'
+                        utm_medium: 'social'
+                        utm_source: 'instagram'
+                        utm_campaign: 'influencer-collab'
+                        utm_term: '/products/sneakers'
+                        utm_matchtype: null
+                        label: 'add-to-cart'
+                      - _id: 'mc_def456'
+                        date: '2024-11-29'
+                        utm_medium: 'organic'
+                        utm_source: 'google'
+                        utm_campaign: ''
+                        utm_term: '/blog/style-guide'
+                        utm_matchtype: null
+                        label: 'newsletter-signup'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /report/funnel:
+    get:
+      operationId: getFunnel
+      summary: Get funnel analytics
+      description: |
+        Retrieve aggregated funnel analytics grouped by traffic source.
+
+        The funnel report provides a complete view of user progression through your conversion funnel:
+
+        **Metrics Included:**
+        - Clicks/visits at each stage
+        - Conversion counts
+        - Microconversion breakdowns (add-to-cart, checkout, etc.)
+
+        **Grouping:**
+        Use `report_type` to group data by different dimensions (Source, Medium, Campaign, etc.)
+
+        **Use Cases:**
+        - Identify drop-off points in your funnel
+        - Compare funnel performance across traffic sources
+        - Optimize marketing spend based on funnel efficiency
+      tags:
+        - Funnel
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/DateRange'
+        - $ref: '#/components/parameters/Skip'
+        - $ref: '#/components/parameters/LimitDefault'
+        - $ref: '#/components/parameters/Country'
+        - name: report_type
+          in: query
+          required: true
+          description: |
+            Dimension to group funnel data by:
+            - `Source` - Group by utm_source
+            - `Medium` - Group by utm_medium
+            - `Campaign` - Group by utm_campaign
+          schema:
+            type: string
+            enum:
+              - Source
+              - Medium
+              - Campaign
+          example: 'Source'
+      responses:
+        '200':
+          description: Funnel analytics retrieved successfully
+          headers:
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/X-RateLimit-Reset'
+            X-RateLimit-Used:
+              $ref: '#/components/headers/X-RateLimit-Used'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunnelResponse'
+              examples:
+                by_source:
+                  summary: Funnel by source
+                  value:
+                    status: 'ok'
+                    data:
+                      - Source: 'google'
+                        clicks: 45230
+                        conversions: 1250
+                        microconversions: 8900
+                        add-to-cart: 5200
+                        checkout: 2100
+                      - Source: 'facebook'
+                        clicks: 28100
+                        conversions: 720
+                        microconversions: 5400
+                        add-to-cart: 3100
+                        checkout: 1200
+                      - Source: 'direct'
+                        clicks: 15600
+                        conversions: 890
+                        microconversions: 2300
+                        add-to-cart: 1400
+                        checkout: 950
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /report/roas-evolution:
+    get:
+      operationId: getRoasEvolution
+      summary: Get ROAS evolution
+      description: |
+        Track Return on Ad Spend (ROAS) metrics over time.
+
+        Monitor the evolution of key performance metrics with configurable time granularity:
+
+        **Metrics Included:**
+        - Clicks
+        - Page views
+        - Conversions
+        - Microconversions
+        - Revenue
+
+        **Time Granularity:**
+        - `daily` - Day-by-day breakdown
+        - `weekly` - Week-by-week aggregation
+        - `monthly` - Month-by-month summary
+
+        **Use Cases:**
+        - Visualize performance trends
+        - Identify seasonal patterns
+        - Compare period-over-period performance
+        - Build custom dashboards and reports
+      tags:
+        - ROAS
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/DateRange'
+        - $ref: '#/components/parameters/Skip'
+        - $ref: '#/components/parameters/LimitDefault'
+        - $ref: '#/components/parameters/Country'
+        - $ref: '#/components/parameters/UtmMedium'
+        - $ref: '#/components/parameters/UtmSource'
+        - $ref: '#/components/parameters/UtmCampaign'
+        - name: time_unit
+          in: query
+          description: Time granularity for the report
+          schema:
+            type: string
+            enum:
+              - daily
+              - weekly
+              - monthly
+            default: daily
+          example: 'daily'
+      responses:
+        '200':
+          description: ROAS evolution data retrieved successfully
+          headers:
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/X-RateLimit-Reset'
+            X-RateLimit-Used:
+              $ref: '#/components/headers/X-RateLimit-Used'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoasEvolutionResponse'
+              examples:
+                daily:
+                  summary: Daily ROAS evolution
+                  value:
+                    status: 'ok'
+                    data:
+                      - _id: '2024-11-27'
+                        clicks: 8540
+                        page_views: 12300
+                        conversions: 245
+                        microconversions: 1890
+                        revenue: 28450.00
+                      - _id: '2024-11-28'
+                        clicks: 9120
+                        page_views: 13500
+                        conversions: 312
+                        microconversions: 2150
+                        revenue: 35200.50
+                      - _id: '2024-11-29'
+                        clicks: 15680
+                        page_views: 24100
+                        conversions: 890
+                        microconversions: 5400
+                        revenue: 98750.00
+                monthly:
+                  summary: Monthly ROAS evolution
+                  value:
+                    status: 'ok'
+                    data:
+                      - _id: '2024-10'
+                        clicks: 245000
+                        page_views: 380000
+                        conversions: 8900
+                        microconversions: 45000
+                        revenue: 890000.00
+                      - _id: '2024-11'
+                        clicks: 312000
+                        page_views: 485000
+                        conversions: 12500
+                        microconversions: 62000
+                        revenue: 1250000.00
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /auth/v1.0/set-click:
+    post:
+      operationId: setClick
+      summary: Record offline conversion
+      description: |
+        Record conversions from offline sources such as phone calls, CRM events, or in-store purchases.
+
+        **Use Cases:**
+        - Track phone call conversions from click-to-call ads
+        - Record CRM-based conversions (lead to customer)
+        - Capture in-store purchases attributed to online campaigns
+        - Integrate with call tracking software
+        - Connect marketing data with sales pipelines
+
+        **Attribution:**
+        The `url_parameters` object contains the UTM data to attribute the conversion to the correct campaign.
+
+        **Important:**
+        - `account_id` must match the `client_id` from your tracking setup
+        - `click_time` should be the Unix timestamp in milliseconds
+        - Include `email` in settings to match conversions to known users
+      tags:
+        - Offline Conversions
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SetClickRequest'
+            examples:
+              phone_conversion:
+                summary: Phone call conversion
+                value:
+                  account_id: '000000000000000000001234'
+                  url_parameters: '{"utm_medium":"cpc","utm_source":"google","utm_campaign":"search-ads","utm_term":"plumber near me"}'
+                  click_time: 1701234567890
+                  settings: '{"email":"customer@example.com"}'
+                  referrer: 'https://www.google.com'
+                  current_url: 'https://example.com/contact'
+              crm_conversion:
+                summary: CRM lead conversion
+                value:
+                  account_id: '000000000000000000001234'
+                  url_parameters: '{"utm_medium":"social","utm_source":"linkedin","utm_campaign":"b2b-leads"}'
+                  click_time: 1701234567890
+                  settings: '{"email":"lead@company.com","lead_id":"LD-12345"}'
+      responses:
+        '200':
+          description: Offline conversion recorded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: 'ok'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalid_account:
+                  summary: Invalid account ID
+                  value:
+                    status: 'error'
+                    message: 'Invalid account_id parameter'
+                invalid_timestamp:
+                  summary: Invalid timestamp
+                  value:
+                    status: 'error'
+                    message: 'click_time must be a valid Unix timestamp in milliseconds'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        JWT token obtained from the `/auth/login` endpoint.
+
+        **Usage:**
+        ```
+        Authorization: Bearer <your_access_token>
+        ```
+
+        **Token Management:**
+        - Tokens expire at the `expires_at` timestamp
+        - Implement automatic token refresh before expiration
+        - Store tokens securely in environment variables or secure vaults
+        - Never expose tokens in client-side code or version control
+
+  parameters:
+    AccountId:
+      name: account_id
+      in: query
+      required: true
+      description: |
+        Unique account identifier. Obtain from `/auth/accounts` endpoint.
+
+        Format: 24-character alphanumeric string
+      schema:
+        type: string
+        pattern: '^[a-zA-Z0-9]{24}$'
+      example: '000000000000000000001234'
+
+    DateRange:
+      name: date_range
+      in: query
+      required: true
+      description: |
+        Date range for the report.
+
+        **Custom Range:**
+        `YYYYMMDD,YYYYMMDD` (e.g., `20241101,20241130`)
+
+        **Predefined Values:**
+        - `today`, `yesterday`
+        - `last_7_days`, `last_14_days`, `last_30_days`, `last_60_days`, `last_90_days`
+        - `this_week_monday_sunday`, `this_week_sunday_saturday`
+        - `this_month`, `last_month`
+        - `this_year`, `last_year`
+      schema:
+        type: string
+      examples:
+        custom:
+          summary: Custom date range
+          value: '20241101,20241130'
+        last_30_days:
+          summary: Last 30 days
+          value: 'last_30_days'
+        this_month:
+          summary: Current month
+          value: 'this_month'
+
+    Skip:
+      name: skip
+      in: query
+      description: Number of records to skip for pagination
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+      example: 0
+
+    LimitDefault:
+      name: limit
+      in: query
+      description: Maximum number of records to return (max 100)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 100
+      example: 100
+
+    LimitPages:
+      name: limit
+      in: query
+      description: Maximum number of records to return (max 10000)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 10000
+        default: 1000
+      example: 1000
+
+    Country:
+      name: country
+      in: query
+      description: Filter by ISO 3166-1 alpha-2 country code
+      schema:
+        type: string
+        pattern: '^[A-Z]{2}$'
+      example: 'US'
+
+    UtmMedium:
+      name: utm_medium
+      in: query
+      description: |
+        Filter by traffic medium.
+
+        Common values: `cpc`, `organic`, `email`, `social`, `referral`, `direct`
+      schema:
+        type: string
+      example: 'cpc'
+
+    UtmSource:
+      name: utm_source
+      in: query
+      description: |
+        Filter by traffic source.
+
+        Common values: `google`, `facebook`, `instagram`, `twitter`, `linkedin`, `newsletter`
+      schema:
+        type: string
+      example: 'google'
+
+    UtmCampaign:
+      name: utm_campaign
+      in: query
+      description: Filter by campaign name
+      schema:
+        type: string
+      example: 'black-friday-2024'
+
+  headers:
+    X-RateLimit-Limit:
+      description: Maximum requests allowed per minute
+      schema:
+        type: integer
+        example: 60
+
+    X-RateLimit-Remaining:
+      description: Remaining requests in the current time window
+      schema:
+        type: integer
+        example: 45
+
+    X-RateLimit-Reset:
+      description: Unix timestamp when the rate limit resets
+      schema:
+        type: integer
+        example: 1701234600
+
+    X-RateLimit-Used:
+      description: Number of requests used in the current window
+      schema:
+        type: integer
+        example: 15
+
+  responses:
+    BadRequest:
+      description: Bad request - invalid or missing parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            missing_account_id:
+              summary: Missing account_id
+              value:
+                status: 'error'
+                message: 'account_id is required'
+            invalid_date_range:
+              summary: Invalid date range
+              value:
+                status: 'error'
+                message: 'Invalid date_range format. Use YYYYMMDD,YYYYMMDD or a predefined value'
+
+    Unauthorized:
+      description: Authentication failed or missing
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            missing_token:
+              summary: Missing authorization header
+              value:
+                status: 'error'
+                message: 'Authorization header is required'
+            invalid_token:
+              summary: Invalid or expired token
+              value:
+                status: 'error'
+                message: 'Invalid or expired access token'
+
+    RateLimitExceeded:
+      description: Rate limit exceeded
+      headers:
+        X-RateLimit-Limit:
+          $ref: '#/components/headers/X-RateLimit-Limit'
+        X-RateLimit-Remaining:
+          $ref: '#/components/headers/X-RateLimit-Remaining'
+        X-RateLimit-Reset:
+          $ref: '#/components/headers/X-RateLimit-Reset'
+        Retry-After:
+          description: Seconds to wait before retrying
+          schema:
+            type: integer
+            example: 60
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RateLimitError'
+          example:
+            error:
+              code: 'RATE_LIMIT_EXCEEDED'
+              message: 'API rate limit exceeded.'
+              details:
+                limit: 60
+                window: '1 minute'
+                retry_after: 60
+
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            status: 'error'
+            message: 'An unexpected error occurred. Please try again later.'
+
+  schemas:
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          description: Your SealMetrics account email
+          example: 'user@example.com'
+        password:
+          type: string
+          format: password
+          description: Your SealMetrics account password
+          minLength: 8
+          example: 'your-secure-password'
+
+    LoginResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: JWT access token for API authentication
+          example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+        token_type:
+          type: string
+          description: Token type (always "Bearer")
+          enum:
+            - Bearer
+          example: 'Bearer'
+        expires_at:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp when the token expires
+          example: '2024-12-31T23:59:59Z'
+
+    AccountsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+          example: 'ok'
+        data:
+          type: object
+          additionalProperties:
+            type: string
+          description: Map of account IDs to account names
+          example:
+            '000000000000000000001234': 'My E-commerce Store'
+            '000000000000000000005678': 'Marketing Agency Client'
+
+    PagesResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+          example: 'ok'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PageData'
+
+    PageData:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Page URL path
+          example: '/products/summer-collection'
+        views:
+          type: integer
+          description: Total page views
+          example: 15420
+        entry_page:
+          type: integer
+          description: Number of sessions where this was the first page visited
+          example: 3250
+        utm_medium:
+          type: string
+          description: Traffic medium (only when show_utms=true)
+          example: 'cpc'
+        utm_source:
+          type: string
+          description: Traffic source (only when show_utms=true)
+          example: 'google'
+        utm_campaign:
+          type: string
+          description: Campaign name (only when show_utms=true)
+          example: 'summer-sale-2024'
+
+    ConversionsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+          example: 'ok'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionData'
+
+    ConversionData:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Unique conversion identifier
+          example: 'conv_abc123def456'
+        amount:
+          type: number
+          format: double
+          description: Conversion value/revenue
+          example: 149.99
+        utm_medium:
+          type: string
+          description: Traffic medium that drove the conversion
+          example: 'cpc'
+        utm_source:
+          type: string
+          description: Traffic source that drove the conversion
+          example: 'google'
+        utm_campaign:
+          type: string
+          description: Campaign name
+          example: 'black-friday-2024'
+        utm_term:
+          type: string
+          description: Search term or landing page URL
+          example: 'running shoes sale'
+        utm_matchtype:
+          type:
+            - string
+            - 'null'
+          description: Search match type (exact, phrase, broad)
+          example: 'phrase'
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+          example: 'US'
+        country_name:
+          type: string
+          description: Full country name
+          example: 'United States'
+        date:
+          type: string
+          format: date
+          description: Conversion date (YYYY-MM-DD)
+          example: '2024-11-29'
+        label:
+          type: string
+          description: Conversion type/label
+          example: 'purchase'
+
+    MicroconversionsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+          example: 'ok'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MicroconversionData'
+
+    MicroconversionData:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Unique microconversion identifier
+          example: 'mc_abc123'
+        date:
+          type: string
+          format: date
+          description: Event date (YYYY-MM-DD)
+          example: '2024-11-29'
+        utm_medium:
+          type: string
+          description: Traffic medium
+          example: 'social'
+        utm_source:
+          type: string
+          description: Traffic source
+          example: 'instagram'
+        utm_campaign:
+          type: string
+          description: Campaign name
+          example: 'influencer-collab'
+        utm_term:
+          type: string
+          description: Landing page or search term
+          example: '/products/sneakers'
+        utm_matchtype:
+          type:
+            - string
+            - 'null'
+          description: Search match type
+          example: null
+        label:
+          type: string
+          description: |
+            Microconversion type. Common values:
+            - `add-to-cart`
+            - `checkout`
+            - `newsletter-signup`
+            - `form-submit`
+            - `video-play`
+          example: 'add-to-cart'
+
+    FunnelResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+          example: 'ok'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelData'
+
+    FunnelData:
+      type: object
+      properties:
+        Source:
+          type: string
+          description: Group name (varies based on report_type parameter)
+          example: 'google'
+        clicks:
+          type: integer
+          description: Number of clicks/visits
+          example: 45230
+        conversions:
+          type: integer
+          description: Number of conversions
+          example: 1250
+        microconversions:
+          type: integer
+          description: Total microconversions
+          example: 8900
+        add-to-cart:
+          type: integer
+          description: Add-to-cart events
+          example: 5200
+        checkout:
+          type: integer
+          description: Checkout initiation events
+          example: 2100
+      additionalProperties:
+        type: integer
+        description: Additional funnel stages based on your configuration
+
+    RoasEvolutionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+          example: 'ok'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoasEvolutionData'
+
+    RoasEvolutionData:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: |
+            Time period identifier:
+            - Daily: `YYYY-MM-DD`
+            - Weekly: `YYYY-WXX`
+            - Monthly: `YYYY-MM`
+          example: '2024-11-29'
+        clicks:
+          type: integer
+          description: Clicks in the period
+          example: 15680
+        page_views:
+          type: integer
+          description: Page views in the period
+          example: 24100
+        conversions:
+          type: integer
+          description: Conversions in the period
+          example: 890
+        microconversions:
+          type: integer
+          description: Microconversions in the period
+          example: 5400
+        revenue:
+          type: number
+          format: double
+          description: Total revenue in the period
+          example: 98750.00
+
+    SetClickRequest:
+      type: object
+      required:
+        - account_id
+        - url_parameters
+        - click_time
+        - settings
+      properties:
+        account_id:
+          type: string
+          description: Account identifier (must match client_id)
+          example: '000000000000000000001234'
+        url_parameters:
+          type: string
+          description: JSON-encoded object containing UTM parameters
+          example: '{"utm_medium":"cpc","utm_source":"google","utm_campaign":"search-ads"}'
+        click_time:
+          type: integer
+          format: int64
+          description: Unix timestamp in milliseconds when the click occurred
+          example: 1701234567890
+        settings:
+          type: string
+          description: JSON-encoded object with additional settings (e.g., email)
+          example: '{"email":"customer@example.com"}'
+        referrer:
+          type: string
+          format: uri
+          description: Referrer URL
+          example: 'https://www.google.com'
+        current_url:
+          type: string
+          format: uri
+          description: Current page URL
+          example: 'https://example.com/contact'
+
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - error
+          example: 'error'
+        message:
+          type: string
+          description: Human-readable error message
+          example: 'Invalid or expired access token'
+
+    RateLimitError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum:
+                - RATE_LIMIT_EXCEEDED
+              example: 'RATE_LIMIT_EXCEEDED'
+            message:
+              type: string
+              example: 'API rate limit exceeded.'
+            details:
+              type: object
+              properties:
+                limit:
+                  type: integer
+                  description: Maximum requests per window
+                  example: 60
+                window:
+                  type: string
+                  description: Time window duration
+                  example: '1 minute'
+                retry_after:
+                  type: integer
+                  description: Seconds to wait before retrying
+                  example: 60
+
+x-tagGroups:
+  - name: Getting Started
+    tags:
+      - Authentication
+      - Accounts
+  - name: Analytics
+    tags:
+      - Pages
+      - Funnel
+      - ROAS
+  - name: Conversion Tracking
+    tags:
+      - Conversions
+      - Microconversions
+      - Offline Conversions

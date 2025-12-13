@@ -36,16 +36,30 @@ Once connected, you can ask your AI assistant questions like:
 
 ## Installation
 
-### Option 1: Using uvx (Recommended)
+Install the SealMetrics MCP server using one of the following methods:
+
+### Option 1: Using pipx (Recommended)
+
+[pipx](https://pipx.pypa.io/) installs the package in an isolated environment, avoiding conflicts with other Python packages.
 
 ```bash
-uvx sealmetrics-mcp
+# Install pipx if you don't have it
+brew install pipx
+
+# Install the MCP server
+pipx install sealmetrics-mcp
 ```
 
 ### Option 2: Using pip
 
 ```bash
 pip install sealmetrics-mcp
+```
+
+### Option 3: Using uv
+
+```bash
+uv pip install sealmetrics-mcp
 ```
 
 ## Configuration
@@ -59,7 +73,35 @@ To connect the MCP server to Claude Desktop, modify the configuration file:
 | **macOS** | `~/Library/Application Support/Claude/claude_desktop_config.json` |
 | **Windows** | `%APPDATA%\Claude\claude_desktop_config.json` |
 
-Add the following configuration block:
+Choose the configuration that matches your installation method:
+
+#### Option A: pipx Configuration (Recommended)
+
+First, find the path to the executable:
+
+```bash
+which sealmetrics-mcp
+# Example output: /Users/YOUR_USER/.local/bin/sealmetrics-mcp
+```
+
+Then add this configuration using the full path:
+
+```json
+{
+  "mcpServers": {
+    "sealmetrics": {
+      "command": "/Users/YOUR_USER/.local/bin/sealmetrics-mcp",
+      "args": [],
+      "env": {
+        "SEALMETRICS_API_TOKEN": "your-api-token",
+        "SEALMETRICS_ACCOUNT_ID": "your-account-id"
+      }
+    }
+  }
+}
+```
+
+#### Option B: uvx Configuration
 
 ```json
 {
@@ -76,18 +118,43 @@ Add the following configuration block:
 }
 ```
 
+#### Option C: Python Direct Configuration
+
+```json
+{
+  "mcpServers": {
+    "sealmetrics": {
+      "command": "python",
+      "args": ["-m", "sealmetrics_mcp"],
+      "env": {
+        "SEALMETRICS_API_TOKEN": "your-api-token",
+        "SEALMETRICS_ACCOUNT_ID": "your-account-id"
+      }
+    }
+  }
+}
+```
+
 :::warning Important
 Replace `your-api-token` and `your-account-id` with your actual credentials. Never commit these values to version control.
 :::
+
+### Post-Configuration Steps
+
+1. Save the JSON configuration file
+2. **Restart Claude Desktop completely** (Cmd+Q on macOS, then reopen)
+3. The SealMetrics tools will appear available in Claude Desktop
 
 ### Environment Variables
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `SEALMETRICS_API_TOKEN` | Yes | Your API authentication token |
+| `SEALMETRICS_API_TOKEN` | Yes* | Your API authentication token (recommended) |
+| `SEALMETRICS_EMAIL` | Yes* | Your SealMetrics email (alternative to token) |
+| `SEALMETRICS_PASSWORD` | Yes* | Your SealMetrics password (alternative to token) |
 | `SEALMETRICS_ACCOUNT_ID` | No | Default account ID (can be specified per query) |
 
-**Alternative authentication:** Instead of `SEALMETRICS_API_TOKEN`, you can use `SEALMETRICS_EMAIL` and `SEALMETRICS_PASSWORD`, though the token method is preferred.
+*\*Authentication requires either `SEALMETRICS_API_TOKEN` OR (`SEALMETRICS_EMAIL` + `SEALMETRICS_PASSWORD`). The token method is preferred for security reasons.*
 
 ## Getting Your Credentials
 
@@ -164,8 +231,48 @@ The MCP server exposes eight main tools to the AI assistant:
 ### Claude doesn't see the MCP server
 
 1. Ensure the config file is in the correct location
-2. Verify JSON syntax is valid
-3. Restart Claude Desktop completely
+2. Verify JSON syntax is valid (use a JSON validator if needed)
+3. **Restart Claude Desktop completely** (Cmd+Q on macOS, not just close the window)
+4. Check if the executable path is correct (for pipx installations)
+
+### Verify Installation Path
+
+For pipx installations, verify the executable exists:
+
+```bash
+ls -la ~/.local/bin/sealmetrics-mcp
+```
+
+### Test the Server Manually
+
+You can test if the server runs correctly from the terminal:
+
+```bash
+SEALMETRICS_API_TOKEN="your-token" ~/.local/bin/sealmetrics-mcp
+```
+
+Or with uvx:
+
+```bash
+SEALMETRICS_API_TOKEN="your-token" uvx sealmetrics-mcp
+```
+
+### Check Logs
+
+Review Claude Desktop's MCP server logs for errors:
+
+```bash
+cat ~/Library/Logs/Claude/mcp-server-sealmetrics.log
+```
+
+### Common Issues
+
+| Problem | Solution |
+|---------|----------|
+| Incorrect path | Run `which sealmetrics-mcp` to find the correct path |
+| Invalid token | Verify your API token in the SealMetrics dashboard |
+| Missing environment variables | Ensure both `SEALMETRICS_API_TOKEN` and optionally `SEALMETRICS_ACCOUNT_ID` are set |
+| Claude not restarted properly | Use Cmd+Q (macOS) or fully close and reopen Claude Desktop |
 
 ### Authentication errors
 

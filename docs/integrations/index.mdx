@@ -30,14 +30,23 @@ Connect SealMetrics with AI assistants and external tools to access your analyti
 
 ### MCP Server for Claude
 
-1. Install the server:
+1. Install the server (choose one method):
    ```bash
+   # Recommended: using pipx (isolated environment)
+   pipx install sealmetrics-mcp
+
+   # Alternative: using pip
+   pip install sealmetrics-mcp
+
+   # Alternative: using uvx
    uvx sealmetrics-mcp
    ```
 
 2. Configure Claude Desktop with your [API token](/api/authentication/how-to-obtain-api-token) and [Account ID](/api/core-api-endpoints/account-endpoints)
 
-3. Start asking questions about your analytics data
+3. Restart Claude Desktop completely
+
+4. Start asking questions about your analytics data
 
 [Get started with MCP Server →](./mcp-server)
 

@@ -230,9 +230,9 @@ The cookie banner era isn't ending overnight. But it's beginning to end.
 
 ## Learn More
 
-- [Full Cookie Consent Reform Analysis](/docs/legal/omnibus/cookies-eprivacy)
-- [GDPR Amendments in the Omnibus](/docs/legal/omnibus/gdpr-changes)
-- [Impact on Web Analytics Industry](/docs/legal/omnibus/impact-analytics)
-- [EU Digital Omnibus Overview](/docs/legal/omnibus/)
+- [Full Cookie Consent Reform Analysis](/legal/omnibus/cookies-eprivacy)
+- [GDPR Amendments in the Omnibus](/legal/omnibus/gdpr-changes)
+- [Impact on Web Analytics Industry](/legal/omnibus/impact-analytics)
+- [EU Digital Omnibus Overview](/legal/omnibus)
 
 **Questions about how the Omnibus affects your analytics?** Reach out to our team or explore the detailed documentation above.

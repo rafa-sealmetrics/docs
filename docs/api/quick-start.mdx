@@ -1,0 +1,567 @@
+---
+title: "Quick Start"
+description: "Get up and running with the SealMetrics API in 5 minutes. Authentication, first request, and common operations."
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Quick Start
+
+Get your first SealMetrics API request working in under 5 minutes.
+
+---
+
+## Prerequisites
+
+- A SealMetrics account ([sign up here](https://app.sealmetrics.com/register))
+- Your email and password for API authentication
+- A tool to make HTTP requests (cURL, Postman, or your programming language of choice)
+
+---
+
+## Step 1: Authenticate
+
+First, obtain an access token by calling the login endpoint:
+
+<Tabs>
+<TabItem value="curl" label="cURL" default>
+
+```bash
+curl -X POST https://app.sealmetrics.com/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "your-email@example.com",
+    "password": "your-password"
+  }'
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+import requests
+
+response = requests.post(
+    "https://app.sealmetrics.com/api/auth/login",
+    json={
+        "email": "your-email@example.com",
+        "password": "your-password"
+    }
+)
+
+data = response.json()
+access_token = data["access_token"]
+print(f"Token expires at: {data['expires_at']}")
+```
+
+</TabItem>
+<TabItem value="javascript" label="JavaScript">
+
+```javascript
+const response = await fetch("https://app.sealmetrics.com/api/auth/login", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    email: "your-email@example.com",
+    password: "your-password"
+  })
+});
+
+const { access_token, expires_at } = await response.json();
+console.log(`Token expires at: ${expires_at}`);
+```
+
+</TabItem>
+<TabItem value="php" label="PHP">
+
+```php
+<?php
+$ch = curl_init("https://app.sealmetrics.com/api/auth/login");
+
+curl_setopt_array($ch, [
+    CURLOPT_POST => true,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => ["Content-Type: application/json"],
+    CURLOPT_POSTFIELDS => json_encode([
+        "email" => "your-email@example.com",
+        "password" => "your-password"
+    ])
+]);
+
+$response = curl_exec($ch);
+$data = json_decode($response, true);
+$access_token = $data["access_token"];
+
+echo "Token expires at: " . $data["expires_at"];
+```
+
+</TabItem>
+</Tabs>
+
+**Response:**
+
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "Bearer",
+  "expires_at": "2024-12-31T23:59:59Z"
+}
+```
+
+:::tip Token Management
+Save the `access_token` and `expires_at` values. Implement automatic token refresh before expiration to avoid interruptions.
+:::
+
+---
+
+## Step 2: Get Your Account ID
+
+List all accounts linked to your credentials:
+
+<Tabs>
+<TabItem value="curl" label="cURL" default>
+
+```bash
+curl https://app.sealmetrics.com/api/auth/accounts \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+response = requests.get(
+    "https://app.sealmetrics.com/api/auth/accounts",
+    headers={"Authorization": f"Bearer {access_token}"}
+)
+
+accounts = response.json()["data"]
+for account_id, account_name in accounts.items():
+    print(f"{account_id}: {account_name}")
+```
+
+</TabItem>
+<TabItem value="javascript" label="JavaScript">
+
+```javascript
+const response = await fetch("https://app.sealmetrics.com/api/auth/accounts", {
+  headers: { "Authorization": `Bearer ${access_token}` }
+});
+
+const { data: accounts } = await response.json();
+Object.entries(accounts).forEach(([id, name]) => {
+  console.log(`${id}: ${name}`);
+});
+```
+
+</TabItem>
+</Tabs>
+
+**Response:**
+
+```json
+{
+  "status": "ok",
+  "data": {
+    "000000000000000000001234": "My E-commerce Store",
+    "000000000000000000005678": "Marketing Agency Client"
+  }
+}
+```
+
+Copy the account ID you want to query data for.
+
+---
+
+## Step 3: Fetch Analytics Data
+
+Now you can query any analytics endpoint. Here are common examples:
+
+### Get Page Views
+
+<Tabs>
+<TabItem value="curl" label="cURL" default>
+
+```bash
+curl "https://app.sealmetrics.com/api/report/pages?account_id=YOUR_ACCOUNT_ID&date_range=last_7_days&limit=10" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+response = requests.get(
+    "https://app.sealmetrics.com/api/report/pages",
+    headers={"Authorization": f"Bearer {access_token}"},
+    params={
+        "account_id": "YOUR_ACCOUNT_ID",
+        "date_range": "last_7_days",
+        "limit": 10
+    }
+)
+
+pages = response.json()["data"]
+for page in pages:
+    print(f"{page['url']}: {page['views']} views")
+```
+
+</TabItem>
+<TabItem value="javascript" label="JavaScript">
+
+```javascript
+const params = new URLSearchParams({
+  account_id: "YOUR_ACCOUNT_ID",
+  date_range: "last_7_days",
+  limit: "10"
+});
+
+const response = await fetch(
+  `https://app.sealmetrics.com/api/report/pages?${params}`,
+  { headers: { "Authorization": `Bearer ${access_token}` } }
+);
+
+const { data: pages } = await response.json();
+pages.forEach(page => {
+  console.log(`${page.url}: ${page.views} views`);
+});
+```
+
+</TabItem>
+</Tabs>
+
+### Get Conversions
+
+<Tabs>
+<TabItem value="curl" label="cURL" default>
+
+```bash
+curl "https://app.sealmetrics.com/api/report/conversions?account_id=YOUR_ACCOUNT_ID&date_range=last_30_days" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+response = requests.get(
+    "https://app.sealmetrics.com/api/report/conversions",
+    headers={"Authorization": f"Bearer {access_token}"},
+    params={
+        "account_id": "YOUR_ACCOUNT_ID",
+        "date_range": "last_30_days"
+    }
+)
+
+conversions = response.json()["data"]
+total_revenue = sum(c["amount"] for c in conversions)
+print(f"Total conversions: {len(conversions)}")
+print(f"Total revenue: ${total_revenue:.2f}")
+```
+
+</TabItem>
+</Tabs>
+
+### Get ROAS Evolution
+
+<Tabs>
+<TabItem value="curl" label="cURL" default>
+
+```bash
+curl "https://app.sealmetrics.com/api/report/roas-evolution?account_id=YOUR_ACCOUNT_ID&date_range=last_30_days&time_unit=daily" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+response = requests.get(
+    "https://app.sealmetrics.com/api/report/roas-evolution",
+    headers={"Authorization": f"Bearer {access_token}"},
+    params={
+        "account_id": "YOUR_ACCOUNT_ID",
+        "date_range": "last_30_days",
+        "time_unit": "daily"
+    }
+)
+
+daily_data = response.json()["data"]
+for day in daily_data:
+    print(f"{day['_id']}: {day['conversions']} conversions, ${day['revenue']:.2f} revenue")
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Complete Example
+
+Here's a full working example that authenticates and fetches data:
+
+<Tabs>
+<TabItem value="python" label="Python" default>
+
+```python
+import requests
+from datetime import datetime
+
+# Configuration
+EMAIL = "your-email@example.com"
+PASSWORD = "your-password"
+BASE_URL = "https://app.sealmetrics.com/api"
+
+class SealMetricsAPI:
+    def __init__(self, email, password):
+        self.base_url = BASE_URL
+        self.token = None
+        self.expires_at = None
+        self._authenticate(email, password)
+
+    def _authenticate(self, email, password):
+        response = requests.post(
+            f"{self.base_url}/auth/login",
+            json={"email": email, "password": password}
+        )
+        response.raise_for_status()
+        data = response.json()
+        self.token = data["access_token"]
+        self.expires_at = datetime.fromisoformat(data["expires_at"].replace("Z", "+00:00"))
+        print(f"Authenticated. Token expires: {self.expires_at}")
+
+    def _headers(self):
+        return {"Authorization": f"Bearer {self.token}"}
+
+    def get_accounts(self):
+        response = requests.get(
+            f"{self.base_url}/auth/accounts",
+            headers=self._headers()
+        )
+        response.raise_for_status()
+        return response.json()["data"]
+
+    def get_conversions(self, account_id, date_range="last_30_days"):
+        response = requests.get(
+            f"{self.base_url}/report/conversions",
+            headers=self._headers(),
+            params={"account_id": account_id, "date_range": date_range}
+        )
+        response.raise_for_status()
+        return response.json()["data"]
+
+    def get_pages(self, account_id, date_range="last_7_days", limit=100):
+        response = requests.get(
+            f"{self.base_url}/report/pages",
+            headers=self._headers(),
+            params={
+                "account_id": account_id,
+                "date_range": date_range,
+                "limit": limit
+            }
+        )
+        response.raise_for_status()
+        return response.json()["data"]
+
+# Usage
+if __name__ == "__main__":
+    api = SealMetricsAPI(EMAIL, PASSWORD)
+
+    # Get accounts
+    accounts = api.get_accounts()
+    print("\nAccounts:")
+    for account_id, name in accounts.items():
+        print(f"  {name} ({account_id})")
+
+    # Use first account
+    account_id = list(accounts.keys())[0]
+
+    # Get conversions
+    conversions = api.get_conversions(account_id)
+    total_revenue = sum(c["amount"] for c in conversions)
+    print(f"\nLast 30 days:")
+    print(f"  Conversions: {len(conversions)}")
+    print(f"  Revenue: ${total_revenue:,.2f}")
+
+    # Get top pages
+    pages = api.get_pages(account_id, limit=5)
+    print("\nTop 5 pages:")
+    for page in pages[:5]:
+        print(f"  {page['url']}: {page['views']} views")
+```
+
+</TabItem>
+<TabItem value="javascript" label="Node.js">
+
+```javascript
+const BASE_URL = "https://app.sealmetrics.com/api";
+
+class SealMetricsAPI {
+  constructor() {
+    this.token = null;
+    this.expiresAt = null;
+  }
+
+  async authenticate(email, password) {
+    const response = await fetch(`${BASE_URL}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+
+    if (!response.ok) throw new Error("Authentication failed");
+
+    const data = await response.json();
+    this.token = data.access_token;
+    this.expiresAt = new Date(data.expires_at);
+    console.log(`Authenticated. Token expires: ${this.expiresAt}`);
+  }
+
+  async getAccounts() {
+    const response = await fetch(`${BASE_URL}/auth/accounts`, {
+      headers: { "Authorization": `Bearer ${this.token}` }
+    });
+    return (await response.json()).data;
+  }
+
+  async getConversions(accountId, dateRange = "last_30_days") {
+    const params = new URLSearchParams({ account_id: accountId, date_range: dateRange });
+    const response = await fetch(`${BASE_URL}/report/conversions?${params}`, {
+      headers: { "Authorization": `Bearer ${this.token}` }
+    });
+    return (await response.json()).data;
+  }
+
+  async getPages(accountId, dateRange = "last_7_days", limit = 100) {
+    const params = new URLSearchParams({
+      account_id: accountId,
+      date_range: dateRange,
+      limit: limit.toString()
+    });
+    const response = await fetch(`${BASE_URL}/report/pages?${params}`, {
+      headers: { "Authorization": `Bearer ${this.token}` }
+    });
+    return (await response.json()).data;
+  }
+}
+
+// Usage
+async function main() {
+  const api = new SealMetricsAPI();
+  await api.authenticate("your-email@example.com", "your-password");
+
+  const accounts = await api.getAccounts();
+  console.log("\nAccounts:");
+  Object.entries(accounts).forEach(([id, name]) => {
+    console.log(`  ${name} (${id})`);
+  });
+
+  const accountId = Object.keys(accounts)[0];
+
+  const conversions = await api.getConversions(accountId);
+  const totalRevenue = conversions.reduce((sum, c) => sum + c.amount, 0);
+  console.log(`\nLast 30 days:`);
+  console.log(`  Conversions: ${conversions.length}`);
+  console.log(`  Revenue: $${totalRevenue.toLocaleString()}`);
+
+  const pages = await api.getPages(accountId, "last_7_days", 5);
+  console.log("\nTop 5 pages:");
+  pages.slice(0, 5).forEach(page => {
+    console.log(`  ${page.url}: ${page.views} views`);
+  });
+}
+
+main().catch(console.error);
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Common Date Ranges
+
+| Value | Description |
+|-------|-------------|
+| `today` | Current day |
+| `yesterday` | Previous day |
+| `last_7_days` | Past 7 days |
+| `last_30_days` | Past 30 days |
+| `this_month` | Current month |
+| `last_month` | Previous month |
+| `20241101,20241130` | Custom range (YYYYMMDD,YYYYMMDD) |
+
+---
+
+## Error Handling
+
+Always check for errors in your API calls:
+
+```python
+response = requests.get(url, headers=headers, params=params)
+
+if response.status_code == 401:
+    print("Token expired - re-authenticate")
+elif response.status_code == 429:
+    retry_after = response.headers.get("Retry-After", 60)
+    print(f"Rate limited - wait {retry_after} seconds")
+elif response.status_code != 200:
+    error = response.json()
+    print(f"Error: {error.get('message', 'Unknown error')}")
+else:
+    data = response.json()["data"]
+```
+
+---
+
+## Next Steps
+
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+  gap: '1rem',
+  marginTop: '1rem'
+}}>
+  <a href="/api/openapi-reference" style={{
+    display: 'block',
+    border: '2px solid #00825C',
+    borderRadius: '8px',
+    padding: '1.5rem',
+    textDecoration: 'none',
+    color: 'inherit',
+    background: 'linear-gradient(135deg, rgba(0,130,92,0.05) 0%, rgba(0,130,92,0.02) 100%)'
+  }}>
+    <strong style={{ color: '#00825C' }}>OpenAPI Reference</strong>
+    <p style={{ margin: '0.5rem 0 0', fontSize: '0.9rem' }}>
+      Download the complete API spec for Postman or SDK generation.
+    </p>
+  </a>
+  <a href="/api/core-api-endpoints" style={{
+    display: 'block',
+    border: '1px solid #e0e0e0',
+    borderRadius: '8px',
+    padding: '1.5rem',
+    textDecoration: 'none',
+    color: 'inherit'
+  }}>
+    <strong style={{ color: '#00825C' }}>All Endpoints</strong>
+    <p style={{ margin: '0.5rem 0 0', fontSize: '0.9rem' }}>
+      Detailed documentation for every API endpoint.
+    </p>
+  </a>
+  <a href="/api/implementation-guide" style={{
+    display: 'block',
+    border: '1px solid #e0e0e0',
+    borderRadius: '8px',
+    padding: '1.5rem',
+    textDecoration: 'none',
+    color: 'inherit'
+  }}>
+    <strong style={{ color: '#00825C' }}>Implementation Guide</strong>
+    <p style={{ margin: '0.5rem 0 0', fontSize: '0.9rem' }}>
+      Advanced examples and best practices.
+    </p>
+  </a>
+</div>
